@@ -1,1 +1,1 @@
-# UrfuCommunicate
+# UrfuCommunicate - educational project
