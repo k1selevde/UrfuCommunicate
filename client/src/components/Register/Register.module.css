@@ -1,0 +1,84 @@
+
+.container {
+    /*margin: 0 auto;*/
+}
+
+.title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+}
+.text {
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    font-weight: 400;
+}
+.link {
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+    font-weight: 400;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    max-width: 500px;
+    margin-top: 30px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.inputField {
+    height: 28px;
+    width: 210px;
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+
+.submitBtn {
+    cursor: pointer;
+    border: 1px solid blue;
+    padding: 10px 50px;
+    background-color: blue;
+    opacity: .94;
+    color: white;
+    text-transform: uppercase;
+    transition: opacity .2s ease-out;
+}
+
+.submitBtn:hover {
+    opacity: .75;
+}
+
+.submitBtn:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+
+.or {
+    color: black;
+    vertical-align: center;
+}
+
+.checkLabel {
+    color: black;
+    font-size: 17px;
+    padding-left: 3px;
+}
+
+.alertBlock {
+    width:100%;
+    height: 20px;
+}

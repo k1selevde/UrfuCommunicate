@@ -1,0 +1,16 @@
+.container {
+    padding: 5px;
+    margin-top: 10px;
+    background-color: lightcoral;
+}
+.error {
+    text-transform: uppercase;
+    color: white;
+    font-weight: 500;
+}
+.message {
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+}
