@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from "react-redux";
-import Auth from "../components/Auth/Auth";
-import {hideAlert, setError} from "../redux/actions/sessionActions";
+import RegisterForm from "../components/Register/RegisterForm";
+import {setError, hideAlert} from "../redux/actions/sessionActions";
 
-const AuthContainer = ({...rest}) => {
+const RegisterFormContainer  = ({...rest}) => {
     return (
-        <Auth {...rest} />
-    )
+        <RegisterForm {...rest} />
+    );
 }
 
 const mapStateToProps = state => ({
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => {
     })
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(AuthContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(RegisterFormContainer);
