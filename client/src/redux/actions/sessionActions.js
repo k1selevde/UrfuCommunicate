@@ -1,24 +1,28 @@
-import {HIDE_ALERT, LOG_FAILURE, LOG_SUCCESS, REGISTER_SUCCESS, REQUEST, SET_ERROR} from "./actionTypes";
+import {
+    AUTH_FAILURE,
+    AUTH_SUCCESS,
+    HIDE_ALERT,
+    LOG_OUT,
+    SESSION_REQUEST,
+    SET_ERROR
+} from "./actionTypes";
 import {API_ROOT} from "../../constants/Default";
 import {checkResponse, httpPost} from "../../helpers/network";
 
-// export function showError(data) {
-//     return async dispatch => {
-//         dispatch(setError(data))
-//         await setTimeout(() => hideAlert(), 1500)
-//     }
-// }
+
 
 export function registerMe(data) {
-    return dispatch => {
+    return (dispatch) => {
         dispatch(httpRequest())
         httpPost(`${API_ROOT}/register`,data)
-            .then(res => checkResponse(res)
-                ? dispatch(registerSuccess(res.data))
-                : dispatch(registerFailure(res.message))
-            )
+            .then(res => {
+                checkResponse(res)
+                    ? dispatch(authSuccess(res.data))
+                    : dispatch(authFailure(res.data))
+            })
             .catch (error =>
-                console.log('bad')
+                console.log(error)
+                // тут тоже неплохо бы диспачнуть.
             )
 
     }
@@ -26,51 +30,39 @@ export function registerMe(data) {
 
 export function httpRequest() {
     return {
-        type: REQUEST
+        type: SESSION_REQUEST,
+        payload: '12'
     }
 }
 
-export function registerSuccess() {
+export function authSuccess(data) {
     return {
-        type: REGISTER_SUCCESS
+        type: AUTH_SUCCESS,
+        payload: data
     }
 }
 
-export function registerFailure() {
+export function authFailure(data) {
     return {
-        type: REGISTER_SUCCESS
+        type: AUTH_FAILURE,
+        payload: data
     }
 }
-
-
 
 export function logIn(data) {
     return dispatch => {
         dispatch(httpRequest())
         httpPost(`${API_ROOT}/login`,data)
             .then(res => checkResponse(res)
-                ? dispatch(loginSuccess(res.data))
-                : dispatch(loginFailure(res.message))
+                ? dispatch(authSuccess(res.data))
+                : dispatch(authFailure(res.data))
             )
             .catch (error =>
-                console.log('bad')
+                console.log(error)
             )
 
     }
 }
-
-export function loginSuccess() {
-    return {
-        type: LOG_SUCCESS
-    }
-}
-
-export function loginFailure() {
-    return {
-        type: LOG_FAILURE
-    }
-}
-
 
 export function setError(data) {
     return {
@@ -82,5 +74,12 @@ export function setError(data) {
 export function hideAlert() {
     return {
         type: HIDE_ALERT
+    }
+}
+
+
+export function logOut() {
+    return {
+        type: LOG_OUT
     }
 }

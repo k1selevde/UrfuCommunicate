@@ -10,8 +10,8 @@ export default class Auth extends React.Component {
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
         this.state = {
-            email: '',
-            password: ''
+            email: 'abra@yandex.ru',
+            password: '12345'
         }
     }
 
@@ -31,7 +31,8 @@ export default class Auth extends React.Component {
             this.props.setError(validAuth(this.state))
             return;
         }
-        //this.props.logIn()
+        const {email,password} = this.state;
+        this.props.logIn({email,password})
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -74,7 +75,7 @@ export default class Auth extends React.Component {
                         <button
                             className={s.submitBtn}
                             type="submit"
-                            disabled={(!simpleValidAuth(this.state))}
+                            disabled={(!simpleValidAuth(this.state) || Boolean(error))}
                         >
                             ВОЙТИ
                         </button>

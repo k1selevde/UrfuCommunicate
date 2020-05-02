@@ -9,14 +9,14 @@ class RegisterForm extends React.Component  {
     {
         super(props)
         this.state = {
-            name: '',
-            surname: '',
-            patronymic: '',
-            email: '',
-            group: '',
+            name: 'Den',
+            surname: 'Abra',
+            patronymic: 'Aler',
+            email: 'abra@yandex.ru',
+            group: '12',
             checkbox: false,
-            password: '',
-            repeatPassword: ''
+            password: '12345',
+            repeatPassword: '12345'
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -31,7 +31,7 @@ class RegisterForm extends React.Component  {
             return;
         }
         const {name,surname,patronymic,email,group,checkbox,password} = this.state;
-        //this.props.registerMe(name,surname,patronymic,email,group,checkbox,password);
+        this.props.registerMe({name,surname,patronymic,email,group,checkbox,password});
 
     }
 
@@ -66,7 +66,7 @@ class RegisterForm extends React.Component  {
         const {error} = this.props
         const {name,surname,patronymic,email,group,checkbox,password,repeatPassword} = this.state;
         return (
-            <div className="form-wrapper">
+            <div className={s.formWrapper}>
 
                 <div className={s.alertBlock}>
                     {this.props.error && <Alert error={error}/>}
@@ -154,7 +154,7 @@ class RegisterForm extends React.Component  {
                     <button
                         className={s.submitBtn}
                         type="submit"
-                        disabled={(!simpleValidRegister(this.state))}
+                        disabled={(!simpleValidRegister(this.state) || Boolean(error))}
                     >
                         Зарегистрироваться
                     </button>

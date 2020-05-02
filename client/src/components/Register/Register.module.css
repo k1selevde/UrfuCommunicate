@@ -2,6 +2,9 @@
 .container {
     /*margin: 0 auto;*/
 }
+.formWrapper {
+    margin-bottom: 50px;
+}
 
 .title {
     text-transform: uppercase;

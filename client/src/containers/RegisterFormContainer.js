@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import RegisterForm from "../components/Register/RegisterForm";
-import {setError, hideAlert} from "../redux/actions/sessionActions";
+import {setError, hideAlert, registerMe} from "../redux/actions/sessionActions";
 
 const RegisterFormContainer  = ({...rest}) => {
     return (
@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return ({
         setError: (data) => dispatch(setError(data)),
-        hideAlert: () => dispatch(hideAlert())
+        hideAlert: () => dispatch(hideAlert()),
+        registerMe: (data) => dispatch(registerMe(data))
     })
 }
 

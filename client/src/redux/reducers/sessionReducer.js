@@ -1,10 +1,9 @@
 import {
+    AUTH_FAILURE,
+    AUTH_SUCCESS,
     HIDE_ALERT,
-    LOG_FAILURE,
-    LOG_SUCCESS,
-    REGISTER_FAILURE,
-    REGISTER_SUCCESS,
-    REQUEST,
+    LOG_OUT,
+    SESSION_REQUEST,
     SET_ERROR
 } from "../actions/actionTypes";
 
@@ -22,9 +21,11 @@ let initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST:
+        case LOG_OUT:
+            return {...state, user: initialState.user}
+        case SESSION_REQUEST:
             return {...state, isLoading: true}
-        case LOG_SUCCESS:
+        case AUTH_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
@@ -33,10 +34,10 @@ export default (state = initialState, action) => {
                     isTeacher: action.payload.isTeacher,
                     id: action.payload.id,
                     token: action.payload.token
-                },
+                }
             }
-        case LOG_FAILURE:
-            return {...state, isLoading: false, errorMsg: action.payload}
+        case AUTH_FAILURE:
+            return {...state,isLoading: false, errorMsg: action.payload.message}
         case SET_ERROR:
             return {...state, errorMsg: action.payload}
         case HIDE_ALERT:
