@@ -54,7 +54,7 @@ class RegisterForm extends React.Component  {
 
 
     componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.error != null)
+        if (nextProps.error !== "" )
         {
             setTimeout(() => this.props.hideAlert(),2000)
         }

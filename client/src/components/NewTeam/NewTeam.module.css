@@ -1,0 +1,173 @@
+.container {
+
+}
+
+.title {
+    color: black;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+
+.searchForm {
+    margin-bottom: 30px;
+}
+
+.sendFormBtn {
+    padding: 9px 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color .2s ease-out;
+}
+
+.sendFormBtn:hover {
+    background-color: chocolate;
+}
+
+
+
+.searchInput {
+    padding: 9px 14px;
+    border: 1px solid black;
+    font-size: 14px;
+}
+
+
+.makeTeamWrap {
+    margin-top: 50px;
+}
+
+.makeTeamBtn {
+    cursor: pointer;
+    padding: 8px 20px;
+    color: black;
+    background-color: blue;
+    border: none;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: opacity .2s ease;
+}
+.makeTeamBtn:hover {
+    opacity: .7;
+}
+
+.makeTeamBtn:active {
+
+}
+
+
+
+/*LIST OF STUDENTS*/
+
+
+.studentListTitle {
+    padding-top: 10px;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+.listWrap {
+
+}
+
+.listItemsWrap {
+    background-color: rgba(196, 196, 196, .95);
+}
+
+
+.listItem {
+    padding: 10px 35px 12px 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.listItem:hover {
+    background-color: rgba(107, 194, 200, 1);
+}
+
+
+.studentName {
+    color: black;
+    font-size: 18px;
+}
+
+.studentFlag {
+    margin-left: 5px;
+    cursor: pointer;
+    opacity: .2;
+    transition: opacity .1s ease;
+    font-weight: 700;
+}
+
+.studentFlag:hover {
+    opacity: 1;
+}
+
+
+
+.studentItemLeft {
+    display: flex;
+}
+
+.studentIndex {
+    margin-right: 4px;
+    color: black;
+}
+
+
+
+
+/*Link to Profile*/
+
+.backToProfile {
+    color: blue;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color .2s ease;
+}
+
+.backToProfile:hover {
+    color: cornflowerblue;
+}
+
+/*TEAM NAME STYLES*/
+
+.teamNameWrap {
+    margin-bottom: 40px;
+}
+
+.teamName {
+    padding: 6px 12px;
+    border: 1px solid black;
+    color: black;
+    font-size: 14px;
+    outline: none   ;
+}
+
+.teamName:hover {
+    border: 1px solid red;
+}
+
+/*MARK-UP*/
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.leftBox {
+
+    margin-right: 100px;
+}
+
+
+
+

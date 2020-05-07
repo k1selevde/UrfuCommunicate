@@ -45,7 +45,5 @@ export async function httpPost(url, data) {
 
 
 export function checkResponse(res) {
-    console.log(res)
-    console.log(res.status)
     return res.status === 'ok';
 }

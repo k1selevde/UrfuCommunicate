@@ -15,7 +15,7 @@ let initialState = {
         id: null,
         token: null
     },
-    errorMsg: '',
+    errorMsg: "",
     isLoading: false
 }
 
@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
         case SET_ERROR:
             return {...state, errorMsg: action.payload}
         case HIDE_ALERT:
-            return {...state, errorMsg: ''}
+            return {...state, errorMsg: ""}
         default:  return state;
     }
 }

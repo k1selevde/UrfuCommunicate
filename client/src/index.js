@@ -10,11 +10,11 @@ import App from './App';
 import './index.css';
 
 let store = createStore(rootReducer,
-    localStorage.getItem('store2') ? JSON.parse(localStorage['store2']) : {}
-    ,compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+    localStorage.getItem('storage') ? JSON.parse(localStorage['storage']) : {},
+    compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 store.subscribe(() => {
-    localStorage.setItem('store2',JSON.stringify(store.getState()))
+    localStorage.setItem('storage',JSON.stringify(store.getState()))
 })
 
 const app = (

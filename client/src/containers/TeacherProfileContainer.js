@@ -2,22 +2,39 @@ import React from 'react'
 import {connect} from "react-redux";
 import TeacherProfile from "../components/TeacherProfile/TeacherProfile";
 import {Redirect} from "react-router-dom";
+import {getProfile} from "../redux/actions/teacherActions";
+
 
 class TeacherProfileContainer extends React.Component {
+
+    componentDidMount() {
+        const {id,token} = this.props;
+        this.props.getProfile({id,token})
+    }
+
     render()
     {
-        const {isTeacher} = this.props;
+        const {isTeacher,groups} = this.props;
         return (
             (isTeacher)
-                ? <TeacherProfile />
+                ? <TeacherProfile groups={groups}/>
                 : <Redirect to="/" />
         )
     }
 }
 
 const mapStateToProps = state => ({
-    isAuth: state.session.user.isAuth,
-    isTeacher: state.session.user.isTeacher
+    id: state.session.user.id,
+    token: state.session.user.token,
+    isTeacher: state.session.user.isTeacher,
+    groups: state.teacher.groups
 })
 
-export default connect(mapStateToProps)(TeacherProfileContainer);
+
+const mapDispatchToProps = dispatch => {
+    return ({
+        getProfile: (data) => dispatch(getProfile(data)),
+    })
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TeacherProfileContainer);

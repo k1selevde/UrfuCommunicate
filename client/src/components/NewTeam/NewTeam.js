@@ -1,0 +1,173 @@
+import React from 'react'
+import s from './NewTeam.module.css'
+import StudTable from "./StudentTable/StudTable";
+import {NavLink} from "react-router-dom";
+
+
+class NewTeam  extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            teamName: 'M-123',
+            searchValue: '',
+            studentsList: [
+                {studentName: 'Андрей Апиев', studentId: '321'},
+                {studentName: 'Андрей Агаев', studentId: '322'},
+                {studentName: 'Женя Петров', studentId: '323'},
+                {studentName: 'Егор Леев', studentId: '324'},
+                {studentName: 'Катя Мирак', studentId: '325'},
+                {studentName: 'Сидор Сидоров', studentId: '326'},
+                {studentName: 'Федор Янов', studentId: '327'},
+            ]
+        }
+        this.changeInputHandler = this.changeInputHandler.bind(this)
+        this.findStudentHandler = this.findStudentHandler.bind(this)
+        this.submitTeamDataHandler = this.submitTeamDataHandler.bind(this)
+        this.removeStudentHandler = this.removeStudentHandler.bind(this)
+        this.addStudentHandler = this.addStudentHandler.bind(this)
+    }
+
+    changeInputHandler(e) {
+        const fieldName = e.target.name;
+        const fieldValue = e.target.value;
+        this.setState(prev => ({
+            ...prev,
+            [fieldName]: fieldValue
+        }))
+    }
+
+    findStudentHandler(e) {
+        e.preventDefault();
+        console.log(this.state)
+    }
+
+
+    removeStudentHandler(id) {
+        //const id = '4';
+        console.log('Fuck12')
+        this.setState(prev => ({
+            ...prev,
+            studentsList: prev.studentsList.filter((stud) => {
+                return stud.studentId !== id;
+            })
+        }))
+    }
+
+    addStudentHandler(student) {
+        console.log('Kylon', student)
+        this.setState(prev => ({
+            ...prev,
+            studentsList: [
+                ...prev.studentsList,
+                student
+            ]
+        }))
+    }
+
+    submitTeamDataHandler(e) {
+        e.preventDefault()
+        console.log(this.state)
+    }
+
+
+    render() {
+        return (
+            <div className={s.container}>
+                <NavLink className={s.backToProfile} to="/teacherProfile">Вернуться на главную</NavLink>
+                <h4 className={s.title}>Создание новой команды</h4>
+                <div className={s.teamNameWrap} >
+                    <input
+                        type="text"
+                        value={this.state.teamName}
+                        placeholder="Введите название команды"
+                        className={s.teamName}
+                        onChange={this.changeInputHandler}
+                        name="teamName"
+                    />
+                </div>
+
+                <div className={s.box}>
+                    <div className={s.leftBox}>
+                        <form onSubmit={this.findStudentHandler} className={s.searchForm}>
+                            <input
+                                name="searchValue"
+                                placeholder="Введите имя студента"
+                                type="search"
+                                onChange={this.changeInputHandler}
+                                value={this.state.searchValue}
+                                className={s.searchInput}
+                            />
+                            <button type="submit" className={s.sendFormBtn}>Найти</button>
+                        </form>
+
+                        <StudTable cb={(student) => this.addStudentHandler(student)} students={
+                            [
+                                {studentId: 1, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 2, studentName: 'Павел Котов Сергеевич', group: 'М-2014'},
+                                {studentId: 3, studentName: 'Павел Вров Сергеевич', group: 'М-2014'},
+                                {studentId: 4, studentName: 'Павел Пкцуоров Сергеевич', group: 'М-2014'},
+                                {studentId: 5, studentName: 'Павел укцикторов Сергеевич', group: 'М-2014'},
+                                {studentId: 6, studentName: 'Павел Белковский Сергеевич', group: 'М-2014'},
+                                {studentId: 7, studentName: 'Павел Триоон Сергеевич', group: 'М-2014'},
+                                {studentId: 8, studentName: 'Павел ВКуцк Сергеевич', group: 'М-2014'},
+                                {studentId: 9, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 10, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 11, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 12, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 13, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 14, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 15, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 16, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 17, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 18, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 19, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: 20, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                            ]
+                        }/>
+
+                        <div className={s.makeTeamWrap}>
+                            <button
+                                className={s.makeTeamBtn}
+                                onClick={this.submitTeamDataHandler}
+                            >
+                                Создать команду
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div className={s.listWrap}>
+                        <div className={s.listItemsWrap}>
+                            <h4 className={s.studentListTitle}>
+                                Спиок добавленных студентов
+                            </h4>
+                            {this.state.studentsList.map((stud, index) => {
+                                return (
+                                    <div
+                                        key={stud.studentId}
+                                        className={s.listItem}
+                                    >
+                                        <div className={s.studentItemLeft}>
+                                            <div className={s.studentIndex}>{index + 1})</div>
+                                            <div className={s.studentName}>
+                                                {stud.studentName}
+                                            </div>
+                                        </div>
+                                        <div
+                                            onClick={() => this.removeStudentHandler(stud.studentId)}
+                                            className={s.studentFlag}
+                                        >
+                                            удалить
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default NewTeam;

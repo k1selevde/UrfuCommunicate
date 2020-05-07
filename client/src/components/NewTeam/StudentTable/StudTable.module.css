@@ -1,0 +1,65 @@
+.tableWrap {
+
+}
+
+.table {
+
+}
+
+.tableHead {
+    font-weight: 400;
+}
+
+.tableRow {
+    padding: 10px 14px;
+    color: black;
+    font-weight: 400;
+}
+
+.th {
+    font-weight: 400;
+}
+
+.tr {
+    padding: 100px;
+}
+
+/*INTO THE ROW BY COLUMNS*/
+
+.index {
+    padding-right: 20px;
+    color: black;
+}
+
+.fio {
+    padding-right: 10px;
+    color: black;
+}
+
+.group {
+    color: black;
+    padding-right: 10px;
+}
+
+.status {
+    text-align: left;
+}
+
+
+.addStudent {
+    padding: 4px 10px;
+    background-color: blue;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color .1s ease;
+}
+
+.addStudent:hover {
+    background-color: forestgreen;
+}
+
+.isAdd {
+    color: darkred;
+}

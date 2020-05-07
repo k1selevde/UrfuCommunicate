@@ -1,14 +1,14 @@
 import React from 'react';
-import {Routes} from "./components/Routes";
-import Header from "./components/Header/Header";
 import {connect} from "react-redux";
+import {Routes} from "./components/Routes";
+import HeaderContainer from "./containers/HeaderContainer";
 import './App.css'
 
 
 function App({isAuth}) {
   return (
     <div className="App">
-        {isAuth && <Header />}
+        {isAuth && <HeaderContainer />}
         <div className="content">
             <Routes isAuth={isAuth}/>
         </div>
