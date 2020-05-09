@@ -10,22 +10,34 @@ class NewTeam  extends React.Component {
         this.state = {
             teamName: 'M-123',
             searchValue: '',
-            studentsList: [
-                {studentName: 'Андрей Апиев', studentId: '321'},
-                {studentName: 'Андрей Агаев', studentId: '322'},
-                {studentName: 'Женя Петров', studentId: '323'},
-                {studentName: 'Егор Леев', studentId: '324'},
-                {studentName: 'Катя Мирак', studentId: '325'},
-                {studentName: 'Сидор Сидоров', studentId: '326'},
-                {studentName: 'Федор Янов', studentId: '327'},
-            ]
+            studentsList: []
         }
         this.changeInputHandler = this.changeInputHandler.bind(this)
-        this.findStudentHandler = this.findStudentHandler.bind(this)
         this.submitTeamDataHandler = this.submitTeamDataHandler.bind(this)
         this.removeStudentHandler = this.removeStudentHandler.bind(this)
         this.addStudentHandler = this.addStudentHandler.bind(this)
+        this.findStudent = this.findStudent.bind(this)
+
     }
+
+    findStudent(e) {
+        const {searchValue} = this.state;
+        e.preventDefault()
+        this.props.getNewStudent({searchValue})
+    }
+
+
+     includeStudent(arr, student) {
+        for (let i=0; i< arr.length; i++)
+        {
+            if (arr[i].studentId === student.studentId)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     changeInputHandler(e) {
         const fieldName = e.target.name;
@@ -36,15 +48,12 @@ class NewTeam  extends React.Component {
         }))
     }
 
-    findStudentHandler(e) {
+/*    findStudentHandler(e) {
         e.preventDefault();
-        console.log(this.state)
-    }
+    }*/
 
 
     removeStudentHandler(id) {
-        //const id = '4';
-        console.log('Fuck12')
         this.setState(prev => ({
             ...prev,
             studentsList: prev.studentsList.filter((stud) => {
@@ -54,14 +63,15 @@ class NewTeam  extends React.Component {
     }
 
     addStudentHandler(student) {
-        console.log('Kylon', student)
-        this.setState(prev => ({
-            ...prev,
-            studentsList: [
-                ...prev.studentsList,
-                student
-            ]
-        }))
+        if (!this.includeStudent(this.state.studentsList, student)) {
+            this.setState(prev => ({
+                ...prev,
+                studentsList: [
+                    ...prev.studentsList,
+                    student
+                ]
+            }))
+        }
     }
 
     submitTeamDataHandler(e) {
@@ -71,6 +81,8 @@ class NewTeam  extends React.Component {
 
 
     render() {
+        const {newStudentArr} = this.props;
+
         return (
             <div className={s.container}>
                 <NavLink className={s.backToProfile} to="/teacherProfile">Вернуться на главную</NavLink>
@@ -88,7 +100,7 @@ class NewTeam  extends React.Component {
 
                 <div className={s.box}>
                     <div className={s.leftBox}>
-                        <form onSubmit={this.findStudentHandler} className={s.searchForm}>
+                        <form onSubmit={this.findStudent} className={s.searchForm}>
                             <input
                                 name="searchValue"
                                 placeholder="Введите имя студента"
@@ -100,30 +112,34 @@ class NewTeam  extends React.Component {
                             <button type="submit" className={s.sendFormBtn}>Найти</button>
                         </form>
 
-                        <StudTable cb={(student) => this.addStudentHandler(student)} students={
+                        <StudTable
+                            newStudentArr={newStudentArr}
+                            studentsList={this.state.studentsList}
+                            cb={(student) => this.addStudentHandler(student)}
+                            /*students={
                             [
-                                {studentId: 1, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 2, studentName: 'Павел Котов Сергеевич', group: 'М-2014'},
-                                {studentId: 3, studentName: 'Павел Вров Сергеевич', group: 'М-2014'},
-                                {studentId: 4, studentName: 'Павел Пкцуоров Сергеевич', group: 'М-2014'},
-                                {studentId: 5, studentName: 'Павел укцикторов Сергеевич', group: 'М-2014'},
-                                {studentId: 6, studentName: 'Павел Белковский Сергеевич', group: 'М-2014'},
-                                {studentId: 7, studentName: 'Павел Триоон Сергеевич', group: 'М-2014'},
-                                {studentId: 8, studentName: 'Павел ВКуцк Сергеевич', group: 'М-2014'},
-                                {studentId: 9, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 10, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 11, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 12, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 13, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 14, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 15, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 16, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 17, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 18, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 19, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                {studentId: 20, studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                            ]
-                        }/>
+                                {studentId: '1', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '2', studentName: 'Павел Котов Сергеевич', group: 'М-2014'},
+                                {studentId: '3', studentName: 'Павел Вров Сергеевич', group: 'М-2014'},
+                                {studentId: '4', studentName: 'Павел Пкцуоров Сергеевич', group: 'М-2014'},
+                                {studentId: '5', studentName: 'Павел укцикторов Сергеевич', group: 'М-2014'},
+                                {studentId: '6', studentName: 'Павел Белковский Сергеевич', group: 'М-2014'},
+                                {studentId: '7', studentName: 'Павел Триоон Сергеевич', group: 'М-2014'},
+                                {studentId: '8', studentName: 'Павел ВКуцк Сергеевич', group: 'М-2014'},
+                                {studentId: '9', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '10', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '11', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '12', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '13', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '14', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '15', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '16', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '17', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '18', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '19', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                                {studentId: '20', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
+                            ]*/
+                        />
 
                         <div className={s.makeTeamWrap}>
                             <button

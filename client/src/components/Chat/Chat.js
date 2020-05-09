@@ -4,6 +4,8 @@ import s from './Chat.module.css'
 
 const Chat  = ({messages = [],teacher}) => {
     return (
+        <>
+            {teacher &&
         <div className={s.messagesWrap}>
             {
                 messages.map(mess => {
@@ -20,6 +22,8 @@ const Chat  = ({messages = [],teacher}) => {
                 })
             }
         </div>
+        }
+        </>
     );
 }
 

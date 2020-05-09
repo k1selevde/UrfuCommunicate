@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from "react-redux";
 import TeacherProfile from "../components/TeacherProfile/TeacherProfile";
 import {Redirect} from "react-router-dom";
-import {getProfile} from "../redux/actions/teacherActions";
+import {getProfile, clearGroup} from "../redux/actions/teacherActions";
 
 
 class TeacherProfileContainer extends React.Component {
@@ -14,10 +14,10 @@ class TeacherProfileContainer extends React.Component {
 
     render()
     {
-        const {isTeacher,groups} = this.props;
+        const {isTeacher,groups, clearGroup} = this.props;
         return (
             (isTeacher)
-                ? <TeacherProfile groups={groups}/>
+                ? <TeacherProfile groups={groups} clearGroup={clearGroup} />
                 : <Redirect to="/" />
         )
     }
@@ -34,6 +34,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return ({
         getProfile: (data) => dispatch(getProfile(data)),
+        clearGroup: () => dispatch(clearGroup())
     })
 }
 

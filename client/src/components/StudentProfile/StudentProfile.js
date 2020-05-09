@@ -14,7 +14,7 @@ class StudentProfile extends React.Component {
                 <div className={s.subjectsWrapper}>
                     {subjects.map(sub => {
                         return (
-                            <div onClick={() => getSubjectGroup({subjectId: sub.id, id, token})}>
+                            <div  onClick={() => getSubjectGroup({subjectId: sub.id, id, token})}>
                                 <SubjectItem sub={sub}/>
                             </div>
                         )

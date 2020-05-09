@@ -19,23 +19,7 @@
 }
 
 
-.teacherGroupWrap {
-    cursor: pointer;
-    border: 1px solid black;
-    padding: 14px 20px;
-}
 
-.teacherGroupWrap:hover {
-    background-color: antiquewhite;
-}
-
-.teacherGroupWrap:active {
-    background-color: peachpuff;
-}
-
-.teacherGroupTitle {
-    color: black
-}
 
 .addGroupBtn {
     color: red;

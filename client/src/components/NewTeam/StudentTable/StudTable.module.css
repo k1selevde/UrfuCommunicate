@@ -63,3 +63,10 @@
 .isAdd {
     color: darkred;
 }
+
+.nothing {
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+}
+
