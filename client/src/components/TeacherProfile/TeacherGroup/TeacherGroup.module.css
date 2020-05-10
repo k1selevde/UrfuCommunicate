@@ -1,6 +1,9 @@
 
 /*error*/
 .error {
+    border: 1px solid darkred;
+    margin-top: 13px;
+    padding: 10px 15px;
     font-size: 17px;
     font-weight: 700;
     color: darkred;
@@ -97,8 +100,58 @@
 
 }
 
+
 .sendMsgTitle {
     color: black;
     font-weight: 600;
     font-size: 18px;
 }
+
+.sendMsgForm {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.sendMsgInput {
+    padding-top: 7px;
+    padding-left: 6px;
+    font-size: 18px;
+    width: 400px;
+    height: 100px;
+    overflow: auto;
+    border: 1px solid black;
+    background-color: antiquewhite;
+}
+
+.sendMsgBtn {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    background-color: blue;
+    transition: background-color .05s ease;
+    transition: opacity .1s ease;
+    border: none;
+}
+
+.sendMsgBtn:hover {
+    opacity: .8;
+}
+
+.sendMsgBtn:active {
+    background-color: darkblue;
+}
+
+.backToProfile {
+    color: blue;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color .2s ease;
+}
+
+.backToProfile:hover {
+    color: cornflowerblue;
+}
+
+

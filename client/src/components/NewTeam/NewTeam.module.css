@@ -168,6 +168,11 @@
     margin-right: 100px;
 }
 
-
+.emptyStudentList {
+    text-transform: uppercase;
+    color: red;
+    text-align: center;
+    padding-bottom: 20px;
+}
 
 

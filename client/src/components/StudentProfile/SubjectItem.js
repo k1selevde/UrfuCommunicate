@@ -8,6 +8,7 @@ const SubjectItem  = ({sub}) => {
             to={`/studentProfile/sub-${sub.id}`}
             key={sub.id}
             className={s.subjectTitleWrap}
+            activeClassName={s.subjectTitleWrapActive}
         >
                 <div className={s.subjectTitle}>
                     {sub.title}

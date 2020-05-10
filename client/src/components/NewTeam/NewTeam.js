@@ -1,7 +1,7 @@
 import React from 'react'
-import s from './NewTeam.module.css'
-import StudTable from "./StudentTable/StudTable";
 import {NavLink} from "react-router-dom";
+import StudTable from "./StudentTable/StudTable";
+import s from './NewTeam.module.css'
 
 
 class NewTeam  extends React.Component {
@@ -47,11 +47,6 @@ class NewTeam  extends React.Component {
             [fieldName]: fieldValue
         }))
     }
-
-/*    findStudentHandler(e) {
-        e.preventDefault();
-    }*/
-
 
     removeStudentHandler(id) {
         this.setState(prev => ({
@@ -157,27 +152,36 @@ class NewTeam  extends React.Component {
                             <h4 className={s.studentListTitle}>
                                 Спиок добавленных студентов
                             </h4>
-                            {this.state.studentsList.map((stud, index) => {
-                                return (
-                                    <div
-                                        key={stud.studentId}
-                                        className={s.listItem}
-                                    >
-                                        <div className={s.studentItemLeft}>
-                                            <div className={s.studentIndex}>{index + 1})</div>
-                                            <div className={s.studentName}>
-                                                {stud.studentName}
+                            {this.state.studentsList.length > 0
+                                ?  (
+                                    <div>
+                                        {this.state.studentsList.map((stud, index) => {
+                                        return (
+                                            <div
+                                                key={stud.studentId}
+                                                className={s.listItem}
+                                            >
+                                                <div className={s.studentItemLeft}>
+                                                    <div className={s.studentIndex}>{index + 1})</div>
+                                                    <div className={s.studentName}>
+                                                        {stud.studentName}
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    onClick={() => this.removeStudentHandler(stud.studentId)}
+                                                    className={s.studentFlag}
+                                                >
+                                                    удалить
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div
-                                            onClick={() => this.removeStudentHandler(stud.studentId)}
-                                            className={s.studentFlag}
-                                        >
-                                            удалить
-                                        </div>
+                                        )
+                                    })
+                                    }
                                     </div>
-                                )
-                            })}
+                            )
+                            :
+                                (<div className={s.emptyStudentList}>Список пуст</div>)
+                            }
                         </div>
                     </div>
                 </div>

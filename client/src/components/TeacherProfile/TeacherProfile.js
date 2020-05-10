@@ -24,7 +24,6 @@ class teacherProfile extends React.Component {
                     <TeacherRoutes />
                 </div>
 
-
                 <div className={s.groupsContainer}>
                     <h4 className={s.title}>Мои группы:</h4>
                     {groups.map(group => {
@@ -37,6 +36,7 @@ class teacherProfile extends React.Component {
                         style={{textDecoration: 'none'}}
                         to="/teacherProfile/newGroup"
                         className={b.teacherGroupWrap}
+                        activeClassName={b.teacherGroupWrapActive}
                     >
                             <div className={s.addGroupBtn}>
                                 + Добавить группу

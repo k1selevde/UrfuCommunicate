@@ -3,11 +3,18 @@ import {API_ROOT} from "../../constants/Default";
 
 import {
     GET_GROUP_FAILURE,
-    GET_GROUP_REQUEST, GET_GROUP_SUCCESS,
-    GET_NEW_STUDENT_FAILURE, GET_NEW_STUDENT_REQUEST,
+    GET_GROUP_REQUEST,
+    GET_GROUP_SUCCESS,
+    GET_NEW_STUDENT_FAILURE,
+    GET_NEW_STUDENT_REQUEST,
     GET_NEW_STUDENT_SUCCESS,
     GET_PROFILE_FAILURE,
-    GET_PROFILE_SUCCESS, TEACHER_CLEAR_GROUP, TEACHER_OUT, TEACHER_REQUEST, TEACHER_SEND_MESSAGE_REQUEST,
+    GET_PROFILE_SUCCESS,
+    TEACHER_CLEAR_GROUP,
+    TEACHER_OUT,
+    TEACHER_REQUEST, TEACHER_SEND_MESSAGE_FAILURE,
+    TEACHER_SEND_MESSAGE_REQUEST,
+    TEACHER_SEND_MESSAGE_SUCCESS,
 } from "./actionTypes";
 
 
@@ -136,6 +143,9 @@ export function getGroupFailure(data) {
 
 /*Clear group and error */
 
+
+
+
 export function clearGroup() {
     return {
         type: TEACHER_CLEAR_GROUP
@@ -143,6 +153,25 @@ export function clearGroup() {
 }
 
 /*teacher send message*/
+
+export function sendMessage(data) {
+    return (dispatch) => {
+        console.log('request data (send message): ', data)
+        dispatch(sendMessageHttpRequest())
+        httpPost(`${API_ROOT}/sendMessage`, data)
+            .then(res => {
+                console.log(res)
+                (checkResponse(res)
+                    ? dispatch(sendMessageSuccess(res.data))
+                    : dispatch(sendMessageFailure(res.data)))
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}
+
 
 export function sendMessageHttpRequest() {
     return {
@@ -152,14 +181,14 @@ export function sendMessageHttpRequest() {
 
 export function sendMessageSuccess(data) {
     return {
-        type: TEACHER_SEND_MESSAGE_REQUEST,
+        type: TEACHER_SEND_MESSAGE_SUCCESS,
         payload: data
     }
 }
 
 export function sendMessageFailure(data) {
     return {
-        type: TEACHER_SEND_MESSAGE_REQUEST,
+        type: TEACHER_SEND_MESSAGE_FAILURE,
         payload: data
     }
 }
