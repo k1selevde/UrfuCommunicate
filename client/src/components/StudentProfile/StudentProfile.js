@@ -1,22 +1,36 @@
 import React from 'react'
-import s from './StudentProfile.module.css'
+import {Switch,Route} from "react-router-dom";
 import SubjectItem from "./SubjectItem";
-import SubjectGroup from "./SubjectGroup/SubjectGroup";
+import NotFound from "../NotFound/NotFound";
+import StudentHome from "./StudentHome/StudentHome"
+import s from './StudentProfile.module.css'
+import SubjectGroupContainer from "../../containers/SubjectGroupContainer";
 
 class StudentProfile extends React.Component {
     render() {
-        const {subjects, getSubjectGroup, id, token, group, error} = this.props
+        const {subjects} = this.props
         return (
             <div className={s.container}>
-                <div className={s.groupWrapper}>
-                    {(error || group.title) && <SubjectGroup error={error} group={group}/>}
+                <div className={s.Wrapper}>
+                    <Switch>
+                        <Route path="/studentProfile" exact component={StudentHome} />
+                        <Route path="/studentProfile/sub-:id" render={({match}) =>
+                        {
+                            const {id} = match.params;
+                            return <SubjectGroupContainer subId={id} />
+                        }} />
+                        <Route path="*" render={() => <NotFound
+                            textToBack={'Вернуться на главную'}
+                            linkToBack={"/studentProfile"}
+                            />
+                        }/>
+                    </Switch>
                 </div>
+
                 <div className={s.subjectsWrapper}>
                     {subjects.map(sub => {
                         return (
-                            <div  onClick={() => getSubjectGroup({subjectId: sub.id, id, token})}>
-                                <SubjectItem sub={sub}/>
-                            </div>
+                                <SubjectItem  sub={sub}/>
                         )
                     })
                     }

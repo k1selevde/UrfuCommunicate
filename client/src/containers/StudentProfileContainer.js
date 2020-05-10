@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return ({
         getSubjects: (data) => dispatch(getSubjects(data)),
-        getSubjectGroup: (data) => dispatch(getSubjectGroup(data))
+        //getSubjectGroup: (data) => dispatch(getSubjectGroup(data))
     })
 }
 

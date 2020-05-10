@@ -1,24 +1,19 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import s from "./StudentProfile.module.css";
-import {withRouter} from 'react-router-dom'
 
-const SubjectItem  = ({sub,history}) => {
-
-    let subHandler = () => {
-        console.log('Click on: ', sub.title)
-        history.push(`/studentProfile/group-${sub.id}`)
-    }
-
+const SubjectItem  = ({sub}) => {
     return (
-        <div
-            onClick={() => {subHandler()}}
+        <NavLink
+            to={`/studentProfile/sub-${sub.id}`}
             key={sub.id}
-            className={s.subjectTitleWrap}>
+            className={s.subjectTitleWrap}
+        >
                 <div className={s.subjectTitle}>
                     {sub.title}
                 </div>
-        </div>
+        </NavLink>
     );
 }
 
-export default withRouter(SubjectItem);
+export default SubjectItem;
