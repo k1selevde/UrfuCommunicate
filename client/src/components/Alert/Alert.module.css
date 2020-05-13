@@ -14,3 +14,19 @@
     color: white;
     text-transform: uppercase;
 }
+
+.sucContainer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: limegreen;
+
+}
+
+.sucText {
+    text-transform: uppercase;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}

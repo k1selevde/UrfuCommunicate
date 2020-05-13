@@ -10,9 +10,14 @@ import {
     GET_NEW_STUDENT_SUCCESS,
     GET_PROFILE_FAILURE,
     GET_PROFILE_SUCCESS,
-    TEACHER_CLEAR_GROUP,
+    TEACHER_CLEAR_GROUP, TEACHER_CLEAR_GROUPCREATE,
+    TEACHER_CLEAR_SAVECHANGE, TEACHER_CREATE_GROUP_FAILURE, TEACHER_CREATE_GROUP_REQUEST, TEACHER_CREATE_GROUP_SUCCESS,
+    TEACHER_EDIT_GROUP_FAILURE,
+    TEACHER_EDIT_GROUP_REQUEST,
+    TEACHER_EDIT_GROUP_SUCCESS,
     TEACHER_OUT,
-    TEACHER_REQUEST, TEACHER_SEND_MESSAGE_FAILURE,
+    TEACHER_REQUEST,
+    TEACHER_SEND_MESSAGE_FAILURE,
     TEACHER_SEND_MESSAGE_REQUEST,
     TEACHER_SEND_MESSAGE_SUCCESS,
 } from "./actionTypes";
@@ -193,6 +198,99 @@ export function sendMessageFailure(data) {
     }
 }
 
+// EDIT GROUP
+
+export function editGroup(data) {
+    return (dispatch) => {
+        console.log('request data (send message): ', data)
+        dispatch(editGroupRequest())
+        httpPost(`${API_ROOT}/editGroup`, data)
+            .then(res => {
+                console.log(res)
+                (checkResponse(res)
+                    ? dispatch(editGroupSuccess())
+                    : dispatch(editGroupFailure(res.data)))
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}
 
 
 
+
+export function editGroupRequest() {
+    return {
+        type: TEACHER_EDIT_GROUP_REQUEST
+    }
+}
+
+export function editGroupSuccess() {
+    return {
+        type: TEACHER_EDIT_GROUP_SUCCESS,
+        //payload: data
+    }
+}
+
+export function editGroupFailure(data) {
+    return {
+        type: TEACHER_EDIT_GROUP_FAILURE,
+        payload: data
+    }
+}
+
+// на всякий случай clear saveChange: и errors - если научимся обрабатывать их
+
+export function clearSaveChanges() {
+    return {
+        type: TEACHER_CLEAR_SAVECHANGE
+    }
+}
+
+
+// TEACHER CREATE GROUP
+
+export function createGroup(data) {
+    return (dispatch) => {
+        console.log('request data (create new group): ', data)
+        dispatch(createGroupRequest())
+        httpPost(`${API_ROOT}/createGroup`, data)
+            .then(res => {
+                (checkResponse(res)
+                    ? dispatch(createGroupSuccess(res.data))
+                    : dispatch(createGroupFailure(res.data)))
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}
+
+export function createGroupRequest() {
+    return {
+        type: TEACHER_CREATE_GROUP_REQUEST
+    }
+}
+
+export function createGroupSuccess(data) {
+    return {
+        type: TEACHER_CREATE_GROUP_SUCCESS,
+        payload: data
+    }
+}
+
+export function createGroupFailure(data) {
+    return {
+        type: TEACHER_CREATE_GROUP_FAILURE,
+        payload: data
+    }
+}
+
+export function clearGroupCreate() {
+    return {
+        type: TEACHER_CLEAR_GROUPCREATE
+    }
+}

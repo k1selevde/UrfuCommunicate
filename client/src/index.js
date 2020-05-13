@@ -13,6 +13,12 @@ let store = createStore(rootReducer,
     localStorage.getItem('storage') ? JSON.parse(localStorage['storage']) : {},
     compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
+/*
+let store = createStore(rootReducer,
+    localStorage.getItem('storage') ? JSON.parse(localStorage['storage']) : {},
+   applyMiddleware(thunk))
+*/
+
 store.subscribe(() => {
     localStorage.setItem('storage',JSON.stringify(store.getState()))
 })

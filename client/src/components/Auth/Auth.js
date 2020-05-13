@@ -1,7 +1,7 @@
 import React from 'react'
-import s from './Auth.module.css'
 import {simpleValidAuth, validAuth} from "../../helpers/validForm";
 import Alert from "../Alert/Alert";
+import s from './Auth.module.css'
 
 
 export default class Auth extends React.Component {
@@ -10,7 +10,7 @@ export default class Auth extends React.Component {
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
         this.state = {
-            email: 'abra@yandex.ru',
+            email: '',
             password: '12345'
         }
     }
@@ -53,24 +53,29 @@ export default class Auth extends React.Component {
                     </div>
                     <form className={s.form} onSubmit={this.submitHandler}>
                         <div className={s.inputGroup}>
-                            <input
+                            <div className={s.inputBox}>
+                                <input
                                 className={s.inputField}
-                                placeholder="Введите почту"
+                                // placeholder="Введите почту"
                                 type="text"
                                 name="email"
                                 onChange={this.changeHandler}
                                 value={email}
 
-                            />
-                            <input
+                                />
+                                <label>Введите почту</label>
+                            </div>
+                            <div className={s.inputBox}>
+                                <input
                                 className={s.inputField}
-                                placeholder="Введите пароль"
+                                // placeholder="Введите пароль"
                                 type="text"
                                 name="password"
                                 onChange={this.changeHandler}
                                 value={password}
-
                             />
+                                <label>Введите пароль</label>
+                            </div>
                         </div>
                         <button
                             className={s.submitBtn}

@@ -154,4 +154,30 @@
     color: cornflowerblue;
 }
 
+.sendFileBlock {
+    padding: 10px 0;
+    margin-bottom: 60px;
+    width: 400px;
+    border: 1px solid darkred;
+}
+
+.sendFileForm {
+    margin: 0 auto;
+}
+.sendFileBtn {
+    background-color: red;
+    padding: 6px 10px;
+    color: white;
+    text-transform: uppercase;
+    transition: .2s ease;
+    border: none;
+}
+
+.sendFileBtn:hover {
+    opacity: .85;
+}
+.sendFileBtn:active {
+    background-color: darkred;
+}
+
 

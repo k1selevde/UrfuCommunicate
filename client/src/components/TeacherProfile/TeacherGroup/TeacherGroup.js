@@ -12,6 +12,10 @@ class TeacherGroup extends React.Component {
         }
         this.changeMessageHandler = this.changeMessageHandler.bind(this)
         this.sendMessageHandler = this.sendMessageHandler.bind(this)
+        this.sendFileHandler = this.sendFileHandler.bind(this)
+
+        //refs:
+        this.formRef = React.createRef();
     }
 
     changeMessageHandler(e) {
@@ -24,10 +28,20 @@ class TeacherGroup extends React.Component {
     }
 
     sendMessageHandler(e) {
+        e.preventDefault()
         const {id, token} = this.props;
         const msg = this.state.newMessage;
-        e.preventDefault()
         this.props.sendMessage({id,token,msg})
+        this.setState((prev)=> ({
+            ...prev,
+            newMessage: ''
+        }))
+    }
+
+    sendFileHandler(e) {
+        e.preventDafault()
+        const formBody = new FormData(this.formRef.current);
+        console.log(formBody)
     }
 
     render() {
@@ -57,7 +71,21 @@ class TeacherGroup extends React.Component {
                         <h3 className={s.docsTitle}>Документы</h3>
                     </div>
 
-                    <div>send file zone</div>
+                    <div className={s.sendFileBlock}>
+                        <form
+                            ref={this.formRef}
+                            onSubmit={this.sendFileHandler}
+                            className={s.sendFileForm}
+                        >
+                            <input type="file" multiple/>
+                            <button
+                                className={s.sendFileBtn}
+                                type="submit"
+                            >
+                                добавить
+                            </button>
+                        </form>
+                    </div>
 
 
                     <div className={s.messagesBlock}>

@@ -1,8 +1,8 @@
 import React from 'react'
-import s from './Register.module.css'
 import {validRegisterForm} from '../../helpers/validForm'
 import {simpleValidRegister} from '../../helpers/validForm'
 import Alert from '../Alert/Alert'
+import s from './Register.module.css'
 
 class RegisterForm extends React.Component  {
     constructor(props)
@@ -74,52 +74,67 @@ class RegisterForm extends React.Component  {
 
                 <form className={s.form} onSubmit={this.submitHandler}>
                     <div className={s.inputGroup}>
-                        <input
-                            value={name}
+                        <div className={s.inputBox}>
+                            <input
+                                value={name}
+                                onChange={this.changeHandler}
+                                className={s.inputField}
+                                // placeholder="Введите имя"
+                                type="text"
+                                name="name"
+                                autoFocus
+                            />
+                            <label>Имя</label>
+                        </div>
+                        <div className={s.inputBox}>
+                            <input
                             onChange={this.changeHandler}
                             className={s.inputField}
-                            placeholder="Введите имя"
-                            type="text"
-                            name="name"
-                            autoFocus
-                        />
-                        <input
-                            onChange={this.changeHandler}
-                            className={s.inputField}
-                            placeholder="Введите фамилию"
+                            // placeholder="Введите фамилию"
                             type="text"
                             name="surname"
                             value={surname}
-                        />
-                        <input
+                            />
+                            <label>Фамилия</label>
+                        </div>
+                        <div className={s.inputBox}>
+                            <input
                             className={s.inputField}
-                            placeholder="Введите отчество"
+                            // placeholder="Введите отчество"
                             type="text"
                             name="patronymic"
                             value={patronymic}
                             onChange={this.changeHandler}
-                        />
+                            />
+                            <label>Отчество</label>
+                        </div>
                     </div>
 
                     <div className={s.inputGroup}>
-                        <input
+                        <div className={s.inputBox}>
+                            <input
                             className={s.inputField}
-                            placeholder="Введите почту"
+                           // placeholder="Введите почту"
                             type="text"
                             name="email"
                             value={email}
                             onChange={this.changeHandler}
-                        />
+                            />
+                            <label>Почта</label>
+                        </div>
                     </div>
                     <div className={s.inputGroup}>
-                        <input
+                        <div className={s.inputBox}>
+                            <input
                             className={s.inputField}
-                            placeholder="Введите группу"
+                            // placeholder="Введите группу"
                             type="text"
                             name="group"
                             value={group}
                             onChange={this.changeHandler}
-                        />
+                            />
+                            <label>Группа</label>
+                        </div>
                         <div className={s.or}>или</div>
                         <div>
                             <input
@@ -133,22 +148,28 @@ class RegisterForm extends React.Component  {
                     </div>
 
                     <div className={s.inputGroup}>
-                        <input
+                        <div className={s.inputBox}>
+                            <input
                             className={s.inputField}
-                            placeholder="Введите пароль"
+                            //placeholder="Введите пароль"
                             type="text"
                             name="password"
                             value={password}
                             onChange={this.changeHandler}
-                        />
-                        <input
+                            />
+                            <label>Пароль</label>
+                        </div>
+                        <div className={s.inputBox}>
+                            <input
                             className={s.inputField}
-                            placeholder="Повторите пароль"
+                            // placeholder="Повторите пароль"
                             type="text"
                             name="repeatPassword"
                             onChange={this.changeHandler}
                             value={repeatPassword}
-                        />
+                            />
+                            <label>Повторный пароль</label>
+                        </div>
                     </div>
 
                     <button

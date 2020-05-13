@@ -1,6 +1,6 @@
 import React from 'react'
 import NewTeam from '../components/NewTeam/NewTeam'
-import {getNewStudent} from "../redux/actions/teacherActions";
+import {getNewStudent, createGroup, clearGroupCreate} from "../redux/actions/teacherActions";
 import {connect} from "react-redux";
 
 const NewTeamContainer  = ({...rest}) => {
@@ -10,13 +10,19 @@ const NewTeamContainer  = ({...rest}) => {
 }
 
 const mapStateToProps = state => ({
-    newStudentArr: state.teacher.newStudent
+    id: state.session.user.id,
+    token: state.session.user.token,
+    newStudentArr: state.teacher.newStudent,
+    group: state.teacher.activeGroup
+    // isGroupCreate: state.teacher.activeGroup.isGroupCreate
 })
 
 
 const mapDispatchToProps = dispatch => {
     return ({
             getNewStudent: (data) => dispatch(getNewStudent(data)),
+            createGroup: (data) => dispatch(createGroup(data)),
+            clearGroupCreate: () => dispatch(clearGroupCreate())
     })
 }
 

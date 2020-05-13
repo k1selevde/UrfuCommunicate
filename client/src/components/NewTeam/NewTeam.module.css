@@ -49,16 +49,20 @@
     color: white;
     font-weight: 700;
     text-transform: uppercase;
-    transition: opacity .2s ease;
+    transition: .2s ease;
 }
 .makeTeamBtn:hover {
-    opacity: .7;
+    opacity: .85;
 }
 
-.makeTeamBtn:active {
+/*.makeTeamBtn:active {
+    background-color: darkblue;
+}*/
 
+.makeTeamBtn:disabled {
+    opacity: .55;
+    cursor: default;
 }
-
 
 
 /*LIST OF STUDENTS*/
@@ -79,6 +83,7 @@
 
 .listItemsWrap {
     background-color: rgba(196, 196, 196, .95);
+    width: 400px;
 }
 
 
@@ -150,6 +155,23 @@
     font-size: 14px;
     outline: none   ;
 }
+
+/*DESC STYLES*/
+
+.descWrap {
+    margin-bottom: 40px;
+}
+
+.desc {
+    padding: 6px 12px;
+    border: 1px solid black;
+    color: black;
+    font-size: 14px;
+    outline: none   ;
+}
+
+
+
 
 .teamName:hover {
     border: 1px solid red;
