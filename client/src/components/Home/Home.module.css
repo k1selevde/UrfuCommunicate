@@ -1,0 +1,21 @@
+.title {
+    text-align: center;
+    font-size:  22px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: black
+}
+
+.text {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 17px;
+    color: black;
+    font-weight: 400;
+}
+.link {
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+    font-weight: 400;
+}

@@ -1,0 +1,16 @@
+.text {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+.btn {
+    cursor: pointer;
+    background-color: blue;
+    padding: 7px 11px;
+    border: none;
+    transition: opacity .15s ease-out;
+}
+
+.btn:hover {
+    opacity: .8;
+}

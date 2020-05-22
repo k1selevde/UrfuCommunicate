@@ -1,0 +1,157 @@
+
+/*error*/
+.error {
+    border: 1px solid darkred;
+    margin-top: 13px;
+    padding: 10px 15px;
+    font-size: 17px;
+    font-weight: 700;
+    color: darkred;
+}
+
+
+.container {
+
+}
+
+.backToProfile {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color .2s ease;
+}
+
+.row {
+    margin: 25px 0 35px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftRow {
+    /*vertical-align: center;*/
+}
+
+
+.groupTitle {
+    color: black;
+    margin-bottom: 2px;
+}
+
+.addStudentWrap {
+}
+
+.addStudentBtn {
+    text-decoration: none;
+    outline: none;
+    color: white;
+    padding: 6px 10px;
+    background-color: blue;
+    border: none;
+    transition: opacity .1s ease;
+    cursor: pointer;
+}
+.addStudentBtn:hover {
+    opacity: .8;
+}
+.addStudentBtn:active {
+    background-color: darkblue;
+}
+
+.groupDesc {
+    font-style: italic;
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+}
+
+/*DOCS*/
+.docsBlock {
+    margin: 30px 0 30px 0;
+    width: 400px;
+    height: 200px;
+    background-color: darkred;
+}
+
+.docsTitle {
+    font-size: 17px;
+    color: white;
+    font-weight: 600;
+}
+
+/*messages*/
+
+.messagesBlock {
+    margin: 20px 0 25px 0;
+}
+
+.messagesTitle {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+/*send message zone*/
+
+.sendMsgBlock {
+    margin-bottom: 50px;
+
+}
+
+
+.sendMsgTitle {
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.sendMsgForm {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.sendMsgInput {
+    padding-top: 7px;
+    padding-left: 6px;
+    font-size: 18px;
+    width: 400px;
+    height: 100px;
+    overflow: auto;
+    border: 1px solid black;
+    background-color: antiquewhite;
+}
+
+.sendMsgBtn {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    background-color: blue;
+    transition: background-color .05s ease;
+    transition: opacity .1s ease;
+    border: none;
+}
+
+.sendMsgBtn:hover {
+    opacity: .8;
+}
+
+.sendMsgBtn:active {
+    background-color: darkblue;
+}
+
+.backToProfile {
+    color: blue;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color .2s ease;
+}
+
+.backToProfile:hover {
+    color: cornflowerblue;
+}
+
+

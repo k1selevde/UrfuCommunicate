@@ -1,0 +1,35 @@
+{
+  "name": "urfucommunicate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.13",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server/app.js",
+    "server": "nodemon server/app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k1selevde/UrfuCommunicate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k1selevde/UrfuCommunicate/issues"
+  },
+  "homepage": "https://github.com/k1selevde/UrfuCommunicate#readme"
+}

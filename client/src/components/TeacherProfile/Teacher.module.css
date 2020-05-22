@@ -1,0 +1,32 @@
+.content {
+
+}
+
+.mainContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    color: black;
+}
+
+.groupsContainer {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+
+
+
+.addGroupBtn {
+    color: red;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+

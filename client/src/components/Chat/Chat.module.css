@@ -1,0 +1,37 @@
+.messagesWrap {
+    width: 500px;
+    height: 200px;
+    max-height: 200px;
+    border: 1px solid black;
+    overflow: auto;
+    padding: 20px 30px;
+    background-color: rgba(220, 214, 214, 0.2);
+}
+
+.messWrap {
+    margin-bottom: 20px;
+}
+
+.messRow {
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.messText {
+    color: black;
+    font-size: 18px;
+}
+
+.messTime {
+    color: black;
+    font-size: 12px;
+    opacity: .9;
+}
+
+.messSender {
+    font-weight: 700;
+    color: darkblue;
+    font-size: 15px;
+}
+

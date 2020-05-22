@@ -1,0 +1,25 @@
+.teacherGroupWrap {
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 14px 20px;
+    transition: background-color .1s ease;
+}
+
+.teacherGroupWrap:hover {
+    background-color: antiquewhite;
+}
+
+.teacherGroupWrap:active {
+    background-color: peachpuff;
+}
+
+
+.teacherGroupWrapActive {
+    background-color: peachpuff;
+}
+
+.teacherGroupTitle {
+    color: black
+}

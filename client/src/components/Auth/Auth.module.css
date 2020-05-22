@@ -1,0 +1,49 @@
+.formWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.formBlock {
+    display: inline-block;
+}
+
+.alertBlock {
+    height: 40px;
+    width:100%;
+}
+
+.form {
+    display: inline-block;
+}
+
+.inputGroup {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputField {
+    height: 28px;
+    width: 320px;
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+
+.submitBtn {
+    width: 100%;
+    border: 1px solid blue;
+    padding: 10px 50px;
+    background-color: blue;
+    opacity: .94;
+    color: white;
+    text-transform: uppercase;
+    transition: opacity .2s ease-out;
+}
+
+.submitBtn:hover {
+    opacity: .75;
+}
+.submitBtn:disabled {
+    opacity: .5;
+}
+
