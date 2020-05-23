@@ -58,3 +58,15 @@ const testPassword = (password) => {
     return password.length < 5
 }
 
+
+/*Find new student for create or edit group*/
+
+export function validSearchInput(value) {
+    if (!value.trim().includes(' ')) {
+        return value.trim()
+    }
+    else {
+        return false
+    }
+}
+

@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import StudTable from "./StudentTable/StudTable";
 import s from './NewTeam.module.css'
 import SuccessAlert from "../Alert/SuccessAlert";
-
+import {validSearchInput} from "../../helpers/validForm"
 
 class NewTeam  extends React.Component {
     constructor(props) {
@@ -11,8 +11,10 @@ class NewTeam  extends React.Component {
         this.state = {
             teamName: 'M-123',
             description: '',
+            subjectName: '',
             searchValue: '',
-            studentsList: []
+            studentsList: [],
+            findError: false
         }
         this.changeInputHandler = this.changeInputHandler.bind(this)
         this.submitTeamDataHandler = this.submitTeamDataHandler.bind(this)
@@ -25,7 +27,20 @@ class NewTeam  extends React.Component {
     findStudent(e) {
         const {searchValue} = this.state;
         e.preventDefault()
-        this.props.getNewStudent({searchValue})
+        let searchValidValue = validSearchInput(searchValue)
+        if (searchValidValue) {
+            this.props.getNewStudent({searchValidValue})
+            this.setState(prev => ({
+                ...prev,
+                findError: false
+            }))
+        } else {
+            this.setState(prev => ({
+                ...prev,
+                findError: true
+            }))
+        }
+        console.log(validSearchInput(searchValue))
     }
 
 
@@ -73,15 +88,16 @@ class NewTeam  extends React.Component {
 
     submitTeamDataHandler(e) {
         const {id, token} = this.props;
-        const {teamName, description, studentsList} = this.state;
+        const {teamName, description, studentsList, subjectName} = this.state;
         e.preventDefault()
-        this.props.createGroup({id, token, teamName, description, studentsList})
+        this.props.createGroup({id, token, subjectName, teamName, description, studentsList})
+        console.log('subject: ', subjectName)
     }
 
 
     render() {
         const {newStudentArr, group} = this.props;
-        const {teamName, studentsList} = this.state;
+        const {teamName, studentsList, subjectName, description, findError} = this.state;
         return (
             <div className={s.container}>
                 <NavLink className={s.backToProfile} to="/teacherProfile">Вернуться на главную</NavLink>
@@ -99,43 +115,61 @@ class NewTeam  extends React.Component {
                 </SuccessAlert>
                 }
 
-
                 {!group.isGroupCreate &&<div><h4 className={s.title}>Создание новой команды</h4>
-                    <div className={s.teamNameWrap}>
-                        <input
-                            type="text"
-                            value={this.state.teamName}
-                            placeholder="Введите название команды"
-                            className={s.teamName}
-                            onChange={this.changeInputHandler}
-                            name="teamName"
-                        />
-                    </div>
+                    <div className={s.baseInfoWrap}>
+                        <div className={s.inputWrap}>
+                            <input
+                                type="text"
+                                value={this.state.teamName}
+                                placeholder="Введите название команды"
+                                className={s.inputName}
+                                onChange={this.changeInputHandler}
+                                name="teamName"
+                            />
+                        </div>
 
-                    <div className={s.descWrap}>
-                        <input
-                            type="text"
-                            value={this.state.description}
-                            placeholder="Введите описание команды"
-                            className={s.desc}
-                            onChange={this.changeInputHandler}
-                            name="description"
-                        />
+                        <div className={s.inputWrap}>
+                            <input
+                                type="text"
+                                value={this.state.description}
+                                placeholder="Описание команды"
+                                className={s.inputName}
+                                onChange={this.changeInputHandler}
+                                name="description"
+                            />
+                        </div>
+
+                        <div className={s.inputWrap}>
+                            <input
+                                type="text"
+                                value={this.state.subjectName}
+                                placeholder="Название предмета"
+                                className={s.inputName}
+                                onChange={this.changeInputHandler}
+                                name="subjectName"
+                            />
+                        </div>
                     </div>
 
 
                     <div className={s.box}>
                         <div className={s.leftBox}>
                             <form onSubmit={this.findStudent} className={s.searchForm}>
-                                <input
-                                    name="searchValue"
-                                    placeholder="Введите имя студента"
-                                    type="search"
-                                    onChange={this.changeInputHandler}
-                                    value={this.state.searchValue}
-                                    className={s.searchInput}
-                                />
-                                <button type="submit" className={s.sendFormBtn}>Найти</button>
+                               {findError &&
+                                <label className={s.findError} htmlFor="search">Введите только фамилию</label>
+                                }
+                                <div className={s.findInputWrap}>
+                                    <input
+                                        name="searchValue"
+                                        placeholder="Фамилия студента"
+                                        type="search"
+                                        id="search"
+                                        onChange={this.changeInputHandler}
+                                        value={this.state.searchValue}
+                                        className={findError ? s.searchInputError : s.searchInput}
+                                    />
+                                    <button type="submit" className={s.sendFormBtn}>Найти</button>
+                                </div>
                             </form>
 
                             <StudTable
@@ -171,7 +205,7 @@ class NewTeam  extends React.Component {
                                 <button
                                     className={s.makeTeamBtn}
                                     onClick={this.submitTeamDataHandler}
-                                    disabled={!(teamName && studentsList[0])}
+                                    disabled={!(teamName && studentsList[0] && subjectName && description)}
                                 >
                                     Создать команду
                                 </button>

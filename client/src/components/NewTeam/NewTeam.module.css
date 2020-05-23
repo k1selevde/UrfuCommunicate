@@ -6,7 +6,7 @@
     color: black;
     font-size: 17px;
     text-transform: uppercase;
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 20px;
     font-weight: 600;
 }
@@ -30,11 +30,26 @@
 
 
 .searchInput {
+/*    margin-top: 7px;*/
     padding: 9px 14px;
     border: 1px solid black;
     font-size: 14px;
 }
 
+.searchInput:focus {
+    border: 1px solid blue
+}
+
+.searchInputError {
+/*    margin-top: 7px;*/
+    padding: 9px 14px;
+    border: 1px solid red;
+    font-size: 14px;
+}
+
+.searchInputError:focus {
+    border: 1px solid blue;
+}
 
 .makeTeamWrap {
     margin-top: 50px;
@@ -144,38 +159,34 @@
 
 /*TEAM NAME STYLES*/
 
-.teamNameWrap {
+.inputWrap {
     margin-bottom: 40px;
 }
 
-.teamName {
-    padding: 6px 12px;
+.inputName {
+    padding: 7px 13px;
     border: 1px solid black;
     color: black;
     font-size: 14px;
     outline: none   ;
 }
-
-/*DESC STYLES*/
-
-.descWrap {
-    margin-bottom: 40px;
+.inputName:hover,
+.inputName:focus {
+    border: 1px solid blue;
 }
 
-.desc {
-    padding: 6px 12px;
-    border: 1px solid black;
-    color: black;
-    font-size: 14px;
-    outline: none   ;
+/*wrap base info*/
+
+.baseInfoWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.baseInfoWrap > *{
+    width: 50%
 }
 
 
-
-
-.teamName:hover {
-    border: 1px solid red;
-}
 
 /*MARK-UP*/
 
@@ -197,4 +208,15 @@
     padding-bottom: 20px;
 }
 
+.findError {
+    color: red;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
 
+.findInputWrap {
+    width: max-content;
+    display: flex;
+/*    flex-direction: column;*/
+}

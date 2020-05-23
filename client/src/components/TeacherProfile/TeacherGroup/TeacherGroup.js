@@ -29,9 +29,9 @@ class TeacherGroup extends React.Component {
 
     sendMessageHandler(e) {
         e.preventDefault()
-        const {id, token} = this.props;
+        const {groupId, token} = this.props;
         const msg = this.state.newMessage;
-        this.props.sendMessage({id,token,msg})
+        this.props.sendMessage({groupId,token,msg})
         this.setState((prev)=> ({
             ...prev,
             newMessage: ''
