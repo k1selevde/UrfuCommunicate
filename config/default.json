@@ -1,0 +1,5 @@
+{
+    "port":5000,
+    "mongoUri": "mongodb://eliz:112001Liza@cluster0-shard-00-00-d7mpi.azure.mongodb.net:27017,cluster0-shard-00-01-d7mpi.azure.mongodb.net:27017,cluster0-shard-00-02-d7mpi.azure.mongodb.net:27017/app?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "jwtSecret": "RTF champion"
+}
