@@ -55,25 +55,25 @@ export default class Auth extends React.Component {
                         <div className={s.inputGroup}>
                             <div className={s.inputBox}>
                                 <input
-                                className={s.inputField}
-                                // placeholder="Введите почту"
-                                type="text"
-                                name="email"
-                                onChange={this.changeHandler}
-                                value={email}
+                                    className={s.inputField}
+                                    // placeholder="Введите почту"
+                                    type="text"
+                                    name="email"
+                                    onChange={this.changeHandler}
+                                    value={email}
 
                                 />
                                 <label>Введите почту</label>
                             </div>
                             <div className={s.inputBox}>
                                 <input
-                                className={s.inputField}
-                                // placeholder="Введите пароль"
-                                type="text"
-                                name="password"
-                                onChange={this.changeHandler}
-                                value={password}
-                            />
+                                    className={s.inputField}
+                                    // placeholder="Введите пароль"
+                                    type="text"
+                                    name="password"
+                                    onChange={this.changeHandler}
+                                    value={password}
+                                />
                                 <label>Введите пароль</label>
                             </div>
                         </div>

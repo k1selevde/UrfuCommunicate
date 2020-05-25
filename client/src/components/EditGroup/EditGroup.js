@@ -94,7 +94,7 @@ class EditGroup  extends React.Component {
             <div className={s.container}>
                 {/*{error && <Alert error={error}/>}*/}
                 { isSaveChanges
-                    &&
+                &&
                 <SuccessAlert text={'изменения сохранены'}>
                     <NavLink
                         onClick={() => this.props.clearSaveChanges()}

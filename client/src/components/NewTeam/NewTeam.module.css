@@ -30,7 +30,7 @@
 
 
 .searchInput {
-/*    margin-top: 7px;*/
+    /*    margin-top: 7px;*/
     padding: 9px 14px;
     border: 1px solid black;
     font-size: 14px;
@@ -41,7 +41,7 @@
 }
 
 .searchInputError {
-/*    margin-top: 7px;*/
+    /*    margin-top: 7px;*/
     padding: 9px 14px;
     border: 1px solid red;
     font-size: 14px;
@@ -218,5 +218,5 @@
 .findInputWrap {
     width: max-content;
     display: flex;
-/*    flex-direction: column;*/
+    /*    flex-direction: column;*/
 }

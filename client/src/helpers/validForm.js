@@ -69,4 +69,3 @@ export function validSearchInput(value) {
         return false
     }
 }
-

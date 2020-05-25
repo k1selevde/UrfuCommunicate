@@ -19,7 +19,7 @@ export function getSubjects(data) {
                     : dispatch(getSubjectsFailure(res.data))
             })
             .catch(error =>
-                console.log(error)
+                    console.log(error)
                 // по-хорошему dispatch надо делать
             )
     }

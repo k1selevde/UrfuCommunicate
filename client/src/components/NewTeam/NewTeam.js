@@ -44,7 +44,7 @@ class NewTeam  extends React.Component {
     }
 
 
-     includeStudent(arr, student) {
+    includeStudent(arr, student) {
         for (let i=0; i< arr.length; i++)
         {
             if (arr[i].studentId === student.studentId)
@@ -155,7 +155,7 @@ class NewTeam  extends React.Component {
                     <div className={s.box}>
                         <div className={s.leftBox}>
                             <form onSubmit={this.findStudent} className={s.searchForm}>
-                               {findError &&
+                                {findError &&
                                 <label className={s.findError} htmlFor="search">Введите только фамилию</label>
                                 }
                                 <div className={s.findInputWrap}>

@@ -31,13 +31,11 @@ export async function httpPost(url, data) {
             'Content-Type': 'application/json'
         },
         mode: 'cors',
-
         body: JSON.stringify(data)
     })
     const serverData = await response.json()
     console.log(serverData);
     return serverData;
-
 }
 */
 

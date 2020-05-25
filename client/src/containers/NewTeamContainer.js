@@ -20,9 +20,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return ({
-            getNewStudent: (data) => dispatch(getNewStudent(data)),
-            createGroup: (data) => dispatch(createGroup(data)),
-            clearGroupCreate: () => dispatch(clearGroupCreate())
+        getNewStudent: (data) => dispatch(getNewStudent(data)),
+        createGroup: (data) => dispatch(createGroup(data)),
+        clearGroupCreate: () => dispatch(clearGroupCreate())
     })
 }
 

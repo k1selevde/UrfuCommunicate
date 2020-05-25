@@ -22,8 +22,8 @@ class TeacherGroup extends React.Component {
         const fieldName = e.target.name
         const fieldValue = e.target.value
         this.setState((prev) => ({
-            [fieldName]: fieldValue
-        })
+                [fieldName]: fieldValue
+            })
         )
     }
 

@@ -14,14 +14,14 @@ import {checkResponse, httpPost} from "../../helpers/network";
 export function registerMe(data) {
     return (dispatch) => {
         dispatch(httpRequest())
-        httpPost(`${API_ROOT}/register`,data)
+        httpPost('/api/auth/register',data)
             .then(res => {
                 checkResponse(res)
                     ? dispatch(authSuccess(res.data))
                     : dispatch(authFailure(res.data))
             })
             .catch (error =>
-                console.log(error)
+                    console.log(error)
                 // тут тоже неплохо бы диспачнуть.
             )
 
@@ -52,7 +52,7 @@ export function authFailure(data) {
 export function logIn(data) {
     return dispatch => {
         dispatch(httpRequest())
-        httpPost(`${API_ROOT}/login`,data)
+        httpPost('/api/auth/login',data)
             .then(res => checkResponse(res)
                 ? dispatch(authSuccess(res.data))
                 : dispatch(authFailure(res.data))

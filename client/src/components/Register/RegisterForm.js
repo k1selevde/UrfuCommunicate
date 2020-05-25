@@ -88,23 +88,23 @@ class RegisterForm extends React.Component  {
                         </div>
                         <div className={s.inputBox}>
                             <input
-                            onChange={this.changeHandler}
-                            className={s.inputField}
-                            // placeholder="Введите фамилию"
-                            type="text"
-                            name="surname"
-                            value={surname}
+                                onChange={this.changeHandler}
+                                className={s.inputField}
+                                // placeholder="Введите фамилию"
+                                type="text"
+                                name="surname"
+                                value={surname}
                             />
                             <label>Фамилия</label>
                         </div>
                         <div className={s.inputBox}>
                             <input
-                            className={s.inputField}
-                            // placeholder="Введите отчество"
-                            type="text"
-                            name="patronymic"
-                            value={patronymic}
-                            onChange={this.changeHandler}
+                                className={s.inputField}
+                                // placeholder="Введите отчество"
+                                type="text"
+                                name="patronymic"
+                                value={patronymic}
+                                onChange={this.changeHandler}
                             />
                             <label>Отчество</label>
                         </div>
@@ -113,12 +113,12 @@ class RegisterForm extends React.Component  {
                     <div className={s.inputGroup}>
                         <div className={s.inputBox}>
                             <input
-                            className={s.inputField}
-                           // placeholder="Введите почту"
-                            type="text"
-                            name="email"
-                            value={email}
-                            onChange={this.changeHandler}
+                                className={s.inputField}
+                                // placeholder="Введите почту"
+                                type="text"
+                                name="email"
+                                value={email}
+                                onChange={this.changeHandler}
                             />
                             <label>Почта</label>
                         </div>
@@ -126,12 +126,12 @@ class RegisterForm extends React.Component  {
                     <div className={s.inputGroup}>
                         <div className={s.inputBox}>
                             <input
-                            className={s.inputField}
-                            // placeholder="Введите группу"
-                            type="text"
-                            name="group"
-                            value={group}
-                            onChange={this.changeHandler}
+                                className={s.inputField}
+                                // placeholder="Введите группу"
+                                type="text"
+                                name="group"
+                                value={group}
+                                onChange={this.changeHandler}
                             />
                             <label>Группа</label>
                         </div>
@@ -150,23 +150,23 @@ class RegisterForm extends React.Component  {
                     <div className={s.inputGroup}>
                         <div className={s.inputBox}>
                             <input
-                            className={s.inputField}
-                            //placeholder="Введите пароль"
-                            type="text"
-                            name="password"
-                            value={password}
-                            onChange={this.changeHandler}
+                                className={s.inputField}
+                                //placeholder="Введите пароль"
+                                type="text"
+                                name="password"
+                                value={password}
+                                onChange={this.changeHandler}
                             />
                             <label>Пароль</label>
                         </div>
                         <div className={s.inputBox}>
                             <input
-                            className={s.inputField}
-                            // placeholder="Повторите пароль"
-                            type="text"
-                            name="repeatPassword"
-                            onChange={this.changeHandler}
-                            value={repeatPassword}
+                                className={s.inputField}
+                                // placeholder="Повторите пароль"
+                                type="text"
+                                name="repeatPassword"
+                                onChange={this.changeHandler}
+                                value={repeatPassword}
                             />
                             <label>Повторный пароль</label>
                         </div>

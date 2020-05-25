@@ -184,11 +184,11 @@ export default (state = initialState, action) => {
                     isGroupCreate: true
                 },
                 groups: [...state.groups,
-                        {
-                            title: action.payload.group.title,
-                            id: action.payload.group.groupId
-                        }
-                    ]
+                    {
+                        title: action.payload.group.title,
+                        id: action.payload.group.groupId
+                    }
+                ]
             }
         case TEACHER_CREATE_GROUP_FAILURE:
             return {
