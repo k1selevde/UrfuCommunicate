@@ -16,6 +16,7 @@ router.post('/teacherProfile',
     async (req, res) => {
 
         try {
+            console.log(req.body)
             const teacher = await User.findById(req.body.id)
             const teamsNames = []
             for (var i = 0; i < teacher.teams.length; i++) {
@@ -24,6 +25,7 @@ router.post('/teacherProfile',
                     teamsNames.push({ title: thisTeam.name, id: teacher.teams[i] })
                 }
             }
+            console.log(teamsNames)
             return res.status(200).json({
                 data: {
                     name: teacher.name, surname: teacher.surname, patronymic: teacher.middleName,
@@ -50,7 +52,7 @@ router.post('/teacherGroup',
             for(var i = 0; i<team.messages.length; i++){
                 if(team.messages[i]){
                     const message = await Message.findById(team.messages[i])
-                    message.push({text: message.text, time: message.time})
+                    messages.push({text: message.text, time: message.time})
                 }
             }
             const students = []
@@ -66,7 +68,7 @@ router.post('/teacherGroup',
                     group: {
                         groupId: team.id,
                         title: team.name,
-                        description: '',
+                        description: team.description,
                         teacher: teacher.name,
                         messages: messages,
                         studentsList: students

@@ -15,21 +15,20 @@ router.post('/register',
     async (req, res) => {
         console.log('12')
         try {
-            console.log(req)
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array(), message: 'Некорректный ввод' })
             }
-            const {name,surname,middleName,email,group,checkbox,password } = req.body
+            const {name,surname,patronymic,email,group,checkbox,password } = req.body
             const candidate = await User.findOne({ email })
             if (candidate) {
                 return res.status(400).json({ message: 'Такой юзер есть' })
             }
             const hashedPassword = await bcrypt.hash(password, 12)
-            const user = new User({ email, password: hashedPassword, isTeacher: checkbox, name, surname, middleName, group })
+            const user = new User({ email, password: hashedPassword, isTeacher: checkbox, name, surname, middleName:patronymic, group })
             await user.save()
 
-            return res.status(201).json({data: {id: user.id, isTeacher: user.isTeacher, token}, status: 'ok'})
+            return res.status(200).json({data: {id: user.id, isTeacher: user.isTeacher, token:user.token}, status: 'ok'})
         } catch (e) {
             return res.status(300).json({data: {message: 'Ошибка на сервере'}, status: 'bad'})
         }

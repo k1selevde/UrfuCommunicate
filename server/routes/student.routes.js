@@ -40,5 +40,49 @@ router.post('/studentProfile',
 
     })
 
+router.post('/studentGroup',
+    async (req, res) => {
+
+        try {
+            console.log(req.body)
+            const team = await Team.findById(req.body.subId)
+            const teacher = await User.findById(team.teacher)
+            const messages = []
+            if (team.messages) {
+                for (var i = 0; i < team.messages.length; i++) {
+                    if (team.messages[i]) {
+                        const message = await Message.findById(team.messages[i])
+                        messages.push({ text: message.text, time: message.time })
+                    }
+                }
+            }
+
+            const students = []
+            for (var i = 0; i < team.students.length; i++) {
+                if (team.students[i]) {
+                    const student = await User.findById(team.students[i])
+                    students.push({ studentId: team.students[i], studentName: student.name, group: student.group })
+                }
+            }
+
+            return res.status(200).json({
+                data: {
+                    group: {
+                        groupId: team.id,
+                        title: team.name,
+                        description: team.description,
+                        teacher: teacher.name,
+                        messages:messages,
+                        studentsList: students
+                    }
+                },
+                status: 'ok'
+            })
+        } catch (e) {
+            return res.status(300).json({ data: { message: e.message }, status: 'bad' })
+        }
+
+    })
+
 
 module.exports = router

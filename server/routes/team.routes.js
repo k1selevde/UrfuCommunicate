@@ -9,26 +9,29 @@ const config = require('config')
 const auth = require('../middleware/auth.middleware')
 const { check, validationResult } = require('express-validator')
 
-router.post('/createTeam', 
+router.post('/createTeam',
     async (req, res) => {
         try {
-            const { name, subject, students, description } = req.body
-            const team = new Team({ name, subject, teacher: req.user.userId, students, description })
+            const students = []
+            for (var i = 0; i < req.body.studentsList.length; i++) {
+                students.push(req.body.studentsList[i].studentId)
+            }
+            console.log(students)
+            const team = new Team({
+                name: req.body.teamName, subject: req.body.subjectName,
+                teacher: req.body.id, students: students, messages: [], description: req.body.description
+            })
+            console.log(team)
             await team.save()
-            const teacher = await User.findById(req.user.userId)
+            console.log('12')
+            const teacher = await User.findById(req.body.id)
             teacher.teams.push(team)
-            teacher.save()
-            students.forEach(async (studentId) => {
-                try {
-                    const student = await User.findById(studentId);
-                    student.teams.push(team)
-                    student.save()
-                }
-                catch (e) {
-                }
-
-            });
-
+            await teacher.save()
+            for (var i = 0; i < students.length; i++) {
+                const student = await User.findById(students[i]);
+                student.teams.push(team)
+                await student.save()
+            }
             return res.status(200).json({
                 data: {
                     group: {
@@ -54,10 +57,57 @@ router.post('/createTeam',
         }
     });
 
-router.post('/sendMessage', 
+router.post('/editTeam',
     async (req, res) => {
         try {
-            const message = new Message({ text: req.body.msg, time: Date.now()})
+            const team = await Team.findById(req.body.groupId)
+            const students = []
+            for (var i = 0; i < req.body.studentsList.length; i++) {
+                var student = await User.findById(req.body.studentsList[i].studentId)
+                students.push(student)
+                const f = true;
+                for (var j = 0; j < student.teams.length; j++) {
+                    if (team.id == student.teams[i]) {
+                        f = false;
+                    }
+                }
+                if (f) {
+                    student.teams.push(team)
+                    await student.save()
+                }
+
+            }
+            team.students = students
+            await team.save()
+            return res.status(200).json({
+                data: {
+                    group: {
+                        groupId: team.objectId,
+                        title: team.name,
+                        description: team.description,
+                        teacher: team.teacher,
+                        messages: [
+                        ],
+                        studentsList: students
+                    }
+                },
+                status: 'ok'
+            })
+        }
+        catch (e) {
+            return res.status(300).json(
+                {
+                    data: { message: 'Ошибка на сервере (teacher group)' },
+                    status: 'bad'
+                })
+        }
+    });
+
+router.post('/sendMessage',
+    async (req, res) => {
+        try {
+            console.log(req.body)
+            const message = new Message({ text: req.body.msg, time: Date.now() })
             message.save()
             console.log(message)
             const team = await User.findById(req.body.id)
@@ -84,21 +134,22 @@ router.post('/sendMessage',
         }
     });
 
-    router.post('/findStudent', 
+router.post('/findStudent',
     async (req, res) => {
         try {
             console.log(req.body)
-            const students = await User.find({isTeacher:false, surname:req.body.searchValue})
+            const { searchValue } = req.body;
+            const students = await User.find({ isTeacher: false, surname: searchValue })
             const studentsNames = []
-            for(var i = 0; i<students.length;i++){
-                studentsNames.push({studentId:students[i]._id, studentName: students[i].name, group: students[i].group})
+            for (var i = 0; i < students.length; i++) {
+                studentsNames.push({ studentId: students[i]._id, studentName: students[i].name, group: students[i].group })
             }
             console.log(studentsNames)
             return res.status(200).json(
-                {  
+                {
                     data: {
                         students: studentsNames
-    
+
                     },
                     status: 'ok'
                 })
@@ -111,58 +162,5 @@ router.post('/sendMessage',
                 })
         }
     });
-
-    
-// teacher send message (data: id, token, groupId, message)
-
-// router.post('/sendMessage', async (req, res) => {
-//     try {
-//         if (!req.body)
-//             return req.status(400).json("")
-//         const { id, token, groupId, message } = req.body
-//         const team = await Team.findById(groupId)
-//         team.messages.push(new Message({ text: message, time: Date.now }))
-//         res.status(200).json({
-//             data: {
-//                 newMessage: {
-//                     text: message,
-//                     time: Date.now
-//                 },
-//                 status: 'ok'
-//             }
-//         })
-//     } catch (error) {
-//         response.status(300).json({ data: { message: 'Ошибка на сервере (Teacher set new Message)' }, status: 'bad' })
-//     }
-// })
-
-
-
-// // router.get('/teachersTeams', auth,
-// //     async (req, res) => {
-// //         try {
-// //             const teams = await Team.find({ teacher: req.user.userId })
-// //             res.json(teams)
-// //         } catch (e) {
-// //             res.status(500).json({ message: e.message })
-// //         }
-
-// //     })
-
-// router.get('/students', auth, async (req, res) => {
-//     try {
-//         const students = await User.find({ "isTeacher": false })
-//         const studentsOfTeam = [{ studentId: '', studentName: '', group: '' }]
-//         const [student, setStudent] = useState([{ studentId: '', studentName: '', group: '' }])
-//         students.forEach(element => {
-//             studentsofTeam.push({ studentId: element.userId, studentName: element.name, group: element.group })
-//         });
-//         res.status(200).json({ data: { students: students }, status: 'ok' })
-//     }
-//     catch (e) {
-//         res.status(500).json({ message: e.message })
-//     }
-// })
-
 
 module.exports = router
