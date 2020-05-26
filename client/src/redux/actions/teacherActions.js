@@ -203,7 +203,7 @@ export function editGroup(data) {
     return (dispatch) => {
         console.log('request data (send message): ', data)
         dispatch(editGroupRequest())
-        httpPost(`${API_ROOT}/editGroup`, data)
+        httpPost(`/api/team/editTeam`, data)
             .then(res => {
                 console.log(res)
                 (checkResponse(res)
