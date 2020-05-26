@@ -79,8 +79,7 @@ router.post('/editTeam',
                         title: team.name,
                         description: team.description,
                         teacher: team.teacher,
-                        messages: [
-                        ],
+                        messages: team.messages,
                         studentsList: students
                     }
                 },
@@ -99,7 +98,8 @@ router.post('/editTeam',
 router.post('/sendMessage',
     async (req, res) => {
         try {
-            const message = new Message({ text: req.body.msg, time: Date.now() })
+            var time = new Date()
+            const message = new Message({ text: req.body.msg, time: time.toLocaleString() })
             message.save()
             const team = await Team.findById(req.body.groupId)
             team.messages.push(message)
@@ -109,7 +109,7 @@ router.post('/sendMessage',
                     data: {
                         newMessage: {
                             text: message.text,
-                            time: message.time.ToString()
+                            time: message.time
                         },
                     },
                     status: 'ok'
@@ -142,7 +142,6 @@ router.post('/findStudent',
                 {
                     data: {
                         students: studentsNames
-
                     },
                     status: 'ok'
                 })

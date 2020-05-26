@@ -26,7 +26,8 @@ router.post('/studentProfile',
             }
             return res.status(200).json({
                 data: {
-                    name: student.name, surname: student.surname, patronymic: student.middleName,
+                    name: student.name, surname: student.surname,
+                     patronymic: student.middleName,
                     subjects: subjectNames
                 },
                 status: 'ok'
@@ -57,7 +58,8 @@ router.post('/studentGroup',
             for (var i = 0; i < team.students.length; i++) {
                 if (team.students[i]) {
                     const student = await User.findById(team.students[i])
-                    students.push({ studentId: team.students[i], studentName: student.name, group: student.group })
+                    students.push({ studentId: team.students[i], studentName: student.surname + ' ' + student.name + ' ' + student.middleName,
+                     group: student.group })
                 }
             }
 
@@ -67,7 +69,7 @@ router.post('/studentGroup',
                         groupId: team.id,
                         title: team.name,
                         description: team.description,
-                        teacher: teacher.name,
+                        teacher: teacher.surname + ' ' + teacher.name + ' ' + teacher.middleName,
                         messages:messages,
                         studentsList: students
                     }
