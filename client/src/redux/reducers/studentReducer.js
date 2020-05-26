@@ -56,11 +56,13 @@ export default (state = initialState, action) => {
         case STUDENT_SUB_GROUP_SUCCESS:
             return {
                 ...state,
+                isLoading: false,
                 activeGroup: action.payload.group
             }
         case STUDENT_SUB_GROUP_FAILURE:
             return {
                 ...state,
+                isLoading: false,
                 errors: action.payload.message
             }
         default: return state;

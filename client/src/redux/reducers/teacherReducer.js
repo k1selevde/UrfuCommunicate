@@ -60,6 +60,7 @@ export default (state = initialState, action) => {
         case GET_GROUP_SUCCESS:
             return {
                 ...state,
+                isLoading: false,
                 activeGroup: {
                     ...state.activeGroup,
                     ...action.payload.group
@@ -69,6 +70,7 @@ export default (state = initialState, action) => {
         case GET_GROUP_FAILURE:
             return {
                 ...state,
+                isLoading: false,
                 errors: action.payload.message
             };
 
@@ -123,7 +125,6 @@ export default (state = initialState, action) => {
         case TEACHER_SEND_MESSAGE_REQUEST:
             return {
                 ...state,
-                isLoading: true
             }
 
         case TEACHER_SEND_MESSAGE_SUCCESS:
@@ -133,12 +134,10 @@ export default (state = initialState, action) => {
                     ...state.activeGroup,
                     messages: [...state.activeGroup.messages, action.payload.newMessage]
                 },
-                isLoading: false
             }
         case TEACHER_SEND_MESSAGE_FAILURE:
             return {
                 ...state,
-                isLoading: false
             }
         case TEACHER_EDIT_GROUP_REQUEST:
             return {

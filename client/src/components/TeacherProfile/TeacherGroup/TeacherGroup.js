@@ -2,6 +2,7 @@ import React from 'react'
 import Chat from '../../Chat/Chat'
 import {NavLink} from "react-router-dom";
 import s from './TeacherGroup.module.css'
+import {withSpinner} from "../../../containers/SpinnerHOC";
 
 class TeacherGroup extends React.Component {
     constructor(props) {
@@ -42,7 +43,9 @@ class TeacherGroup extends React.Component {
     sendFileHandler(e) {
         e.preventDefault()
         const formBody = new FormData(this.formRef.current);
-        console.log(formBody)
+        if (formBody) {
+            this.props.sendFile(formBody)
+        }
     }
 
     render() {
@@ -77,6 +80,7 @@ class TeacherGroup extends React.Component {
                             ref={this.formRef}
                             onSubmit={this.sendFileHandler}
                             className={s.sendFileForm}
+                            name="fileInput"
                         >
                             <input type="file"/>
                             <button
@@ -124,7 +128,7 @@ class TeacherGroup extends React.Component {
                     <NavLink className={s.backToProfile} to="/teacherProfile">
                         Вернуться на главную
                     </NavLink>
-                    <div className={s.error}>{error}</div>
+                    <div className={s.error}>Такой группы не найдено</div>
                 </>
 
             )
@@ -132,4 +136,4 @@ class TeacherGroup extends React.Component {
     }
 }
 
-export default TeacherGroup;
+export default withSpinner(TeacherGroup, true);

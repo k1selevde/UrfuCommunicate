@@ -2,6 +2,7 @@ import React from 'react'
 import Chat from "../../Chat/Chat";
 import {NavLink} from "react-router-dom";
 import s from './SubjectGroup.module.css'
+import {withSpinner} from "../../../containers/SpinnerHOC";
 
 
 
@@ -44,7 +45,7 @@ class SubjectGroup  extends React.Component {
                         Вернуться на главную
                     </NavLink>
                     <div className={s.errorWrap}>
-                        {error}
+                        Такой грппы не найдено
                     </div>
                 </>
             )
@@ -53,4 +54,4 @@ class SubjectGroup  extends React.Component {
 
 }
 
-export default SubjectGroup;
+export default withSpinner(SubjectGroup);

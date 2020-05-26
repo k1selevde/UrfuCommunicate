@@ -1,11 +1,12 @@
 import React from 'react'
 import TeacherGroup from '../components/TeacherProfile/TeacherGroup/TeacherGroup'
 import {connect} from "react-redux";
-import {getGroup, sendMessage} from "../redux/actions/teacherActions";
+import {getGroup, sendFile, sendMessage} from "../redux/actions/teacherActions";
 
 class TeacherGroupContainer extends React.Component {
     componentDidMount() {
         const {groupId , id, token, ...rest} = this.props;
+        //const groupId = group.groupId;
         this.props.getGroup({groupId, id , token})
     }
 
@@ -41,7 +42,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return ({
         getGroup: (data) => dispatch(getGroup(data)),
-        sendMessage: (data) => dispatch(sendMessage(data))
+        sendMessage: (data) => dispatch(sendMessage(data)),
+        sendFile: (data) => dispatch(sendFile(data))
     })
 }
 
