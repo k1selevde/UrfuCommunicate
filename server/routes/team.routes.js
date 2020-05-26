@@ -59,7 +59,6 @@ router.post('/editTeam',
         try {
             const team = await Team.findById(req.body.groupId)
             const students = []
-            console.log(team._id)
             for (var i = 0; i < req.body.studentsList.length; i++) {
                 var student = await User.findById(req.body.studentsList[i].studentId)
                 students.push(student)

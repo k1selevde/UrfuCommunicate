@@ -51,14 +51,17 @@ router.post('/teacherGroup',
             for(var i = 0; i<team.messages.length; i++){
                 if(team.messages[i]){
                     const message = await Message.findById(team.messages[i])
-                    messages.push({text: message.text, time: message.time})
+                    if(message.text){
+                        messages.push({text: message.text, time: message.time})
+                    }
+                    
                 }
             }
             const students = []
             for(var i = 0; i < team.students.length;i++){
                 if(team.students[i]){
                     const student = await User.findById(team.students[i])
-                    students.push({studentId:team.students[i], studentName:student.surname + '' + student.name + ' ' + student.middleName,
+                    students.push({studentId:team.students[i], studentName:student.surname + ' ' + student.name + ' ' + student.middleName,
                      group:student.group})
                 }
             }
