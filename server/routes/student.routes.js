@@ -2,6 +2,7 @@ const { Router } = require('express')
 const router = Router()
 const User = require('../models/User')
 const Team = require('../models/Team')
+const Message = require('../models/Message')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
@@ -20,11 +21,9 @@ router.post('/studentProfile',
             for (var i = 0; i < student.teams.length; i++) {
                 if (student.teams[i]) {
                     var thisTeam = await Team.findById(student.teams[i])
-                    console.log(thisTeam.subject)
                     subjectNames.push({ title: thisTeam.subject, id: student.teams[i] })
                 }
             }
-            console.log(subjectNames)
             return res.status(200).json({
                 data: {
                     name: student.name, surname: student.surname, patronymic: student.middleName,
@@ -44,19 +43,16 @@ router.post('/studentGroup',
     async (req, res) => {
 
         try {
-            console.log(req.body)
             const team = await Team.findById(req.body.subId)
             const teacher = await User.findById(team.teacher)
             const messages = []
-            if (team.messages) {
-                for (var i = 0; i < team.messages.length; i++) {
-                    if (team.messages[i]) {
-                        const message = await Message.findById(team.messages[i])
-                        messages.push({ text: message.text, time: message.time })
-                    }
+            for(var i = 0; i<team.messages.length; i++){
+                if(team.messages[i]){
+                    console.log(team.messages)
+                    const message = await Message.findById(team.messages[i])
+                    messages.push({text: message.text, time: message.time})
                 }
             }
-
             const students = []
             for (var i = 0; i < team.students.length; i++) {
                 if (team.students[i]) {

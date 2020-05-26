@@ -16,14 +16,11 @@ router.post('/createTeam',
             for (var i = 0; i < req.body.studentsList.length; i++) {
                 students.push(req.body.studentsList[i].studentId)
             }
-            console.log(students)
             const team = new Team({
                 name: req.body.teamName, subject: req.body.subjectName,
                 teacher: req.body.id, students: students, messages: [], description: req.body.description
             })
-            console.log(team)
             await team.save()
-            console.log('12')
             const teacher = await User.findById(req.body.id)
             teacher.teams.push(team)
             await teacher.save()
@@ -35,7 +32,7 @@ router.post('/createTeam',
             return res.status(200).json({
                 data: {
                     group: {
-                        groupId: team.objectId,
+                        groupId: team._id,
                         title: team.name,
                         description: team.description,
                         teacher: team.teacher,
@@ -62,20 +59,16 @@ router.post('/editTeam',
         try {
             const team = await Team.findById(req.body.groupId)
             const students = []
+            console.log(team._id)
             for (var i = 0; i < req.body.studentsList.length; i++) {
                 var student = await User.findById(req.body.studentsList[i].studentId)
                 students.push(student)
-                const f = true;
-                for (var j = 0; j < student.teams.length; j++) {
-                    if (team.id == student.teams[i]) {
-                        f = false;
-                    }
-                }
-                if (f) {
+                var f = true;
+                if(!student.teams.includes(team.id)){
+                    console.log('12')
                     student.teams.push(team)
                     await student.save()
                 }
-
             }
             team.students = students
             await team.save()
@@ -106,14 +99,11 @@ router.post('/editTeam',
 router.post('/sendMessage',
     async (req, res) => {
         try {
-            console.log(req.body)
             const message = new Message({ text: req.body.msg, time: Date.now() })
             message.save()
-            console.log(message)
-            const team = await User.findById(req.body.id)
-            // team.messages.push(message)
-            // team.save()
-            console.log(team)
+            const team = await Team.findById(req.body.groupId)
+            team.messages.push(message)
+            team.save()
             return res.status(200).json(
                 {
                     data: {
@@ -137,14 +127,17 @@ router.post('/sendMessage',
 router.post('/findStudent',
     async (req, res) => {
         try {
-            console.log(req.body)
-            const { searchValue } = req.body;
-            const students = await User.find({ isTeacher: false, surname: searchValue })
+            const { searchValidValue } = req.body;
+            const students = await User.find({ isTeacher: false, surname: searchValidValue })
             const studentsNames = []
             for (var i = 0; i < students.length; i++) {
-                studentsNames.push({ studentId: students[i]._id, studentName: students[i].name, group: students[i].group })
+                const student = students[i].surname + ' ' + students[i].name + ' ' + students[i].middleName
+                studentsNames.push({
+                    studentId: students[i]._id,
+                    studentName: student, group: students[i].group
+                })
             }
-            console.log(studentsNames)
+
             return res.status(200).json(
                 {
                     data: {
