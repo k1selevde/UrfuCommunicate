@@ -29,7 +29,8 @@ class TeacherGroup extends React.Component {
 
     sendMessageHandler(e) {
         e.preventDefault()
-        const {groupId, token} = this.props;
+        const {group, token} = this.props;
+        const groupId = group.groupId;
         const msg = this.state.newMessage;
         this.props.sendMessage({groupId,token,msg})
         this.setState((prev)=> ({
@@ -39,7 +40,7 @@ class TeacherGroup extends React.Component {
     }
 
     sendFileHandler(e) {
-        e.preventDafault()
+        e.preventDefault()
         const formBody = new FormData(this.formRef.current);
         console.log(formBody)
     }
@@ -77,7 +78,7 @@ class TeacherGroup extends React.Component {
                             onSubmit={this.sendFileHandler}
                             className={s.sendFileForm}
                         >
-                            <input type="file" multiple/>
+                            <input type="file"/>
                             <button
                                 className={s.sendFileBtn}
                                 type="submit"
@@ -86,7 +87,6 @@ class TeacherGroup extends React.Component {
                             </button>
                         </form>
                     </div>
-
 
                     <div className={s.messagesBlock}>
                         <h3 className={s.messagesTitle}>Объявления</h3>

@@ -52,7 +52,7 @@ export function authFailure(data) {
 export function logIn(data) {
     return dispatch => {
         dispatch(httpRequest())
-        httpPost('/api/auth/login',data)
+        httpPost(`/api/auth/login`,data)
             .then(res => checkResponse(res)
                 ? dispatch(authSuccess(res.data))
                 : dispatch(authFailure(res.data))

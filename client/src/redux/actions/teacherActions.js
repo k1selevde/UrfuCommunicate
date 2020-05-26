@@ -1,4 +1,4 @@
-import {checkResponse, httpPost} from "../../helpers/network";
+import {checkResponse, httpPost, httpPostFiles} from "../../helpers/network";
 import {API_ROOT} from "../../constants/Default";
 
 import {
@@ -14,7 +14,7 @@ import {
     TEACHER_CLEAR_SAVECHANGE, TEACHER_CREATE_GROUP_FAILURE, TEACHER_CREATE_GROUP_REQUEST, TEACHER_CREATE_GROUP_SUCCESS,
     TEACHER_EDIT_GROUP_FAILURE,
     TEACHER_EDIT_GROUP_REQUEST,
-    TEACHER_EDIT_GROUP_SUCCESS,
+    TEACHER_EDIT_GROUP_SUCCESS, TEACHER_FILE_FAILURE, TEACHER_FILE_REQUEST, TEACHER_FILE_SUCCESS,
     TEACHER_OUT,
     TEACHER_REQUEST,
     TEACHER_SEND_MESSAGE_FAILURE,
@@ -26,7 +26,7 @@ import {
 export function getProfile(data) {
     return (dispatch) => {
         dispatch(httpRequest())
-        httpPost(`${API_ROOT}/teacherProfile`, data)
+        httpPost(`/api/teacher/teacherProfile`, data)
             .then(res => {
                 checkResponse(res)
                     ? dispatch(getProfileSuccess(res.data))
@@ -69,7 +69,7 @@ export function teacherOut() {
 export function getNewStudent(data) {
     return (dispatch) => {
         dispatch(getStudentHttpRequest())
-        httpPost(`${API_ROOT}/findStudent`, data)
+        httpPost(`/api/team/findStudent`, data)
             .then(res => {
                 checkResponse(res)
                     ? dispatch(getNewStudentSuccess(res.data))
@@ -108,7 +108,7 @@ export function getGroup(data) {
     return (dispatch) => {
         console.log('request data: ', data)
         dispatch(getGroupHttpRequest())
-        httpPost(`${API_ROOT}/teacherGroup`, data)
+        httpPost(`/api/teacher/teacherGroup`, data)
             .then(res => {
                 console.log(res)
                 (checkResponse(res)
@@ -161,9 +161,8 @@ export function clearGroup() {
 
 export function sendMessage(data) {
     return (dispatch) => {
-        console.log('request data (send message): ', data)
         dispatch(sendMessageHttpRequest())
-        httpPost(`${API_ROOT}/sendMessage`, data)
+        httpPost(`/api/team/sendMessage`, data)
             .then(res => {
                 console.log(res)
                 (checkResponse(res)
@@ -256,7 +255,7 @@ export function createGroup(data) {
     return (dispatch) => {
         console.log('request data (create new group): ', data)
         dispatch(createGroupRequest())
-        httpPost(`${API_ROOT}/createGroup`, data)
+        httpPost(`/api/team/createGroup`, data)
             .then(res => {
                 (checkResponse(res)
                     ? dispatch(createGroupSuccess(res.data))
@@ -292,5 +291,45 @@ export function createGroupFailure(data) {
 export function clearGroupCreate() {
     return {
         type: TEACHER_CLEAR_GROUPCREATE
+    }
+}
+
+
+export function sendFile(data) {
+    return (dispatch) => {
+        console.log('request data (send new File(s)): ', data)
+        dispatch(sendFileRequest())
+        httpPostFiles(`/api/teacher/sendFile`, data)
+            .then(res => {
+                (checkResponse(res)
+                    ? dispatch(sendFileSuccess(res.data))
+                    : dispatch(sendFileFailure(res.data)))
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}
+
+
+
+export function sendFileRequest() {
+    return {
+        type: TEACHER_FILE_REQUEST
+    }
+}
+
+export function sendFileSuccess(data) {
+    return {
+        type: TEACHER_FILE_SUCCESS,
+        payload: data
+    }
+}
+
+export function sendFileFailure(data) {
+    return {
+        type: TEACHER_FILE_FAILURE,
+        payload: data
     }
 }

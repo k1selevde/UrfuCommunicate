@@ -12,7 +12,7 @@ import {API_ROOT} from "../../constants/Default";
 export function getSubjects(data) {
     return (dispatch) => {
         dispatch(httpRequest())
-        httpPost(`${API_ROOT}/studentProfile`, data)
+        httpPost(`/api/student/studentProfile`, data)
             .then(res => {
                 checkResponse(res)
                     ? dispatch(getSubjectsSuccess(res.data))
@@ -58,7 +58,7 @@ export function studentOut() {
 export function getSubjectGroup(data) {
     return (dispatch) => {
         dispatch(httpGroupReguest())
-        httpPost(`${API_ROOT}/studentGroup`, data)
+        httpPost(`/api/student/studentGroup`, data)
             .then(res => {
                 checkResponse(res)
                     ? dispatch(getSubGroupSuccess(res.data))

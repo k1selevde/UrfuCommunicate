@@ -17,6 +17,21 @@ export const httpPost = async (url, data) => {
     }).then(response => response.json())// parses response to JSON
 }
 
+export const httpPostFiles = async (url, data) => {
+    return fetch(url, {
+        body: data,
+        cache: 'no-cache',
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+        redirect: 'follow',
+        referrer: 'no-referrer',
+    }).then(response => response.json()) // ??
+}
+
+
+
+
 export const httpGet = async (url) => {
     // from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     return fetch(url).then(response => response.json())// parses response to JSON
@@ -38,9 +53,6 @@ export async function httpPost(url, data) {
     return serverData;
 }
 */
-
-
-
 
 export function checkResponse(res) {
     return res.status === 'ok';

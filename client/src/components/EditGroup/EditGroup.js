@@ -4,13 +4,15 @@ import StudTable from "../NewTeam/StudentTable/StudTable";
 import Alert from '../Alert/Alert'
 import SuccessAlert from "../Alert/SuccessAlert";
 import s from '../NewTeam/NewTeam.module.css'
+import {validSearchInput} from "../../helpers/validForm";
 
 class EditGroup  extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             searchValue: '',
-            studentsList: []
+            studentsList: [],
+            findError: false
         }
         this.changeInputHandler = this.changeInputHandler.bind(this)
         this.submitTeamDataHandler = this.submitTeamDataHandler.bind(this)
@@ -22,7 +24,21 @@ class EditGroup  extends React.Component {
     findStudent(e) {
         const {searchValue} = this.state;
         e.preventDefault()
-        this.props.getNewStudent({searchValue})
+        let searchValidValue = validSearchInput(searchValue)
+        if (searchValidValue) {
+            this.props.getNewStudent({searchValidValue})
+            console.log({searchValidValue});
+            this.setState(prev => ({
+                ...prev,
+                findError: false
+            }))
+        } else {
+            this.setState(prev => ({
+                ...prev,
+                findError: true
+            }))
+        }
+        // console.log(validSearchInput(searchValue))
     }
 
 
@@ -89,7 +105,7 @@ class EditGroup  extends React.Component {
 
     render() {
         const {newStudentArr, group, error, isSaveChanges} = this.props;
-
+        const {findError} = this.state
         return (
             <div className={s.container}>
                 {/*{error && <Alert error={error}/>}*/}
@@ -114,15 +130,21 @@ class EditGroup  extends React.Component {
                     <div className={s.box}>
                         <div className={s.leftBox}>
                             <form onSubmit={this.findStudent} className={s.searchForm}>
-                                <input
-                                    name="searchValue"
-                                    placeholder="Введите имя студента"
-                                    type="search"
-                                    onChange={this.changeInputHandler}
-                                    value={this.state.searchValue}
-                                    className={s.searchInput}
-                                />
-                                <button type="submit" className={s.sendFormBtn}>Найти</button>
+                                {findError &&
+                                <label className={s.findError} htmlFor="search">Введите только фамилию</label>
+                                }
+                                <div className={s.findInputWrap}>
+                                    <input
+                                        name="searchValue"
+                                        placeholder="Фамилия студента"
+                                        type="search"
+                                        id="search"
+                                        onChange={this.changeInputHandler}
+                                        value={this.state.searchValue}
+                                        className={findError ? s.searchInputError : s.searchInput}
+                                    />
+                                    <button type="submit" className={s.sendFormBtn}>Найти</button>
+                                </div>
                             </form>
 
                             <StudTable
