@@ -18,7 +18,7 @@ let store = createStore(rootReducer,
     localStorage.getItem('storage') ? JSON.parse(localStorage['storage']) : {},
    applyMiddleware(thunk))
 */
-
+//
 store.subscribe(() => {
     localStorage.setItem('storage',JSON.stringify(store.getState()))
 })

@@ -26,7 +26,7 @@ export const httpPostFiles = async (url, data) => {
         mode: 'cors',
         redirect: 'follow',
         referrer: 'no-referrer',
-    }).then(response => response.json()) // ??
+    }) // ??
 }
 
 

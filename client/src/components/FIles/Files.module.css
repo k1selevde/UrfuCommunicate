@@ -1,0 +1,17 @@
+.fileWrap {
+    display: flex;
+    margin-bottom: 10px;
+}
+.fileName {
+    margin-left: 10px;
+    color: black
+}
+
+.fileGetBtn {
+    color: black;
+    margin-left: 15px;
+}
+
+.fileIcon {
+    color: blue;
+}

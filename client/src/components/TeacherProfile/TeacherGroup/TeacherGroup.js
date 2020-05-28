@@ -3,6 +3,7 @@ import Chat from '../../Chat/Chat'
 import {NavLink} from "react-router-dom";
 import s from './TeacherGroup.module.css'
 import {withSpinner} from "../../../containers/SpinnerHOC";
+import Files from "../../FIles/Files";
 
 class TeacherGroup extends React.Component {
     constructor(props) {
@@ -33,7 +34,9 @@ class TeacherGroup extends React.Component {
         const {group, token} = this.props;
         const groupId = group.groupId;
         const msg = this.state.newMessage;
-        this.props.sendMessage({groupId,token,msg})
+        if (msg) {
+            this.props.sendMessage({groupId,token,msg})
+        }
         this.setState((prev)=> ({
             ...prev,
             newMessage: ''
@@ -49,7 +52,8 @@ class TeacherGroup extends React.Component {
     }
 
     render() {
-        const {group,error} = this.props;
+        const {group, error, files, getFileStatus, getFile} = this.props;
+        const {newMessage} = this.state;
         if (group.title) {
             return (
                 <div className={s.container}>
@@ -73,6 +77,11 @@ class TeacherGroup extends React.Component {
 
                     <div className={s.docsBlock}>
                         <h3 className={s.docsTitle}>Документы</h3>
+                        <Files
+                            files={files}
+                            teamId={group.groupId}
+                            getFile={getFile}
+                        />
                     </div>
 
                     <div className={s.sendFileBlock}>
@@ -113,6 +122,7 @@ class TeacherGroup extends React.Component {
                             <button
                                 className={s.sendMsgBtn}
                                 type="submit"
+                                disabled={!newMessage}
                             >
                                 Отправить сообщение
                             </button>

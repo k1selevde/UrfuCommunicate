@@ -70,12 +70,12 @@
     margin: 30px 0 30px 0;
     width: 400px;
     height: 200px;
-    background-color: darkred;
+    background-color: antiquewhite;
 }
 
 .docsTitle {
     font-size: 17px;
-    color: white;
+    color: black;
     font-weight: 600;
 }
 
@@ -131,16 +131,22 @@
     padding: 8px 12px;
     background-color: blue;
     transition: background-color .05s ease;
-    transition: opacity .1s ease;
+    transition: opacity .2s ease;
     border: none;
 }
 
 .sendMsgBtn:hover {
     opacity: .8;
+    cursor: pointer;
 }
 
-.sendMsgBtn:active {
-    background-color: darkblue;
+/*.sendMsgBtn:active {*/
+/*    background-color: darkblue;*/
+/*}*/
+
+.sendMsgBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
 }
 
 .backToProfile {

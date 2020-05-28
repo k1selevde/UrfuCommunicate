@@ -14,9 +14,9 @@ import {
     TEACHER_CLEAR_SAVECHANGE, TEACHER_CREATE_GROUP_FAILURE, TEACHER_CREATE_GROUP_REQUEST, TEACHER_CREATE_GROUP_SUCCESS,
     TEACHER_EDIT_GROUP_FAILURE,
     TEACHER_EDIT_GROUP_REQUEST,
-    TEACHER_EDIT_GROUP_SUCCESS, TEACHER_FILE_FAILURE, TEACHER_FILE_REQUEST, TEACHER_FILE_SUCCESS,
+    TEACHER_EDIT_GROUP_SUCCESS, TEACHER_GET_FILE_FAILURE, TEACHER_GET_FILE_REQUEST, TEACHER_GET_FILE_SUCCESS,
     TEACHER_OUT,
-    TEACHER_REQUEST,
+    TEACHER_REQUEST, TEACHER_SEND_FILE_FAILURE, TEACHER_SEND_FILE_REQUEST, TEACHER_SEND_FILE_SUCCESS,
     TEACHER_SEND_MESSAGE_FAILURE,
     TEACHER_SEND_MESSAGE_REQUEST,
     TEACHER_SEND_MESSAGE_SUCCESS,
@@ -255,7 +255,7 @@ export function createGroup(data) {
     return (dispatch) => {
         console.log('request data (create new group): ', data)
         dispatch(createGroupRequest())
-        httpPost(`/api/team/createGroup`, data)
+        httpPost(`/api/team/createTeam`, data)
             .then(res => {
                 (checkResponse(res)
                     ? dispatch(createGroupSuccess(res.data))
@@ -299,7 +299,7 @@ export function sendFile(data) {
     return (dispatch) => {
         console.log('request data (send new File(s)): ', data)
         dispatch(sendFileRequest())
-        httpPostFiles(`/api/teacher/sendFile`, data)
+        httpPostFiles(`/api/team/sendFile`, data)
             .then(res => {
                 (checkResponse(res)
                     ? dispatch(sendFileSuccess(res.data))
@@ -316,20 +316,57 @@ export function sendFile(data) {
 
 export function sendFileRequest() {
     return {
-        type: TEACHER_FILE_REQUEST
+        type: TEACHER_SEND_FILE_REQUEST
     }
 }
 
 export function sendFileSuccess(data) {
     return {
-        type: TEACHER_FILE_SUCCESS,
+        type: TEACHER_SEND_FILE_SUCCESS,
         payload: data
     }
 }
 
 export function sendFileFailure(data) {
     return {
-        type: TEACHER_FILE_FAILURE,
+        type: TEACHER_SEND_FILE_FAILURE,
+        payload: data
+    }
+}
+
+export function getFile(data) {
+    return (dispatch) => {
+        console.log('request data (GET File): ', data)
+        dispatch(getFileRequest())
+        httpPostFiles(`/api/team/getFile`, data)
+            .then(res => {
+                (checkResponse(res)
+                    ? dispatch(getFileSuccess(res.data))
+                    : dispatch(getFileFailure(res.data)))
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}
+
+export function getFileRequest() {
+    return {
+        type: TEACHER_GET_FILE_REQUEST
+    }
+}
+
+export function getFileSuccess(data) {
+    return {
+        type: TEACHER_GET_FILE_SUCCESS,
+        payload: data
+    }
+}
+
+export function getFileFailure(data) {
+    return {
+        type: TEACHER_GET_FILE_FAILURE,
         payload: data
     }
 }

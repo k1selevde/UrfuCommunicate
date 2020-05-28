@@ -14,9 +14,9 @@ import {
     TEACHER_CREATE_GROUP_SUCCESS,
     TEACHER_EDIT_GROUP_FAILURE,
     TEACHER_EDIT_GROUP_REQUEST,
-    TEACHER_EDIT_GROUP_SUCCESS,
+    TEACHER_EDIT_GROUP_SUCCESS, TEACHER_GET_FILE_FAILURE, TEACHER_GET_FILE_REQUEST, TEACHER_GET_FILE_SUCCESS,
     TEACHER_OUT,
-    TEACHER_REQUEST,
+    TEACHER_REQUEST, TEACHER_SEND_FILE_FAILURE, TEACHER_SEND_FILE_REQUEST, TEACHER_SEND_FILE_SUCCESS,
     TEACHER_SEND_MESSAGE_FAILURE,
     TEACHER_SEND_MESSAGE_REQUEST,
     TEACHER_SEND_MESSAGE_SUCCESS
@@ -40,7 +40,21 @@ let initialState = {
         studentsList: [],
         saveChanges: false
     },
-    newStudent: []
+    newStudent: [],
+    files: [
+        {
+            fileName: 'white_flow.pdf',
+            filePath: '',
+            getFileStatus: false,
+            id: '12'
+        },
+        {
+            fileName: 'blue_flow.pdf',
+            filePath: '',
+            getFileStatus: false,
+            id: '45'
+        }
+    ],
 }
 
 export default (state = initialState, action) => {
@@ -54,7 +68,8 @@ export default (state = initialState, action) => {
                 isLoading: true,
                 errors: '',
                 activeGroup: {},
-                newStudent: []
+                newStudent: [],
+                // files: []
             };
 
         case GET_GROUP_SUCCESS:
@@ -64,7 +79,8 @@ export default (state = initialState, action) => {
                 activeGroup: {
                     ...state.activeGroup,
                     ...action.payload.group
-                }
+                },
+                // files: [...action.payload.files]
             };
 
         case GET_GROUP_FAILURE:
@@ -203,6 +219,42 @@ export default (state = initialState, action) => {
                 },
                 errors: ''
             }
+        case TEACHER_SEND_FILE_REQUEST:
+            return {
+                ...state
+            }
+        case TEACHER_SEND_FILE_SUCCESS:
+            return {
+                ...state,
+                files: [...state.files, action.payload.file]
+            }
+        case TEACHER_SEND_FILE_FAILURE:
+            return {
+                ...state
+            }
+        case TEACHER_GET_FILE_REQUEST: {
+            return {
+                ...state
+            }
+        }
+        case TEACHER_GET_FILE_SUCCESS: {
+            const currentObj = state.filter(file => file.id === action.payload.file.id);
+            var blob = new Blob([action.payload.data], { type: 'application/pdf' });
+            currentObj.filePath = URL.createObjectURL(blob);
+            return {
+                ...state,
+                files: [
+                    ...state.files.filter(file => file.id !== action.payload.file.id),
+                    currentObj
+                ]
+            }
+        }
+        case TEACHER_GET_FILE_FAILURE: {
+            return {
+                ...state,
+
+            }
+        }
         default:
             return state;
     }

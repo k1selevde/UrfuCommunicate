@@ -1,7 +1,7 @@
 import React from 'react'
 import TeacherGroup from '../components/TeacherProfile/TeacherGroup/TeacherGroup'
 import {connect} from "react-redux";
-import {getGroup, sendFile, sendMessage} from "../redux/actions/teacherActions";
+import {getFile, getGroup, sendFile, sendMessage} from "../redux/actions/teacherActions";
 
 class TeacherGroupContainer extends React.Component {
     componentDidMount() {
@@ -35,7 +35,8 @@ const mapStateToProps = state => ({
     //isStudent: !state.session.user.isTeacher,
     //subjects: state.student.subjects,
     group: state.teacher.activeGroup,
-    error: state.teacher.errors
+    error: state.teacher.errors,
+    files: state.teacher.files
 })
 
 
@@ -43,7 +44,8 @@ const mapDispatchToProps = dispatch => {
     return ({
         getGroup: (data) => dispatch(getGroup(data)),
         sendMessage: (data) => dispatch(sendMessage(data)),
-        sendFile: (data) => dispatch(sendFile(data))
+        sendFile: (data) => dispatch(sendFile(data)),
+        getFile: (data) => dispatch(getFile(data))
     })
 }
 
