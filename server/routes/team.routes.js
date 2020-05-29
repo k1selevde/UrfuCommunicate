@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const multer = require('multer')
 const router = Router()
 const Team = require('../models/Team')
 const User = require('../models/User')
@@ -7,7 +8,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
 const auth = require('../middleware/auth.middleware')
-const { check, validationResult } = require('express-validator')
+// const { check, validationResult } = require('express-validator')
+// var mongoose = require("mongoose");
+// var formidable = require("formidable");
+// var fs = require("fs");
+// var grid = require("gridfs-stream");
+// var bodyparser = require("body-parser");
 
 router.post('/createTeam',
     async (req, res) => {
@@ -63,7 +69,7 @@ router.post('/editTeam',
                 var student = await User.findById(req.body.studentsList[i].studentId)
                 students.push(student)
                 var f = true;
-                if(!student.teams.includes(team.id)){
+                if (!student.teams.includes(team.id)) {
                     console.log('12')
                     student.teams.push(team)
                     await student.save()
@@ -121,7 +127,39 @@ router.post('/sendMessage',
                     status: 'bad'
                 })
         }
-    });
+    })
+
+
+// router.use(multer({storage:storageConfig}).single("filedata")); 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        // '/files' это директория в которую будут сохранятся файлы 
+        cb(null, 'files/')
+    },
+    filename: (req, file, cb) => {
+        // Возьмем оригинальное название файла, и под этим же названием сохраним его на сервере
+        const { originalname } = file
+        cb(null, originalname)
+    }
+})
+const upload = multer({ storage: storage })
+
+
+router.post(
+    '/sendfile',
+    // Указываем multer в каком поле брать файл
+    upload.single('filedata'),
+    (req, res) => {
+        const fileName = req.file.filename
+        res.json({ status: 'Saved' })
+    })
+
+router.post(
+    '/getFile',
+    (req, res) => {
+        console.log(req.body)
+    })
+
 
 router.post('/findStudent',
     async (req, res) => {
