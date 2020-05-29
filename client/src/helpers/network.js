@@ -21,7 +21,7 @@ export const httpPostFiles = async (url, data) => {
     return fetch(url, {
         method: 'POST',
         mode: 'cors',
-        body: data,
+        body: data
     })
 }
 

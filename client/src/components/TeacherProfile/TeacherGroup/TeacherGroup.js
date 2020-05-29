@@ -47,7 +47,10 @@ class TeacherGroup extends React.Component {
     }
 
     sendFileHandler = async e => {
+        const {group} = this.props;
+        const id = group.groupId;
         const fd2 = new FormData(this.fileRef.current)
+        fd2.append('teamId', id)
         e.preventDefault()
         console.log(this.fileRef.current)
         console.log(fd2)
