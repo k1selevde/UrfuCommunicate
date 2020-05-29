@@ -12,18 +12,21 @@ class TeacherGroup extends React.Component {
         this.state = {
             newMessage: ''
         }
+
         this.changeMessageHandler = this.changeMessageHandler.bind(this)
         this.sendMessageHandler = this.sendMessageHandler.bind(this)
         this.sendFileHandler = this.sendFileHandler.bind(this)
-
         //refs:
-        this.formRef = React.createRef();
+        this.fileRef = React.createRef();
+
     }
+
 
     changeMessageHandler(e) {
         const fieldName = e.target.name
         const fieldValue = e.target.value
         this.setState((prev) => ({
+                ...prev,
                 [fieldName]: fieldValue
             })
         )
@@ -43,16 +46,16 @@ class TeacherGroup extends React.Component {
         }))
     }
 
-    sendFileHandler(e) {
+    sendFileHandler = async e => {
+        const fd2 = new FormData(this.fileRef.current)
         e.preventDefault()
-        const formBody = new FormData(this.formRef.current);
-        if (formBody) {
-            this.props.sendFile(formBody)
-        }
+        console.log(this.fileRef.current)
+        console.log(fd2)
+        this.props.sendFile(fd2)
     }
 
     render() {
-        const {group, error, files, getFileStatus, getFile} = this.props;
+        const {group, error, files, getFile} = this.props;
         const {newMessage} = this.state;
         if (group.title) {
             return (
@@ -86,18 +89,19 @@ class TeacherGroup extends React.Component {
 
                     <div className={s.sendFileBlock}>
                         <form
-                            ref={this.formRef}
+                            ref={this.fileRef}
                             onSubmit={this.sendFileHandler}
                             className={s.sendFileForm}
-                            name="fileInput"
                         >
-                            <input type="file"/>
-                            <button
-                                className={s.sendFileBtn}
+                            <input
+                                type="file"
+                                name="filedata"
+                            />
+                            <input
                                 type="submit"
-                            >
-                                добавить
-                            </button>
+                                value="ОТПРАВИТЬ"
+                                className={s.sendFileBtn}
+                            />
                         </form>
                     </div>
 

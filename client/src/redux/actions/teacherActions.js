@@ -297,7 +297,6 @@ export function clearGroupCreate() {
 
 export function sendFile(data) {
     return (dispatch) => {
-        console.log('request data (send new File(s)): ', data)
         dispatch(sendFileRequest())
         httpPostFiles(`/api/team/sendFile`, data)
             .then(res => {

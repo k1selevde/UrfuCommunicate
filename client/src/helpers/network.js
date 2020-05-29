@@ -19,14 +19,10 @@ export const httpPost = async (url, data) => {
 
 export const httpPostFiles = async (url, data) => {
     return fetch(url, {
-        body: data,
-        cache: 'no-cache',
         method: 'POST',
-        credentials: 'same-origin',
         mode: 'cors',
-        redirect: 'follow',
-        referrer: 'no-referrer',
-    }) // ??
+        body: data,
+    })
 }
 
 
