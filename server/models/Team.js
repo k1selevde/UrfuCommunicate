@@ -6,7 +6,8 @@ const schema = new Schema({
     teacher:{type:String, required:true},
     students:[{type: Types.ObjectId, ref: 'Team'}],
     messages:[{type:Types.ObjectId, ref: 'Message'}],
-    description:{type:String}
+    description:{type:String},
+    fileNames:[{type:String}]
 })
 
 module.exports = model('Team', schema)

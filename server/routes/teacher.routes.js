@@ -66,6 +66,11 @@ router.post('/teacherGroup',
                 }
             }
 
+            const files = []
+            for(var i = 0; i<team.fileNames.length; i++){
+                files.push({fileName: team.fileNames[i], filePath:'', getFileStatus:false})
+            }
+
             return res.status(200).json({
                 data: {
                     group: {
@@ -74,7 +79,8 @@ router.post('/teacherGroup',
                         description: team.description,
                         teacher: teacher.surname + ' ' + teacher.name + ' ' + teacher.middleName,
                         messages: messages,
-                        studentsList: students
+                        studentsList: students,
+                        files: files
                     }
                 },
                 status: 'ok'
