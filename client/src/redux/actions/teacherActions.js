@@ -337,7 +337,7 @@ export function getFile(data) {
     return (dispatch) => {
         console.log('request data (GET File): ', data)
         dispatch(getFileRequest())
-        httpPostFiles(`/api/team/getFile`, data)
+        httpPost(`/api/team/getFile`, data)
             .then(res => {
                 (checkResponse(res)
                     ? dispatch(getFileSuccess(res.data))
