@@ -4,12 +4,6 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-<<<<<<< HEAD
-    "body-parser": "^1.19.0",
-    "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-=======
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
@@ -19,18 +13,13 @@
     "express-validator": "^6.4.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.13",
->>>>>>> eedac2c8e0e6c6636fb867e4fcdddcab65f70712
     "nodemon": "^2.0.3"
   },
   "devDependencies": {},
   "scripts": {
-<<<<<<< HEAD
-    "start": "node app.js",
-    "server": "nodemon app.js",
-=======
+
     "start": "node server/app.js",
     "server": "nodemon server/app.js",
->>>>>>> eedac2c8e0e6c6636fb867e4fcdddcab65f70712
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
