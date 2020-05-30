@@ -100,8 +100,8 @@ router.post('/editTeam',
 router.post('/sendMessage',
     async (req, res) => {
         try {
-            var time = new Date()
-            const message = new Message({ text: req.body.msg, time: time.toLocaleString() })
+            var time = new Date().toLocaleDateString()
+            const message = new Message({ text: req.body.msg, time: time })
             message.save()
             const team = await Team.findById(req.body.groupId)
             team.messages.push(message)
