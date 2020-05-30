@@ -1,12 +1,15 @@
 .container {
-    width: 100%
+    width: 100%;
+    background: #262A2E;
+    box-shadow: 0px 4px 20px rgba(3, 3, 3, 0.65);
 }
 
 .wrapper {
-    padding: 20px 0 30px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px 0 20px 0;
     display: flex;
     justify-content: space-between;
-
 }
 .right {
     display: flex;
@@ -14,14 +17,16 @@
 }
 
 .logo {
+    margin-top: 4px;
     text-transform: uppercase;
-    color: black;
+    color: white;
+    font-size: 20px;
     font-weight: 600;
 }
 
 .userName {
-    color: black;
-    font-size: 16px;
+    color: white;
+    font-size: 18px;
     margin-right: 10px;
 }
 

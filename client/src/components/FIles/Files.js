@@ -16,10 +16,10 @@ const Files  = ({files,teamId,getFile}) => {
                     key={id}
                     className={s.fileWrap}
                 >
-                    <div className={s.fileIcon}>ICON</div>
+                    <div className={s.fileIcon}></div>
                     <a target="_blank" href={filePath ? filePath : '#'} className={s.fileName}>{fileName}</a>
                     <button
-                        className={s.fileGetBtn}
+                        className={getFileStatus ? s.fileGetBtnDoes : s.fileGetBtn}
                         onClick={(e) => getFileHandler(fileName,e)}
                     >
                         {getFileStatus ? 'Файл получен' : 'Получить файл'}

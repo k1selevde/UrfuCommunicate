@@ -1,15 +1,15 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
 import StudTable from "./StudentTable/StudTable";
-import s from './NewTeam.module.css'
 import SuccessAlert from "../Alert/SuccessAlert";
 import {validSearchInput} from "../../helpers/validForm"
+import s from './NewTeam.module.css'
 
 class NewTeam  extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            teamName: 'M-123',
+            teamName: '',
             description: '',
             subjectName: '',
             searchValue: '',
@@ -115,13 +115,33 @@ class NewTeam  extends React.Component {
                 </SuccessAlert>
                 }
 
-                {!group.isGroupCreate &&<div><h4 className={s.title}>Создание новой команды</h4>
+                {!group.isGroupCreate &&<div>
+                    <div className={s.titleWrap}>
+                        <h4 className={s.title}>Создание новой команды</h4>
+                        <div className={s.makeTeamWrap}>
+                            <button
+                                className={s.makeTeamBtn}
+                                onClick={this.submitTeamDataHandler}
+                                disabled={!(teamName && studentsList[0] && subjectName && description)}
+                            >
+                                Создать команду
+                            </button>
+                        </div>
+                    </div>
+
                     <div className={s.baseInfoWrap}>
                         <div className={s.inputWrap}>
+                            <label
+                                htmlFor="teamName"
+                                className={s.inputLabel}
+                            >
+                                Название команды
+                            </label>
                             <input
+                                id="teamName"
                                 type="text"
                                 value={this.state.teamName}
-                                placeholder="Введите название команды"
+                                placeholder="М-2014"
                                 className={s.inputName}
                                 onChange={this.changeInputHandler}
                                 name="teamName"
@@ -129,10 +149,17 @@ class NewTeam  extends React.Component {
                         </div>
 
                         <div className={s.inputWrap}>
+                            <label
+                                htmlFor="description"
+                                className={s.inputLabel}
+                            >
+                                Название команды
+                            </label>
                             <input
+                                id="description"
                                 type="text"
                                 value={this.state.description}
-                                placeholder="Описание команды"
+                                placeholder="Лекции по предмету..."
                                 className={s.inputName}
                                 onChange={this.changeInputHandler}
                                 name="description"
@@ -140,10 +167,17 @@ class NewTeam  extends React.Component {
                         </div>
 
                         <div className={s.inputWrap}>
+                            <label
+                                htmlFor="subjectName"
+                                className={s.inputLabel}
+                            >
+                                Название предмета
+                            </label>
                             <input
+                                id="subjectName"
                                 type="text"
                                 value={this.state.subjectName}
-                                placeholder="Название предмета"
+                                placeholder="Математика..."
                                 className={s.inputName}
                                 onChange={this.changeInputHandler}
                                 name="subjectName"
@@ -159,6 +193,7 @@ class NewTeam  extends React.Component {
                                 <label className={s.findError} htmlFor="search">Введите только фамилию</label>
                                 }
                                 <div className={s.findInputWrap}>
+                                    <button type="submit" className={s.sendFormBtn}></button>
                                     <input
                                         name="searchValue"
                                         placeholder="Фамилия студента"
@@ -168,49 +203,16 @@ class NewTeam  extends React.Component {
                                         value={this.state.searchValue}
                                         className={findError ? s.searchInputError : s.searchInput}
                                     />
-                                    <button type="submit" className={s.sendFormBtn}>Найти</button>
                                 </div>
                             </form>
-
+                            <hr/>
                             <StudTable
                                 newStudentArr={newStudentArr}
                                 studentsList={this.state.studentsList}
                                 cb={(student) => this.addStudentHandler(student)}
-                                /*students={
-                                [
-                                    {studentId: '1', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '2', studentName: 'Павел Котов Сергеевич', group: 'М-2014'},
-                                    {studentId: '3', studentName: 'Павел Вров Сергеевич', group: 'М-2014'},
-                                    {studentId: '4', studentName: 'Павел Пкцуоров Сергеевич', group: 'М-2014'},
-                                    {studentId: '5', studentName: 'Павел укцикторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '6', studentName: 'Павел Белковский Сергеевич', group: 'М-2014'},
-                                    {studentId: '7', studentName: 'Павел Триоон Сергеевич', group: 'М-2014'},
-                                    {studentId: '8', studentName: 'Павел ВКуцк Сергеевич', group: 'М-2014'},
-                                    {studentId: '9', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '10', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '11', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '12', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '13', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '14', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '15', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '16', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '17', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '18', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '19', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                    {studentId: '20', studentName: 'Павел Викторов Сергеевич', group: 'М-2014'},
-                                ]*/
                             />
-
-                            <div className={s.makeTeamWrap}>
-                                <button
-                                    className={s.makeTeamBtn}
-                                    onClick={this.submitTeamDataHandler}
-                                    disabled={!(teamName && studentsList[0] && subjectName && description)}
-                                >
-                                    Создать команду
-                                </button>
-                            </div>
                         </div>
+
 
 
                         <div className={s.listWrap}>
@@ -218,6 +220,7 @@ class NewTeam  extends React.Component {
                                 <h4 className={s.studentListTitle}>
                                     Спиок добавленных студентов
                                 </h4>
+                                <hr/>
                                 {this.state.studentsList.length > 0
                                     ? (
                                         <div>
@@ -237,7 +240,6 @@ class NewTeam  extends React.Component {
                                                             onClick={() => this.removeStudentHandler(stud.studentId)}
                                                             className={s.studentFlag}
                                                         >
-                                                            удалить
                                                         </div>
                                                     </div>
                                                 )

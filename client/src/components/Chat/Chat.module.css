@@ -1,24 +1,33 @@
 .messagesWrap {
     width: 500px;
-    height: 200px;
+    height: 300px;
     max-height: 200px;
-    border: 1px solid black;
+    border: none;
     overflow: auto;
     padding: 20px 30px;
-    background-color: rgba(220, 214, 214, 0.2);
+    background-color: #504C60;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .messWrap {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    background: #BFBABA;
+    border-radius: 15px;
+    padding: 15px 30px;
 }
 
 .messRow {
-
     display: flex;
     justify-content: space-between;
 }
 
 .messText {
+    overflow: hidden;
+    width: 400px;
+    white-space: normal;
+    margin-top: 10px;
+    margin-bottom: 6px;
     color: black;
     font-size: 18px;
 }

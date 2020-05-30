@@ -8,7 +8,7 @@
 }
 
 .alertBlock {
-    height: 70px;
+    height: 75px;
     width:100%;
 }
 
@@ -23,29 +23,50 @@
 }
 
 .inputField {
+    color: white;
+    padding: 4px 6px;
+    border: .1px solid white;
+    background: transparent;
     height: 28px;
     width: 320px;
     margin-bottom: 40px;
     font-size: 14px;
+    transition: border .15s ease;
+}
+
+.inputField:focus
+{
+    border: .1px solid #345EB4;
 }
 
 .submitBtn {
-    width: 100%;
-    border: 1px solid blue;
-    padding: 10px 50px;
-    background-color: blue;
+    cursor: pointer;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 1px solid #345EB4;
+    padding: 10px 60px;
+    background-color: #345EB4;
     opacity: .94;
     color: white;
+    font-size: 15px;
+    font-weight: 500;
     text-transform: uppercase;
-    transition: opacity .2s ease-out;
+    transition: opacity .15s ease-out;
 }
 
 .submitBtn:hover {
-    opacity: .75;
+    opacity: .70;
 }
 .submitBtn:disabled {
-    opacity: .5;
+    opacity: .34;
+    cursor: default;
 }
+
+.submitBtnWrap {
+    width: min-content;
+    margin: 0 auto;
+}
+
 
 .inputBox {
     display: flex;
@@ -61,7 +82,7 @@
     left: 5px;
     padding: 0.625rem 0;
     font-size: 15px;
-    color: black;
+    color: white;
     pointer-events: none;
     transition: 0.25s;
     opacity: .6;
@@ -72,7 +93,7 @@
 {
     top: -35px;
     left: 0;
-    color: darkblue;
-    opacity: 1;
-    font-size: 14px;
+    color: #345EB4;
+    opacity: .85;
+    font-size: 16px;
 }

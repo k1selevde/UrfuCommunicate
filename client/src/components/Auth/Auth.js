@@ -56,7 +56,6 @@ export default class Auth extends React.Component {
                             <div className={s.inputBox}>
                                 <input
                                     className={s.inputField}
-                                    // placeholder="Введите почту"
                                     type="text"
                                     name="email"
                                     onChange={this.changeHandler}
@@ -68,8 +67,7 @@ export default class Auth extends React.Component {
                             <div className={s.inputBox}>
                                 <input
                                     className={s.inputField}
-                                    // placeholder="Введите пароль"
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     onChange={this.changeHandler}
                                     value={password}
@@ -77,13 +75,15 @@ export default class Auth extends React.Component {
                                 <label>Введите пароль</label>
                             </div>
                         </div>
-                        <button
-                            className={s.submitBtn}
-                            type="submit"
-                            disabled={(!simpleValidAuth(this.state) || Boolean(error))}
-                        >
-                            ВОЙТИ
-                        </button>
+                        <div className={s.submitBtnWrap}>
+                            <button
+                                className={s.submitBtn}
+                                type="submit"
+                                disabled={(!simpleValidAuth(this.state) || Boolean(error))}
+                            >
+                                ВОЙТИ
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

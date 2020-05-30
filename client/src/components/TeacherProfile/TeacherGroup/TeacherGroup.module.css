@@ -1,12 +1,13 @@
 
 /*error*/
 .error {
-    border: 1px solid darkred;
-    margin-top: 13px;
+    border: 1px solid white;
+    width: max-content;
+    margin-top: 33px;
     padding: 10px 15px;
     font-size: 17px;
     font-weight: 700;
-    color: darkred;
+    color: white;
 }
 
 
@@ -15,13 +16,14 @@
 }
 
 .backToProfile {
-    color: white;
+    color: red;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 26px;
     transition: color .2s ease;
 }
 
 .row {
+    width: 70%;
     margin: 25px 0 35px 0;
     display: flex;
     justify-content: space-between;
@@ -34,7 +36,7 @@
 
 
 .groupTitle {
-    color: black;
+    color: white;
     margin-bottom: 2px;
 }
 
@@ -42,51 +44,52 @@
 }
 
 .addStudentBtn {
+    background: #34B45E;
+    border-radius: 20px;
     text-decoration: none;
     outline: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
     color: white;
-    padding: 6px 10px;
-    background-color: blue;
-    border: none;
+    padding: 14px 22px;
     transition: opacity .1s ease;
     cursor: pointer;
 }
 .addStudentBtn:hover {
-    opacity: .8;
+    opacity: .65;
 }
 .addStudentBtn:active {
-    background-color: darkblue;
+    background-color: green;
 }
 
 .groupDesc {
     font-style: italic;
-    font-size: 16px;
-    color: black;
+    font-size: 15px;
+    color: white;
     font-weight: 400;
 }
 
 /*DOCS*/
 .docsBlock {
-    margin: 30px 0 30px 0;
-    width: 400px;
-    height: 200px;
-    background-color: antiquewhite;
+    margin: 36px 0 30px 0;
 }
 
 .docsTitle {
-    font-size: 17px;
-    color: black;
-    font-weight: 600;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
 }
 
 /*messages*/
 
 .messagesBlock {
-    margin: 20px 0 25px 0;
+    margin: 20px 0 0px 0;
 }
 
 .messagesTitle {
-    color: black;
+    color: white;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 5px;
@@ -97,42 +100,44 @@
 
 .sendMsgBlock {
     margin-bottom: 50px;
-
+    width: 552px;
 }
 
-
-.sendMsgTitle {
-    color: black;
-    font-weight: 600;
-    font-size: 18px;
-}
 
 .sendMsgForm {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     display: flex;
     flex-direction: column;
     width: max-content;
+    background-color: #C4C4C4;
+    width: 560px;
 }
 
 .sendMsgInput {
-    padding-top: 7px;
-    padding-left: 6px;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
     font-size: 18px;
-    width: 400px;
-    height: 100px;
+    width: 483px;
+    /*height: 100px;*/
     overflow: auto;
-    border: 1px solid black;
-    background-color: antiquewhite;
+    margin: 25px auto;
+    background: #FFFFFF;
 }
 
 .sendMsgBtn {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     color: white;
     font-size: 15px;
     font-weight: 500;
-    padding: 8px 12px;
-    background-color: blue;
+    padding: 12px 14px;
+    background-color: #34B45E;
     transition: background-color .05s ease;
     transition: opacity .2s ease;
     border: none;
+    text-transform: uppercase;
 }
 
 .sendMsgBtn:hover {
@@ -161,26 +166,35 @@
 }
 
 .sendFileBlock {
+    border-radius: 3px;
     padding: 10px 0;
     margin-bottom: 60px;
     width: 400px;
-    border: 1px solid darkred;
+    background: #514D60;
 }
 
 .sendFileForm {
     margin: 0 auto;
 }
+
+.sendFileInput {
+    margin-left: 15px;
+    color: white;
+}
+
 .sendFileBtn {
-    background-color: red;
-    padding: 6px 10px;
+    cursor: pointer;
+    background-color: #34B45E;
+    padding: 11px 16px;
     color: white;
     text-transform: uppercase;
-    transition: .2s ease;
+    transition: all .2s ease;
+    border-radius: 20px;
     border: none;
 }
 
 .sendFileBtn:hover {
-    opacity: .85;
+    opacity: .75;
 }
 .sendFileBtn:active {
     background-color: darkred;

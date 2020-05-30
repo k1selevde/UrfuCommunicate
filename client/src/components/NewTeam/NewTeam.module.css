@@ -2,48 +2,62 @@
 
 }
 
-.title {
-    color: black;
-    font-size: 17px;
-    text-transform: uppercase;
+
+.titleWrap {
+    width: 80%;
     margin-top: 25px;
     margin-bottom: 20px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
     font-weight: 600;
 }
 
 
 .searchForm {
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .sendFormBtn {
+    margin-top: 8px;
+    margin-left: 8px;
+    background: url("../../assets/icons/search.svg");
+    opacity: .7;
+    background-size: 18px;
+    width: 18px;
+    height: 18px;
     padding: 9px 5px;
-    border: 1px solid black;
+    border: none;
     cursor: pointer;
-    transition: background-color .2s ease-out;
+    transition: opacity .2s ease-out;
 }
 
 .sendFormBtn:hover {
-    background-color: chocolate;
+    opacity: 1;
 }
 
 
 
 .searchInput {
-    /*    margin-top: 7px;*/
-    padding: 9px 14px;
-    border: 1px solid black;
+    border: none;
+    padding: 9px 36px 9px 8px;
     font-size: 14px;
 }
 
 .searchInput:focus {
-    border: 1px solid blue
 }
 
 .searchInputError {
     /*    margin-top: 7px;*/
     padding: 9px 14px;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     font-size: 14px;
 }
 
@@ -56,18 +70,22 @@
 }
 
 .makeTeamBtn {
-    cursor: pointer;
-    padding: 8px 20px;
-    color: black;
-    background-color: blue;
+    background: #34B45E;
     border: none;
-    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    outline: none;
     font-weight: 700;
     text-transform: uppercase;
-    transition: .2s ease;
+    font-size: 12px;
+    color: white;
+    padding: 15px 23px;
+    transition: opacity .1s ease;
+    cursor: pointer;
+    margin-bottom: 40px;
 }
 .makeTeamBtn:hover {
-    opacity: .85;
+    opacity: .65;
 }
 
 /*.makeTeamBtn:active {
@@ -84,12 +102,12 @@
 
 
 .studentListTitle {
-    padding: 10px 35px 12px 35px;
-    text-align: center;
-    color: black;
-    font-size: 18px;
-    margin: 10px 0;
-    font-weight: 400;
+    margin: 0;
+    padding: 10px 0 10px 20px;
+    text-align: left;
+    color: #34B45E;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .listWrap {
@@ -97,8 +115,10 @@
 }
 
 .listItemsWrap {
-    background-color: rgba(196, 196, 196, .95);
+    min-height: 136px;
+    background-color: #514D60;
     width: 400px;
+    border-radius: 8px;
 }
 
 
@@ -106,6 +126,7 @@
     padding: 10px 35px 12px 35px;
     display: flex;
     justify-content: space-between;
+    transition: background-color .15s ease;
 }
 
 .listItem:hover {
@@ -114,15 +135,20 @@
 
 
 .studentName {
-    color: black;
+    color: white;
     font-size: 18px;
 }
 
 .studentFlag {
+    background-image: url("../../assets/icons/cross.svg");
+    background-size: 18px;
+    margin-top: 2px;
+    width: 18px;
+    height: 18px;
     margin-left: 5px;
     cursor: pointer;
     opacity: .2;
-    transition: opacity .1s ease;
+    transition: opacity .15s ease;
     font-weight: 700;
 }
 
@@ -134,11 +160,14 @@
 
 .studentItemLeft {
     display: flex;
+    align-items: center;
 }
 
 .studentIndex {
     margin-right: 4px;
-    color: black;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 
@@ -160,19 +189,32 @@
 /*TEAM NAME STYLES*/
 
 .inputWrap {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 40px;
 }
 
+.inputLabel {
+    color: #34B45E;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
 .inputName {
+    max-width: max-content;
     padding: 7px 13px;
-    border: 1px solid black;
+    border: 1px solid transparent;
     color: black;
+    background: #E5E3E6;
+    opacity: .86;
+    border-radius: 5px;
     font-size: 14px;
     outline: none   ;
 }
 .inputName:hover,
 .inputName:focus {
-    border: 1px solid blue;
+    border: 1px solid #345EB4;
 }
 
 /*wrap base info*/
@@ -191,19 +233,22 @@
 /*MARK-UP*/
 
 .box {
+    width: 90%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
 }
 
 .leftBox {
-
-    margin-right: 100px;
+    min-width: 460px;
+    background: #514D60;
+    border-radius: 8px;
+    padding-bottom: 25px;
 }
 
 .emptyStudentList {
     text-transform: uppercase;
-    color: red;
+    color: white;
     text-align: center;
     padding-bottom: 20px;
 }
@@ -216,6 +261,10 @@
 }
 
 .findInputWrap {
+    margin: 0 auto;
+    border-radius: 4px;
+    background: #FFF;
+    border: 1px solid transparent;
     width: max-content;
     display: flex;
     /*    flex-direction: column;*/

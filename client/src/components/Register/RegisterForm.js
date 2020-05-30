@@ -9,14 +9,14 @@ class RegisterForm extends React.Component  {
     {
         super(props)
         this.state = {
-            name: 'Den',
-            surname: 'Abra',
-            patronymic: 'Aler',
-            email: 'abra@yandex.ru',
-            group: '12',
+            name: '',
+            surname: '',
+            patronymic: '',
+            email: '',
+            group: '',
             checkbox: false,
-            password: '12345',
-            repeatPassword: '12345'
+            password: '',
+            repeatPassword: ''
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -79,7 +79,6 @@ class RegisterForm extends React.Component  {
                                 value={name}
                                 onChange={this.changeHandler}
                                 className={s.inputField}
-                                // placeholder="Введите имя"
                                 type="text"
                                 name="name"
                                 autoFocus
@@ -90,7 +89,6 @@ class RegisterForm extends React.Component  {
                             <input
                                 onChange={this.changeHandler}
                                 className={s.inputField}
-                                // placeholder="Введите фамилию"
                                 type="text"
                                 name="surname"
                                 value={surname}
@@ -100,7 +98,6 @@ class RegisterForm extends React.Component  {
                         <div className={s.inputBox}>
                             <input
                                 className={s.inputField}
-                                // placeholder="Введите отчество"
                                 type="text"
                                 name="patronymic"
                                 value={patronymic}
@@ -114,7 +111,6 @@ class RegisterForm extends React.Component  {
                         <div className={s.inputBox}>
                             <input
                                 className={s.inputField}
-                                // placeholder="Введите почту"
                                 type="text"
                                 name="email"
                                 value={email}
@@ -127,7 +123,6 @@ class RegisterForm extends React.Component  {
                         <div className={s.inputBox}>
                             <input
                                 className={s.inputField}
-                                // placeholder="Введите группу"
                                 type="text"
                                 name="group"
                                 value={group}
@@ -151,7 +146,6 @@ class RegisterForm extends React.Component  {
                         <div className={s.inputBox}>
                             <input
                                 className={s.inputField}
-                                //placeholder="Введите пароль"
                                 type="text"
                                 name="password"
                                 value={password}
@@ -162,7 +156,6 @@ class RegisterForm extends React.Component  {
                         <div className={s.inputBox}>
                             <input
                                 className={s.inputField}
-                                // placeholder="Повторите пароль"
                                 type="text"
                                 name="repeatPassword"
                                 onChange={this.changeHandler}
@@ -172,13 +165,15 @@ class RegisterForm extends React.Component  {
                         </div>
                     </div>
 
-                    <button
-                        className={s.submitBtn}
-                        type="submit"
-                        disabled={(!simpleValidRegister(this.state) || Boolean(error))}
-                    >
-                        Зарегистрироваться
-                    </button>
+                    <div className={s.submitBtnWrap}>
+                        <button
+                            className={s.submitBtn}
+                            type="submit"
+                            disabled={(!simpleValidRegister(this.state) || Boolean(error))}
+                        >
+                            Зарегистрироваться
+                        </button>
+                    </div>
                 </form>
             </div>
         )

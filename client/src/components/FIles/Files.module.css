@@ -1,17 +1,51 @@
 .fileWrap {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    align-items: center;
 }
 .fileName {
     margin-left: 10px;
-    color: black
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.fileName:hover {
+    text-decoration: underline;
 }
 
 .fileGetBtn {
-    color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
     margin-left: 15px;
+    padding: 5px 6px;
+    background: #34B45E;
+    transition: opacity .15s ease ;
 }
 
+.fileGetBtn:hover {
+    opacity: .65;
+}
+
+.fileGetBtnDoes {
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    margin-left: 15px;
+    padding: 5px 6px;
+    background: #0F5DC2 ;
+}
+
+
 .fileIcon {
-    color: blue;
+    background: url("../../assets/icons/pdf.svg");
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
 }
