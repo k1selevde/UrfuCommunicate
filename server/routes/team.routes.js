@@ -152,7 +152,16 @@ router.post(
             team.save()
         }
         console.log(team)
-        res.json({ status: 'Saved' })
+        res.json({
+            data: {
+                file:
+                {
+                    fileName: fileName,
+                    filePath: '',
+                    getFileStatus: false
+                }
+            }, status: 'ok'
+        })
     })
 
 
@@ -162,7 +171,7 @@ router.post(
     async (req, res) => {
         console.log(req.body)
         var pathF = path.join(path.resolve(__dirname, '../../files'), req.body.fileName)
-        res.download(pathF,'ONGO2id3MnM.jpg')
+        res.download(pathF, 'ONGO2id3MnM.jpg')
 
     })
 
