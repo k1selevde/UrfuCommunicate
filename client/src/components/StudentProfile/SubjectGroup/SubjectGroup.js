@@ -18,18 +18,19 @@ class SubjectGroup  extends React.Component {
                     <div className={s.groupRow}>
                         <div className={s.leftInRow}>
                             <h3 className={s.groupTitle}>
-                                Группа: &nbsp; {group.title}
+                                <div style={{opacity: '.52', fontWeight: '400'}}>Группа</div> &nbsp; {group.title}
                             </h3>
                             <div className={s.groupDesc}>
                                 {group.description}
                             </div>
                         </div>
                         <div className={s.groupTeacher}>
-                            Учитель: &nbsp; {group.teacher}
+                            <div style={{opacity: '.52'}}>Учитель</div> &nbsp; {group.teacher}
                         </div>
                     </div>
                     <div className={s.docsWrap}>
                         <h3 className={s.docsTitle}>Документы:</h3>
+                        {/*<Files />*/}
                     </div>
                     <div className={s.chatWrap}>
                         <h3 className={s.chatTitle}>Объявления:</h3>
