@@ -171,7 +171,7 @@ class EditGroup  extends React.Component {
                         <div className={s.listWrap}>
                             <div className={s.listItemsWrap}>
                                 <h4 className={s.studentListTitle}>
-                                    Спиок добавленных студентов
+                                    Список добавленных студентов
                                 </h4>
                                 {this.state.studentsList.length > 0
                                     ? (

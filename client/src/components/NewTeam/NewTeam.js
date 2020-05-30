@@ -153,7 +153,7 @@ class NewTeam  extends React.Component {
                                 htmlFor="description"
                                 className={s.inputLabel}
                             >
-                                Название команды
+                                Описание команды
                             </label>
                             <input
                                 id="description"
@@ -218,7 +218,7 @@ class NewTeam  extends React.Component {
                         <div className={s.listWrap}>
                             <div className={s.listItemsWrap}>
                                 <h4 className={s.studentListTitle}>
-                                    Спиок добавленных студентов
+                                    Список добавленных студентов
                                 </h4>
                                 <hr/>
                                 {this.state.studentsList.length > 0

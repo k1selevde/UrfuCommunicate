@@ -10,8 +10,9 @@ const Header  = ({info}) => {
                 <div className={s.right}>
                     <div className={s.userName}>
                         {info.name} &nbsp;
-                        {info.surname} &nbsp;
-                        {info.patronymic}
+                        {info.patronymic} &nbsp;
+                        {info.surname}
+
                     </div>
                     <ControlBtnContainer />
                 </div>
