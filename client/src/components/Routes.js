@@ -20,7 +20,6 @@ export const Routes = ({isAuth}) => {
             </Switch>
         )
     }
-
     return (
         <Switch>
             <Route path="/" exact component={HomeContainer}></Route>

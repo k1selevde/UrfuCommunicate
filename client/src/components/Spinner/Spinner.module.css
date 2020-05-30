@@ -1,9 +1,11 @@
 .preloaderWrap {
-    margin-left: 100px;
+    /*margin-left: 100px;*/
     margin-top: 50px;
+
 }
 
 .preloader {
+    background: red;
     position: relative;
     min-height: 60px;
 }
@@ -16,7 +18,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, .9);
+    /*background: rgba(255, 255, 255, .9);*/
+    background: #1E2942;
     height: 100%;
     width: 100%;
     display: block !important;
@@ -36,8 +39,10 @@
     margin-top: -15px;
     width: 30px;
     height: 30px;
-    border: 4px rgba(0, 0, 0, .25) solid;
-    border-top: 4px #1071b6 solid;
+    /*border: 4px rgba(0, 0, 0, .25) solid;*/
+    border: 4px white solid;
+    /*border-top: 4px #1071b6 solid;*/
+    border-top: 4px #34B45E solid;
     border-radius: 50%;
     -webkit-animation: preloader .6s infinite linear;
     animation: preloader .6s infinite linear;

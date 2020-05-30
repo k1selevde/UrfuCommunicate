@@ -1,6 +1,6 @@
 .container {
-    padding: 5px;
-    margin-top: 10px;
+    border-radius: 5px;
+    padding: 6px 8px;
     background-color: lightcoral;
 }
 .error {
@@ -16,12 +16,16 @@
 }
 
 .sucContainer {
-    width: 100%;
+    width: max-content;
     text-align: center;
     padding: 15px;
-    margin-top: 10px;
-    background-color: limegreen;
+    margin-top: 50px;
+    border: 1px solid white;
 
+}
+
+.sucChildrenLink {
+    color: white;
 }
 
 .sucText {

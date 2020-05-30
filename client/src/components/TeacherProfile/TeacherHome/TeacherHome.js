@@ -5,7 +5,24 @@ import s from './TeacherHome.module.css'
 const TeacherHome = () => {
     return (
         <div className={s.container}>
-            <h2 className={s.title}>HOME PAGE</h2>
+            <div className={s.gimn}>
+                <p>Объединённые вокруг флага
+                    С одним желанием и целью одной,
+                    Мы приносим клятву
+                    Бороться за свободу</p>
+                <p>От борьбы уклонится лишь тот,
+                    Кто рожден предателем,
+                    Но мужчина не испугается,
+                    А умрёт, как мученик!</p>
+                <p>Возьмём в руки оружие,
+                    Защитим Отчизну со всех сторон,
+                    Права сдаваться у нас нет,
+                    Нашим врагам не место здесь!</p>
+                <p>Сам Господь сказал,
+                    Что наций на Земле не будет,
+                    Но Албания будет жить,
+                    За неё, за Албанию ведём мы войну! </p>
+            </div>
             <span className={s.text}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aliquam aspernatur consequuntur cum cumque deserunt,
                 doloribus eaque eius esse id maiores minus natus nulla numquam odio, omnis optio possimus praesentium quas repellat

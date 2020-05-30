@@ -38,7 +38,6 @@ class EditGroup  extends React.Component {
                 findError: true
             }))
         }
-        // console.log(validSearchInput(searchValue))
     }
 
 
@@ -122,9 +121,21 @@ class EditGroup  extends React.Component {
                 }
 
                 {!isSaveChanges && <div className={s.contentEditGroup}>
-                    <h4 className={s.title}>Редактирование команды</h4>
+                    <div className={s.titleWrap}>
+                        <h4 className={s.title}>Редактирование команды</h4>
+
+                        <div className={s.makeTeamWrap}>
+                            <button
+                                className={s.makeTeamBtn}
+                                onClick={this.submitTeamDataHandler}
+                            >
+                                Сохранить
+                            </button>
+                        </div>
+                    </div>
+
                     <div className={s.teamNameWrap}>
-                        <h3 style={{color: 'black'}}>{group.title}</h3>
+                        <h3 style={{color: 'white'}}>Команда: {group.title}</h3>
                     </div>
 
                     <div className={s.box}>
@@ -134,6 +145,7 @@ class EditGroup  extends React.Component {
                                 <label className={s.findError} htmlFor="search">Введите только фамилию</label>
                                 }
                                 <div className={s.findInputWrap}>
+                                    <button type="submit" className={s.sendFormBtn}></button>
                                     <input
                                         name="searchValue"
                                         placeholder="Фамилия студента"
@@ -143,7 +155,6 @@ class EditGroup  extends React.Component {
                                         value={this.state.searchValue}
                                         className={findError ? s.searchInputError : s.searchInput}
                                     />
-                                    <button type="submit" className={s.sendFormBtn}>Найти</button>
                                 </div>
                             </form>
 
@@ -154,14 +165,6 @@ class EditGroup  extends React.Component {
 
                             />
 
-                            <div className={s.makeTeamWrap}>
-                                <button
-                                    className={s.makeTeamBtn}
-                                    onClick={this.submitTeamDataHandler}
-                                >
-                                    Сохранить
-                                </button>
-                            </div>
                         </div>
 
 
@@ -189,7 +192,6 @@ class EditGroup  extends React.Component {
                                                             onClick={() => this.removeStudentHandler(stud.studentId)}
                                                             className={s.studentFlag}
                                                         >
-                                                            удалить
                                                         </div>
                                                     </div>
                                                 )

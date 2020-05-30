@@ -44,16 +44,15 @@ class StudentsTable extends React.Component {
                                     <tr
                                         className={s.tr}
                                         key={student.studentId}
-                                        style={{background: 'green'}}
                                     >
-                                        <td className={s.index}>{index + 1}</td>
-                                        <td className={s.fio}>{student.studentName}</td>
-                                        <td className={s.group}>{student.group}</td>
-                                        <td className={s.status}>
+                                        <td className={s.indexBody}>{index + 1}</td>
+                                        <td className={s.fioBody}>{student.studentName}</td>
+                                        <td className={s.groupBody}>{student.group}</td>
+                                        <td className={s.statusBody}>
                                             <button
                                                 onClick={() => this.clickHandler(student)}
                                                 className={includeStudent(this.props.studentsList, student) ? s.isAdd : s.addStudent}>
-                                                {includeStudent(this.props.studentsList, student) ? 'IsADD' : 'add'}
+                                                {/*{includeStudent(this.props.studentsList, student) ? 'IsADD' : 'add'}*/}
                                             </button>
                                         </td>
                                     </tr>

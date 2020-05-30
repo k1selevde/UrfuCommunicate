@@ -1,32 +1,55 @@
 .content {
-
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    padding-left: 40px;
+    background: #1E2942;
 }
 
 .mainContainer {
-    margin-top: 20px;
+    /*overflow: hidden;*/
+    /*пока тут про overflow*/
+    height: 90vh;
+    overflow: auto;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 .title {
     color: black;
+    font-weight: 300;
+    margin: 13px 0 10px 22px;
 }
 
 .groupsContainer {
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 20%;
 }
 
 
 
 
 .addGroupBtn {
-    color: red;
-    font-size: 16px;
-    font-weight: 600;
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+    color: black;
     text-transform: uppercase;
     text-decoration: none;
 }
 
+.addGroupBtnText {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addGroupBtnIcon {
+    background: url("../../assets/icons/plus.svg");
+    fill: red;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+}
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Chat from '../../Chat/Chat'
 import {NavLink} from "react-router-dom";
-import s from './TeacherGroup.module.css'
 import {withSpinner} from "../../../containers/SpinnerHOC";
 import Files from "../../FIles/Files";
+import s from './TeacherGroup.module.css'
 
 class TeacherGroup extends React.Component {
     constructor(props) {
@@ -97,6 +97,7 @@ class TeacherGroup extends React.Component {
                             className={s.sendFileForm}
                         >
                             <input
+                                className={s.sendFileInput}
                                 type="file"
                                 name="filedata"
                             />
@@ -114,7 +115,6 @@ class TeacherGroup extends React.Component {
                     </div>
 
                     <div className={s.sendMsgBlock}>
-                        <h3 className={s.sendMsgTitle}>Send message zone</h3>
                         <form
                             onSubmit={this.sendMessageHandler}
                             className={s.sendMsgForm}>

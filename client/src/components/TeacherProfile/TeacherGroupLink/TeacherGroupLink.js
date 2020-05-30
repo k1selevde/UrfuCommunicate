@@ -11,6 +11,7 @@ const TeacherGroupLink  = ({group}) => {
             key={group.id}
             className={s.teacherGroupWrap}
         >
+            <div className={s.svgIcon}></div>
             <div  className={s.teacherGroupTitle}>
                 Группа: {group.title}
             </div>

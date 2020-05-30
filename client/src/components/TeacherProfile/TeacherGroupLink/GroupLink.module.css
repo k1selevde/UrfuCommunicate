@@ -1,23 +1,29 @@
+.svgIcon {
+    background: url("../../../assets/icons/play.svg");
+    width: 11px;
+    height: 11px;
+    background-size: 11px;
+    margin-right: 7px;
+}
+
 .teacherGroupWrap {
+    align-items: center;
+    display: flex;
     text-decoration: none;
     outline: none;
     cursor: pointer;
-    border: 1px solid black;
+    border-bottom: 1px solid #C4C4C4;
     padding: 14px 20px;
-    transition: background-color .1s ease;
+    transition: background-color .15s ease;
 }
 
 .teacherGroupWrap:hover {
-    background-color: antiquewhite;
-}
-
-.teacherGroupWrap:active {
-    background-color: peachpuff;
+    background-color: rgba(74,125,201,.55);
 }
 
 
 .teacherGroupWrapActive {
-    background-color: peachpuff;
+    background-color: rgba(74,125,201,.75);
 }
 
 .teacherGroupTitle {

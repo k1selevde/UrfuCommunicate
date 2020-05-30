@@ -20,12 +20,8 @@ class teacherProfile extends React.Component {
         const {groups} = this.props
         return (
             <div className={s.mainContainer}>
-                <div className={s.content}>
-                    <TeacherRoutes />
-                </div>
-
                 <div className={s.groupsContainer}>
-                    <h4 className={s.title}>Мои группы:</h4>
+                    <h4 className={s.title}>Мои группы</h4>
                     {groups.map(group => {
                         return (
                             <TeacherGroupLink group={group}/>
@@ -38,12 +34,16 @@ class teacherProfile extends React.Component {
                         className={b.teacherGroupWrap}
                         activeClassName={b.teacherGroupWrapActive}
                     >
-                            <div className={s.addGroupBtn}>
-                                + Добавить группу
-                            </div>
+                        <div className={s.addGroupBtn}>
+                            <div className={s.addGroupBtnIcon}></div>
+                            <div className={s.addGroupBtnText}> &nbsp; Добавить группу</div>
+                        </div>
                     </NavLink>
-
                 </div>
+                <div className={s.content}>
+                    <TeacherRoutes />
+                </div>
+
             </div>
         )
     }

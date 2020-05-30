@@ -4,7 +4,6 @@ import Header from "../components/Header/Header";
 
 const HeaderContainer  = ({isTeacher, studentInfo, teacherInfo}) => {
     const info = isTeacher ? teacherInfo : studentInfo;
-    //const info =  studentInfo;
     return (
         <Header info={info}/>
     );

@@ -5,8 +5,9 @@
 }
 .btn {
     cursor: pointer;
-    background-color: blue;
-    padding: 7px 11px;
+    background-color: #345EB4;
+    padding: 10px 23px;
+    border-radius: 20px;
     border: none;
     transition: opacity .15s ease-out;
 }

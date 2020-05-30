@@ -15,7 +15,7 @@ const Chat  = ({messages = [],teacher}) => {
                                 <div className={s.messSender}>{teacher}</div>
                                 <div className={s.messTime}>{mess.time}</div>
                             </div>
-                            <div className={s.messText}>{mess.text}</div>
+                            <p className={s.messText}>{mess.text}</p>
 
                         </div>
                     )
