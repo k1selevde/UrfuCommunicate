@@ -11,7 +11,7 @@ export default class Auth extends React.Component {
         this.submitHandler = this.submitHandler.bind(this)
         this.state = {
             email: '',
-            password: '12345'
+            password: ''
         }
     }
 

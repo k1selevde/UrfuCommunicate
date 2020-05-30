@@ -8,6 +8,7 @@
 }
 
 .groupRow {
+    width: 80%;
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -16,7 +17,8 @@
 
 
 .groupTitle {
-    color: black;
+    display: flex;
+    color: white;
     font-size: 20px;
     margin-bottom: 9px;
     margin-top: 0;
@@ -24,14 +26,16 @@
 
 .groupDesc {
     margin-bottom: 30px;
-    color: black;
+    color: white;
     font-style: italic;
     opacity: .85;
     font-size: 17px;
 }
 
 .groupTeacher {
-    color: darkblue;
+    display: flex;
+    align-items: center;
+    color: white;
     font-size: 18px;
 }
 
@@ -48,8 +52,6 @@
     font-weight: 600;
 }
 
-
-
 /*chat*/
 
 .chatWrap {
@@ -59,8 +61,8 @@
 
 .chatTitle {
     font-size: 18px;
-    color: black;
-    font-weight: 500;
+    color: white;
+    font-weight: 600;
     margin-bottom: 3px;
 }
 

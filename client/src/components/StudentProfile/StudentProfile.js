@@ -11,6 +11,14 @@ class StudentProfile extends React.Component {
         const {subjects} = this.props
         return (
             <div className={s.container}>
+                <div className={s.subjectsWrapper}>
+                    {subjects.map(sub => {
+                        return (
+                            <SubjectItem  sub={sub}/>
+                        )
+                    })
+                    }
+                </div>
                 <div className={s.Wrapper}>
                     <Switch>
                         <Route path="/studentProfile" exact component={StudentHome} />
@@ -25,15 +33,6 @@ class StudentProfile extends React.Component {
                             />
                         }/>
                     </Switch>
-                </div>
-
-                <div className={s.subjectsWrapper}>
-                    {subjects.map(sub => {
-                        return (
-                                <SubjectItem  sub={sub}/>
-                        )
-                    })
-                    }
                 </div>
             </div>
         )
