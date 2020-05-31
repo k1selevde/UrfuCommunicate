@@ -1,8 +1,9 @@
 import React from 'react'
-import Chat from "../../Chat/Chat";
 import {NavLink} from "react-router-dom";
-import s from './SubjectGroup.module.css'
+import Chat from "../../Chat/Chat";
+import Files from '../../FIles/Files'
 import {withSpinner} from "../../../containers/SpinnerHOC";
+import s from './SubjectGroup.module.css'
 
 
 
@@ -30,7 +31,11 @@ class SubjectGroup  extends React.Component {
                     </div>
                     <div className={s.docsWrap}>
                         <h3 className={s.docsTitle}>Документы:</h3>
-                        {/*<Files />*/}
+                        <Files
+                            files={group.files}
+                            teamId={group.groupId}
+                            // getFile={getFile}
+                        />
                     </div>
                     <div className={s.chatWrap}>
                         <h3 className={s.chatTitle}>Объявления:</h3>
@@ -46,7 +51,7 @@ class SubjectGroup  extends React.Component {
                         Вернуться на главную
                     </NavLink>
                     <div className={s.errorWrap}>
-                        Такой грппы не найдено
+                        Такой группы не найдено
                     </div>
                 </>
             )

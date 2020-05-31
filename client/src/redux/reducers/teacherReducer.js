@@ -39,23 +39,10 @@ let initialState = {
         messages: [],
         studentsList: [],
         saveChanges: false,
+        currentFileGetting: '',
         files: []
     },
     newStudent: [],
-    files: [
-/*        {
-            fileName: 'white_flow.pdf',
-            filePath: '',
-            getFileStatus: false,
-            id: '12'
-        },
-        {
-            fileName: 'blue_flow.pdf',
-            filePath: '',
-            getFileStatus: false,
-            id: '45'
-        }*/
-    ],
 }
 
 export default (state = initialState, action) => {
@@ -238,15 +225,19 @@ export default (state = initialState, action) => {
             }
         case TEACHER_GET_FILE_REQUEST: {
             return {
-                ...state
+                ...state,
+                activeGroup: {
+                    ...state.activeGroup,
+                    currentFileGetting: action.payload.data
+                }
             }
         }
         case TEACHER_GET_FILE_SUCCESS: {
             //const currentObj = state.activeGroup.files.filter(file => file.fileName === action.payload.file.fileName);
             const currentObj = {
-                fileName: 'whitewqeqweqw.pdf',
+                fileName: 'boom.pdf',
                 filePath: '',
-                getFileStatus: false,
+                getFileStatus: true,
             }
             var blob = new Blob([action.payload.data], { type: 'application/pdf' });
             currentObj.filePath = URL.createObjectURL(blob);

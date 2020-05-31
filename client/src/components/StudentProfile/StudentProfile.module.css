@@ -1,7 +1,7 @@
 .container {
     height: 90vh;
     display: flex;
-    overflow: auto;
+    /*overflow: auto;*/
     /*justify-content: space-between;*/
     /*margin-top: 50px;*/
 }

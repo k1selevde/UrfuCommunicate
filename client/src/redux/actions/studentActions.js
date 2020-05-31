@@ -6,8 +6,9 @@ import {
     STUDENT_SUB_GROUP_SUCCESS
 } from "./actionTypes";
 
-import {checkResponse, httpPost} from "../../helpers/network";
+import {checkResponse, httpPost, httpPostGetFile} from "../../helpers/network";
 import {API_ROOT} from "../../constants/Default";
+import {getFileRequest, getFileSuccess} from "./teacherActions";
 
 export function getSubjects(data) {
     return (dispatch) => {
@@ -93,3 +94,23 @@ export function httpGroupReguest() {
         type: STUDENT_GROUP_REQUEST
     }
 }
+
+/*
+export function getFile(data) {
+    return (dispatch) => {
+        console.log('request data (GET File please): ', data)
+        dispatch(getFileRequest(data))
+        httpPostGetFile(`/api/team/getFile`, data)
+            .then(res => {
+                console.log('res: ', res)
+                /!*(checkResponseGetFile(res)
+                    ? dispatch(getFileSuccess(res.data))
+                    : dispatch(getFileFailure(res.data)))*!/
+                dispatch(getFileSuccess(res));
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}*/
