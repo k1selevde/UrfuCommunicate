@@ -58,7 +58,7 @@ class TeacherGroup extends React.Component {
     }
 
     render() {
-        const {group, error, files, getFile} = this.props;
+        const {group, error, getFile} = this.props;
         const {newMessage} = this.state;
         if (group.title) {
             return (
@@ -84,7 +84,7 @@ class TeacherGroup extends React.Component {
                     <div className={s.docsBlock}>
                         <h3 className={s.docsTitle}>Документы</h3>
                         <Files
-                            files={files}
+                            files={group.files}
                             teamId={group.groupId}
                             getFile={getFile}
                         />

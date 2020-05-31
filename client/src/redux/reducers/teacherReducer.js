@@ -38,7 +38,8 @@ let initialState = {
         teacher: '',
         messages: [],
         studentsList: [],
-        saveChanges: false
+        saveChanges: false,
+        files: []
     },
     newStudent: [],
     files: [
@@ -69,7 +70,7 @@ export default (state = initialState, action) => {
                 errors: '',
                 activeGroup: {},
                 newStudent: [],
-                files: []
+                // files: []
             };
 
         case GET_GROUP_SUCCESS:
@@ -80,7 +81,7 @@ export default (state = initialState, action) => {
                     ...state.activeGroup,
                     ...action.payload.group
                 },
-                // files: [...action.payload.files]
+                //files: [...action.payload.files]
             };
 
         case GET_GROUP_FAILURE:
@@ -226,7 +227,10 @@ export default (state = initialState, action) => {
         case TEACHER_SEND_FILE_SUCCESS:
             return {
                 ...state,
-                files: [...state.files, action.payload.file]
+                activeGroup: {
+                    ...state.activeGroup,
+                    files: [...state.activeGroup.files, action.payload.file]
+                }
             }
         case TEACHER_SEND_FILE_FAILURE:
             return {
@@ -243,10 +247,13 @@ export default (state = initialState, action) => {
             currentObj.filePath = URL.createObjectURL(blob);
             return {
                 ...state,
-                files: [
-                    ...state.files.filter(file => file.id !== action.payload.file.id),
-                    currentObj
-                ]
+                activeGroup: {
+                    ...state.activeGroup,
+                    files: [
+                        ...state.files.filter(file => file.id !== action.payload.file.id),
+                        currentObj
+                    ]
+                }
             }
         }
         case TEACHER_GET_FILE_FAILURE: {

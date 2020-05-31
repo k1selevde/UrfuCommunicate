@@ -36,12 +36,14 @@
     border-radius: 2px;
     font-size: 15px;
     font-weight: 400;
-    color: white;
+    color: blue;
     margin-left: 15px;
     padding: 5px 6px;
     background: #0F5DC2 ;
 }
+.fileGetBtnDoes {
 
+}
 
 .fileIcon {
     background: url("../../assets/icons/pdf.svg");

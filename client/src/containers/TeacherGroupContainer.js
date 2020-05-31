@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
     //subjects: state.student.subjects,
     group: state.teacher.activeGroup,
     error: state.teacher.errors,
-    files: state.teacher.files
+    // files: state.teacher.files
 })
 
 
