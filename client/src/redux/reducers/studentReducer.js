@@ -1,6 +1,6 @@
 import {
     GET_SUBJECTS_FAILURE,
-    GET_SUBJECTS_SUCCESS, STUDENT_GROUP_REQUEST,
+    GET_SUBJECTS_SUCCESS, STUDENT_GET_FILE_REQUEST, STUDENT_GET_FILE_SUCCESS, STUDENT_GROUP_REQUEST,
     STUDENT_OUT,
     STUDENT_REQUEST, STUDENT_SUB_GROUP_FAILURE,
     STUDENT_SUB_GROUP_SUCCESS
@@ -14,7 +14,16 @@ let initialState = {
         surname: '',
         patronymic: ''
     },
-    activeGroup: {},
+    activeGroup: {
+        groupId: '',
+        title: '',
+        description: '',
+        teacher: '',
+        messages: [],
+        studentsList: [],
+        files: [],
+        currentFileGetting: ''
+    },
     subjects: []
 }
 
@@ -65,6 +74,31 @@ export default (state = initialState, action) => {
                 isLoading: false,
                 errors: action.payload.message
             }
+        case STUDENT_GET_FILE_REQUEST:
+            return {
+                ...state,
+                activeGroup: {
+                    ...state.activeGroup,
+                    currentFileGetting: action.payload.fileName
+                }
+            }
+        case STUDENT_GET_FILE_SUCCESS: {
+            const currentObj = state.activeGroup.files.filter(file => file.fileName === state.activeGroup.currentFileGetting)[0];
+            var blob = new Blob([action.payload], { type: 'application/pdf' });
+            currentObj.filePath = URL.createObjectURL(blob);
+            currentObj.getFileStatus = true;
+            return {
+                ...state,
+                activeGroup: {
+                    ...state.activeGroup,
+                    files: [
+                        ...state.activeGroup.files.filter(file => file.fileName !== state.activeGroup.currentFileGetting),
+                        currentObj
+                    ],
+
+                }
+            }
+        }
         default: return state;
     }
 }

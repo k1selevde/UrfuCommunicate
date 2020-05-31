@@ -9,7 +9,7 @@ import s from './SubjectGroup.module.css'
 
 class SubjectGroup  extends React.Component {
     render() {
-        const {group,error} = this.props
+        const {group,error,getFile} = this.props
         if (group.title)
             return (
                 <div className={s.SubjectGroupWrapper} key={group.groupId}>
@@ -34,7 +34,7 @@ class SubjectGroup  extends React.Component {
                         <Files
                             files={group.files}
                             teamId={group.groupId}
-                            // getFile={getFile}
+                            getFile={getFile}
                         />
                     </div>
                     <div className={s.chatWrap}>

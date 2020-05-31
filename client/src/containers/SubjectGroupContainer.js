@@ -1,7 +1,7 @@
 import React from 'react'
 import SubjectGroup from '../components/StudentProfile/SubjectGroup/SubjectGroup'
 import {connect} from "react-redux";
-import {getSubjectGroup} from "../redux/actions/studentActions";
+import {getFile, getSubjectGroup} from "../redux/actions/studentActions";
 
 class SubjectGroupContainer extends React.Component {
     componentDidMount() {
@@ -38,7 +38,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return ({
-        getSubjectGroup: (data) => dispatch(getSubjectGroup(data))
+        getSubjectGroup: (data) => dispatch(getSubjectGroup(data)),
+        getFile: (data) => dispatch(getFile(data))
     })
 }
 

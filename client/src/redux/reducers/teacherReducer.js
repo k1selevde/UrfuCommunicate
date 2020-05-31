@@ -234,11 +234,7 @@ export default (state = initialState, action) => {
         }
         case TEACHER_GET_FILE_SUCCESS: {
             const currentObj = state.activeGroup.files.filter(file => file.fileName === state.activeGroup.currentFileGetting)[0];
-            /*const currentObj = {
-                fileName: 'boom.pdf',
-                filePath: '',
-                getFileStatus: true,
-            }*/
+
             var blob = new Blob([action.payload], { type: 'application/pdf' });
             currentObj.filePath = URL.createObjectURL(blob);
             currentObj.getFileStatus = true;
