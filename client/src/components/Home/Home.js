@@ -9,7 +9,7 @@ const Home = () => {
             <div className={s.wrapper}>
                 <h3 className={s.title}>Страница входа</h3>
                 <p className={s.text}>
-                    <div style={{opacity: '.52'}}>У вас еще нету аккаунта?</div> &nbsp;
+                    <div style={{opacity: '.52'}}>У вас еще нет аккаунта?</div> &nbsp;
                     <Link className={s.link}
                           to="/register" style={{textDecoration: 'none'}}>
                         Зарегистрироваться
