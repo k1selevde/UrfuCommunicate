@@ -80,7 +80,8 @@ router.post('/teacherGroup',
                         teacher: teacher.surname + ' ' + teacher.name + ' ' + teacher.middleName,
                         messages: messages,
                         studentsList: students,
-                        files: files
+                        files: files,
+                        currentFileGetting: ''
                     }
                 },
                 status: 'ok'
