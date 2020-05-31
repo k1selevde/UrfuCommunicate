@@ -165,13 +165,19 @@ router.post(
     })
 
 
+router.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+})
 
+// router.use(express.static('./public'));
 router.post(
     '/getFile',
     async (req, res) => {
-        console.log(req.body)
-        var pathF = path.join(path.resolve(__dirname, '../../files'), req.body.fileName)
-        res.download(pathF, 'ONGO2id3MnM.jpg')
+        // console.log(req.body)
+        var pathF = path.join(path.resolve(__dirname, '../../files'), req.body.data.fileName)
+        console.log(pathF)
+        res.download(pathF, req.body.data.fileName)
 
     })
 
