@@ -5,8 +5,9 @@ const Files  = ({files,teamId,getFile}) => {
 
     const getFileHandler = (fileName,e) => {
         e.preventDefault()
+        console.log('(GET FILE HANDLER)fileName is :', fileName, 'id: ', teamId)
         getFile({teamId,fileName})
-        console.log('fileName is :', fileName, 'id: ', teamId)
+
     }
 
     return (

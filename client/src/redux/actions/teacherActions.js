@@ -355,7 +355,7 @@ export function sendFileFailure(data) {
 
 export function getFile(data) {
     return (dispatch) => {
-        console.log('request data (GET File): ', data)
+        console.log('request data (GET File please): ', data)
         dispatch(getFileRequest())
         httpPostGetFile(`/api/team/getFile`, data)
             .then(res => {
