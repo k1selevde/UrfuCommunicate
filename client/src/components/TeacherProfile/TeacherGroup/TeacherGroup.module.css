@@ -180,6 +180,9 @@
 .sendFileInput {
     margin-left: 15px;
     color: white;
+    overflow: hidden;
+    margin-right: 5px;
+    max-width: 250px;
 }
 
 .sendFileBtn {

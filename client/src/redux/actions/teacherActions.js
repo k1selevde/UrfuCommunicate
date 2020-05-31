@@ -1,4 +1,4 @@
-import {checkResponse, httpPost, httpPostFiles} from "../../helpers/network";
+import {checkResponse, httpPost, httpPostFiles, httpPostGetFile} from "../../helpers/network";
 import {API_ROOT} from "../../constants/Default";
 
 import {
@@ -295,14 +295,15 @@ export function clearGroupCreate() {
 }
 
 
+/*
 export function sendFile(data) {
     return (dispatch) => {
         dispatch(sendFileRequest())
         httpPostFiles(`/api/team/sendFile`, data)
             .then(res => {
-                (checkResponse(res)
+                checkResponse(res)
                     ? dispatch(sendFileSuccess(res.data))
-                    : dispatch(sendFileFailure(res.data)))
+                    : dispatch(sendFileFailure(res.data))
             })
             .catch(error =>
                     console.log(error)
@@ -310,6 +311,25 @@ export function sendFile(data) {
             )
     }
 }
+*/
+
+export function sendFile(data) {
+    return (dispatch) => {
+        dispatch(sendFileRequest())
+        httpPostFiles(`/api/team/sendFile`, data)
+            .then(res => {
+                checkResponse(res)
+                    ?  dispatch(sendFileSuccess(res.data))
+                    :  dispatch(sendFileFailure(res.data))
+            })
+            .catch(error =>
+                    console.log(error)
+                // по-хорошему dispatch надо делать
+            )
+    }
+}
+
+
 
 
 
@@ -337,8 +357,9 @@ export function getFile(data) {
     return (dispatch) => {
         console.log('request data (GET File): ', data)
         dispatch(getFileRequest())
-        httpPost(`/api/team/getFile`, data)
+        httpPostGetFile(`/api/team/getFile`, data)
             .then(res => {
+                console.log('res: ', res)
                 (checkResponse(res)
                     ? dispatch(getFileSuccess(res.data))
                     : dispatch(getFileFailure(res.data)))

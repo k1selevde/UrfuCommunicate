@@ -11,7 +11,6 @@
     /*overflow: hidden;*/
     /*пока тут про overflow*/
     height: 90vh;
-    overflow: auto;
     display: flex;
     /*justify-content: space-between;*/
 }

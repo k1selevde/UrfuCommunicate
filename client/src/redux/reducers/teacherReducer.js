@@ -42,7 +42,7 @@ let initialState = {
     },
     newStudent: [],
     files: [
-        {
+/*        {
             fileName: 'white_flow.pdf',
             filePath: '',
             getFileStatus: false,
@@ -53,7 +53,7 @@ let initialState = {
             filePath: '',
             getFileStatus: false,
             id: '45'
-        }
+        }*/
     ],
 }
 
@@ -69,7 +69,7 @@ export default (state = initialState, action) => {
                 errors: '',
                 activeGroup: {},
                 newStudent: [],
-                // files: []
+                files: []
             };
 
         case GET_GROUP_SUCCESS:
@@ -238,7 +238,7 @@ export default (state = initialState, action) => {
             }
         }
         case TEACHER_GET_FILE_SUCCESS: {
-            const currentObj = state.filter(file => file.id === action.payload.file.id);
+            const currentObj = state.filter(file => file.fileName === action.payload.file.fileName);
             var blob = new Blob([action.payload.data], { type: 'application/pdf' });
             currentObj.filePath = URL.createObjectURL(blob);
             return {

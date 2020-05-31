@@ -22,10 +22,17 @@ export const httpPostFiles = async (url, data) => {
         method: 'POST',
         mode: 'cors',
         body: data
-    })
+    }).then(response => response.json())
 }
 
 
+export const httpPostGetFile = async (url, data) => {
+    return await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        body: data
+    })
+}
 
 
 export const httpGet = async (url) => {
