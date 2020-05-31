@@ -359,7 +359,7 @@ export function getFile(data) {
         dispatch(getFileRequest(data))
         httpPostGetFile(`/api/team/getFile`, data)
             .then(res => {
-                console.log('res: ', res)
+                console.log('res!!11!!!: ', res)
                 /*(checkResponseGetFile(res)
                     ? dispatch(getFileSuccess(res.data))
                     : dispatch(getFileFailure(res.data)))*/

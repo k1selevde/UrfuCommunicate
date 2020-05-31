@@ -1,5 +1,5 @@
 import {API_ROOT} from "../constants/Default";
-
+import axios from 'axios';
 
 export const httpPost = async (url, data) => {
     // from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -26,21 +26,46 @@ export const httpPostFiles = async (url, data) => {
 }
 
 
+/*
 export const httpPostGetFile = async (url, data) => {
-    return  fetch(url, {
+    return  await axios.post(url, {
         body: JSON.stringify(data),
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
             'content-type': 'application/json',
         },
+        mode: 'cors',
+        redirect: 'follow',
+        referrer: 'no-referrer',
+    })
+}
+*/
+
+/*export const httpPostGetFile = async (url, data) => {
+    return  fetch(url, {
         method: 'POST',
+        body: JSON.stringify(data),
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'content-type': 'application/json',
+        },
         mode: 'cors',
         redirect: 'follow',
         referrer: 'no-referrer',
         responseType: 'blob'
     })
+}*/
+
+/* responseType: 'blob'
+* */
+
+/*JSON.stringify(data)*/
+export const httpPostGetFile = async (url, data) => {
+    return  axios.post(url, {data}, {responseType: 'blob'})
 }
+
 
 
 export const httpGet = async (url) => {
