@@ -228,28 +228,30 @@ export default (state = initialState, action) => {
                 ...state,
                 activeGroup: {
                     ...state.activeGroup,
-                    currentFileGetting: action.payload.data
+                    currentFileGetting: action.payload.fileName
                 }
             }
         }
         case TEACHER_GET_FILE_SUCCESS: {
-            //const currentObj = state.activeGroup.files.filter(file => file.fileName === action.payload.file.fileName);
-            const currentObj = {
+            const currentObj = state.activeGroup.files.filter(file => file.fileName === state.activeGroup.currentFileGetting)[0];
+            /*const currentObj = {
                 fileName: 'boom.pdf',
                 filePath: '',
                 getFileStatus: true,
-            }
-            var blob = new Blob([action.payload.data], { type: 'application/pdf' });
+            }*/
+            var blob = new Blob([action.payload], { type: 'application/pdf' });
             currentObj.filePath = URL.createObjectURL(blob);
+            currentObj.getFileStatus = true;
             return {
                 ...state,
                 activeGroup: {
                     ...state.activeGroup,
                     files: [
-                        //...state.files.filter(file => file.id !== action.payload.file.id),
-                        ...state.activeGroup.files,
+                        ...state.activeGroup.files.filter(file => file.fileName !== state.activeGroup.currentFileGetting),
+                        //...state.activeGroup.files,
                         currentObj
-                    ]
+                    ],
+
                 }
             }
         }

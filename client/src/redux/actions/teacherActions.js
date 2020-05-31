@@ -363,7 +363,7 @@ export function getFile(data) {
                 /*(checkResponseGetFile(res)
                     ? dispatch(getFileSuccess(res.data))
                     : dispatch(getFileFailure(res.data)))*/
-                dispatch(getFileSuccess(res));
+                dispatch(getFileSuccess(res.data));
             })
             .catch(error =>
                     console.log(error)
