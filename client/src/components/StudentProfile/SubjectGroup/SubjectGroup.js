@@ -26,7 +26,7 @@ class SubjectGroup  extends React.Component {
                             </div>
                         </div>
                         <div className={s.groupTeacher}>
-                            <div style={{opacity: '.52'}}>Учитель</div> &nbsp; {group.teacher}
+                            <div style={{opacity: '.52'}}>Преподаватель</div> &nbsp; {group.teacher}
                         </div>
                     </div>
                     <div className={s.docsWrap}>
