@@ -242,7 +242,12 @@ export default (state = initialState, action) => {
             }
         }
         case TEACHER_GET_FILE_SUCCESS: {
-            const currentObj = state.filter(file => file.fileName === action.payload.file.fileName);
+            //const currentObj = state.activeGroup.files.filter(file => file.fileName === action.payload.file.fileName);
+            const currentObj = {
+                fileName: 'whitewqeqweqw.pdf',
+                filePath: '',
+                getFileStatus: false,
+            }
             var blob = new Blob([action.payload.data], { type: 'application/pdf' });
             currentObj.filePath = URL.createObjectURL(blob);
             return {
@@ -250,7 +255,8 @@ export default (state = initialState, action) => {
                 activeGroup: {
                     ...state.activeGroup,
                     files: [
-                        ...state.files.filter(file => file.id !== action.payload.file.id),
+                        //...state.files.filter(file => file.id !== action.payload.file.id),
+                        ...state.activeGroup.files,
                         currentObj
                     ]
                 }

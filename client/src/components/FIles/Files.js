@@ -12,9 +12,9 @@ const Files  = ({files,teamId,getFile}) => {
 
     return (
         <div className={s.filesContainer}>
-            {files.map(({fileName,filePath,getFileStatus, id}) => (
+            {files.map(({fileName,filePath,getFileStatus}) => (
                 <div
-                    key={id}
+                    key={fileName}
                     className={s.fileWrap}
                 >
                     <div className={s.fileIcon}></div>

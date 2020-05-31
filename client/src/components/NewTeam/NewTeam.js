@@ -117,14 +117,14 @@ class NewTeam  extends React.Component {
 
                 {!group.isGroupCreate &&<div>
                     <div className={s.titleWrap}>
-                        <h4 className={s.title}>Создание новой команды</h4>
+                        <h4 className={s.title}>Создание новой группы</h4>
                         <div className={s.makeTeamWrap}>
                             <button
                                 className={s.makeTeamBtn}
                                 onClick={this.submitTeamDataHandler}
                                 disabled={!(teamName && studentsList[0] && subjectName && description)}
                             >
-                                Создать команду
+                                Создать группу
                             </button>
                         </div>
                     </div>

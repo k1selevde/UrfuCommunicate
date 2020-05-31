@@ -38,6 +38,7 @@ export const httpPostGetFile = async (url, data) => {
         mode: 'cors',
         redirect: 'follow',
         referrer: 'no-referrer',
+        responseType: 'blob'
     })
 }
 
@@ -66,4 +67,8 @@ export async function httpPost(url, data) {
 
 export function checkResponse(res) {
     return res.status === 'ok';
+}
+
+export function checkResponseGetFile(res) {
+    return Boolean(res);
 }

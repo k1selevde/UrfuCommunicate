@@ -1,4 +1,4 @@
-import {checkResponse, httpPost, httpPostFiles, httpPostGetFile} from "../../helpers/network";
+import {checkResponse, checkResponseGetFile, httpPost, httpPostFiles, httpPostGetFile} from "../../helpers/network";
 import {API_ROOT} from "../../constants/Default";
 
 import {
@@ -360,9 +360,10 @@ export function getFile(data) {
         httpPostGetFile(`/api/team/getFile`, data)
             .then(res => {
                 console.log('res: ', res)
-                (checkResponse(res)
+                /*(checkResponseGetFile(res)
                     ? dispatch(getFileSuccess(res.data))
-                    : dispatch(getFileFailure(res.data)))
+                    : dispatch(getFileFailure(res.data)))*/
+                dispatch(getFileSuccess(res));
             })
             .catch(error =>
                     console.log(error)
