@@ -166,8 +166,6 @@ class EditGroup  extends React.Component {
                             />
 
                         </div>
-
-
                         <div className={s.listWrap}>
                             <div className={s.listItemsWrap}>
                                 <h4 className={s.studentListTitle}>

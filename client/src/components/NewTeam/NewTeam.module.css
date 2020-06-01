@@ -23,6 +23,7 @@
 .searchForm {
     margin-top: 15px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .sendFormBtn {
@@ -62,7 +63,7 @@
 }
 
 .searchInputError:focus {
-    border: 1px solid blue;
+    border: none;
 }
 
 .makeTeamWrap {
@@ -256,7 +257,7 @@
 .findError {
     color: red;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 

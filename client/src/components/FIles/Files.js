@@ -18,7 +18,13 @@ const Files  = ({files,teamId,getFile}) => {
                     className={s.fileWrap}
                 >
                     <div className={s.fileIcon}></div>
-                    <a target="_blank" href={filePath ? filePath : '#'} className={s.fileName}>{fileName}</a>
+                    <a
+                        target="_blank"
+                        href={filePath ? filePath : '#'}
+                        className={ getFileStatus ? s.fileNameGet : s.fileName}
+                    >
+                        {fileName}
+                    </a>
                     <button
                         className={getFileStatus ? s.fileGetBtnDoes : s.fileGetBtn}
                         onClick={(e) => getFileHandler(fileName,e)}
