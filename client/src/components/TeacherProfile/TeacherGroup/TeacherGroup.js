@@ -99,6 +99,7 @@ class TeacherGroup extends React.Component {
                             <input
                                 className={s.sendFileInput}
                                 type="file"
+                                accept="application/pdf"
                                 name="filedata"
                             />
                             <input
