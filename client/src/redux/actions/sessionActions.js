@@ -4,7 +4,7 @@ import {
     HIDE_ALERT,
     LOG_OUT,
     SESSION_REQUEST,
-    SET_ERROR
+    SET_ERROR, TOGGLE_THEME
 } from "./actionTypes";
 import {API_ROOT} from "../../constants/Default";
 import {checkResponse, httpPost} from "../../helpers/network";
@@ -81,5 +81,11 @@ export function hideAlert() {
 export function logOut() {
     return {
         type: LOG_OUT
+    }
+}
+
+export function changeTheme() {
+    return {
+        type: TOGGLE_THEME
     }
 }

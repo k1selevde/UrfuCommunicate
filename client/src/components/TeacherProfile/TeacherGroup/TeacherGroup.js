@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {withSpinner} from "../../../containers/SpinnerHOC";
 import Files from "../../FIles/Files";
 import s from './TeacherGroup.module.css'
+import StudentsList from "../../Common/StudentsList/StudentsList";
 
 class TeacherGroup extends React.Component {
     constructor(props) {
@@ -58,7 +59,7 @@ class TeacherGroup extends React.Component {
     }
 
     render() {
-        const {group, error, getFile} = this.props;
+        const {group, error, getFile, studentsList} = this.props;
         const {newMessage} = this.state;
         if (group.title) {
             return (
@@ -72,11 +73,18 @@ class TeacherGroup extends React.Component {
                             <div className={s.groupDesc}>{group.description}</div>
                         </div>
                         <div className={s.addStudentWrap}>
-                            <NavLink to="/teacherProfile/edit" className={s.addStudentBtn}>
-                                <span>
-                                    Добавить участника
-                                </span>
-                            </NavLink>
+                            <StudentsList
+                                studentsList={studentsList}
+                                removable={false}
+                            />
+
+                            <div className={s.addStudentBtnWrap}>
+                                <NavLink to="/teacherProfile/edit" className={s.addStudentBtn}>
+                                    <span>
+                                        Добавить участника
+                                    </span>
+                                </NavLink>
+                            </div>
                         </div>
                     </div>
 
@@ -136,7 +144,6 @@ class TeacherGroup extends React.Component {
                             </button>
                         </form>
                     </div>
-
                 </div>
             )
         }

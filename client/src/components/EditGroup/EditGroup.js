@@ -5,6 +5,7 @@ import Alert from '../Alert/Alert'
 import SuccessAlert from "../Alert/SuccessAlert";
 import s from '../NewTeam/NewTeam.module.css'
 import {validSearchInput} from "../../helpers/validForm";
+import StudentsList from "../Common/StudentsList/StudentsList";
 
 class EditGroup  extends React.Component {
     constructor(props) {
@@ -104,7 +105,7 @@ class EditGroup  extends React.Component {
 
     render() {
         const {newStudentArr, group, error, isSaveChanges} = this.props;
-        const {findError} = this.state
+        const {findError, studentsList} = this.state
         return (
             <div className={s.container}>
                 {/*{error && <Alert error={error}/>}*/}
@@ -114,6 +115,7 @@ class EditGroup  extends React.Component {
                     <NavLink
                         onClick={() => this.props.clearSaveChanges()}
                         to={`/teacherProfile/group-${group.groupId}`}
+                        style={{color: 'blue', textTransform: 'uppercase', margin: '10px'}}
                     >
                         Вернуться на страницу группы
                     </NavLink>
@@ -141,9 +143,11 @@ class EditGroup  extends React.Component {
                     <div className={s.box}>
                         <div className={s.leftBox}>
                             <form onSubmit={this.findStudent} className={s.searchForm}>
-                                {findError &&
-                                <label className={s.findError} htmlFor="search">Введите только фамилию</label>
+                                <div className={s.findErrorWrap}>
+                                    {findError &&
+                                    <label className={s.findError} htmlFor="search">Введите только фамилию</label>
                                 }
+                                </div>
                                 <div className={s.findInputWrap}>
                                     <button type="submit" className={s.sendFormBtn}></button>
                                     <input
@@ -153,7 +157,7 @@ class EditGroup  extends React.Component {
                                         id="search"
                                         onChange={this.changeInputHandler}
                                         value={this.state.searchValue}
-                                        className={findError ? s.searchInputError : s.searchInput}
+                                        className={s.searchInput}
                                     />
                                 </div>
                             </form>
@@ -166,42 +170,11 @@ class EditGroup  extends React.Component {
                             />
 
                         </div>
-                        <div className={s.listWrap}>
-                            <div className={s.listItemsWrap}>
-                                <h4 className={s.studentListTitle}>
-                                    Список добавленных студентов
-                                </h4>
-                                {this.state.studentsList.length > 0
-                                    ? (
-                                        <div>
-                                            {this.state.studentsList.map((stud, index) => {
-                                                return (
-                                                    <div
-                                                        key={stud.studentId}
-                                                        className={s.listItem}
-                                                    >
-                                                        <div className={s.studentItemLeft}>
-                                                            <div className={s.studentIndex}>{index + 1})</div>
-                                                            <div className={s.studentName}>
-                                                                {stud.studentName}
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            onClick={() => this.removeStudentHandler(stud.studentId)}
-                                                            className={s.studentFlag}
-                                                        >
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                            }
-                                        </div>
-                                    )
-                                    :
-                                    (<div className={s.emptyStudentList}>Список пуст</div>)
-                                }
-                            </div>
-                        </div>
+                        <StudentsList
+                            studentsList={studentsList}
+                            removeStudentCB={this.removeStudentHandler}
+                            removable={true}
+                        />
                     </div>
                 </div>}
             </div>

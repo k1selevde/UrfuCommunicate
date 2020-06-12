@@ -14,10 +14,14 @@ class TeacherProfileContainer extends React.Component {
 
     render()
     {
-        const {isTeacher,groups, clearGroup} = this.props;
+        const {isTeacher,groups, isDayTheme, clearGroup} = this.props;
         return (
             (isTeacher)
-                ? <TeacherProfile groups={groups} clearGroup={clearGroup} />
+                ? <TeacherProfile
+                    groups={groups}
+                    clearGroup={clearGroup}
+                    isDayTheme={isDayTheme}
+                />
                 : <Redirect to="/" />
         )
     }
@@ -27,7 +31,8 @@ const mapStateToProps = state => ({
     id: state.session.user.id,
     token: state.session.user.token,
     isTeacher: state.session.user.isTeacher,
-    groups: state.teacher.groups
+    groups: state.teacher.groups,
+    isDayTheme: state.session.isDayTheme
 })
 
 

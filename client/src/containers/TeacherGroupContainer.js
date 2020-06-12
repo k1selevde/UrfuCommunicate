@@ -32,11 +32,9 @@ class TeacherGroupContainer extends React.Component {
 const mapStateToProps = state => ({
     id: state.session.user.id,
     token: state.session.user.token,
-    //isStudent: !state.session.user.isTeacher,
-    //subjects: state.student.subjects,
     group: state.teacher.activeGroup,
     error: state.teacher.errors,
-    // files: state.teacher.files
+    studentsList: state.teacher.activeGroup.studentsList
 })
 
 

@@ -4,6 +4,7 @@ import StudTable from "./StudentTable/StudTable";
 import SuccessAlert from "../Alert/SuccessAlert";
 import {validSearchInput} from "../../helpers/validForm"
 import s from './NewTeam.module.css'
+import StudentsList from "../Common/StudentsList/StudentsList";
 
 class NewTeam  extends React.Component {
     constructor(props) {
@@ -189,9 +190,11 @@ class NewTeam  extends React.Component {
                     <div className={s.box}>
                         <div className={s.leftBox}>
                             <form onSubmit={this.findStudent} className={s.searchForm}>
-                                {findError &&
-                                <label className={s.findError} htmlFor="search">Введите только фамилию</label>
-                                }
+                                <div className={s.findErrorWrap}>
+                                    {findError &&
+                                    <label className={s.findError} htmlFor="search">Введите только фамилию</label>
+                                    }
+                                </div>
                                 <div className={s.findInputWrap}>
                                     <button type="submit" className={s.sendFormBtn}></button>
                                     <input
@@ -201,7 +204,7 @@ class NewTeam  extends React.Component {
                                         id="search"
                                         onChange={this.changeInputHandler}
                                         value={this.state.searchValue}
-                                        className={findError ? s.searchInputError : s.searchInput}
+                                        className={s.searchInput}
                                     />
                                 </div>
                             </form>
@@ -212,46 +215,11 @@ class NewTeam  extends React.Component {
                                 cb={(student) => this.addStudentHandler(student)}
                             />
                         </div>
-
-
-
-                        <div className={s.listWrap}>
-                            <div className={s.listItemsWrap}>
-                                <h4 className={s.studentListTitle}>
-                                    Список добавленных студентов
-                                </h4>
-                                <hr/>
-                                {this.state.studentsList.length > 0
-                                    ? (
-                                        <div>
-                                            {this.state.studentsList.map((stud, index) => {
-                                                return (
-                                                    <div
-                                                        key={stud.studentId}
-                                                        className={s.listItem}
-                                                    >
-                                                        <div className={s.studentItemLeft}>
-                                                            <div className={s.studentIndex}>{index + 1})</div>
-                                                            <div className={s.studentName}>
-                                                                {stud.studentName}
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            onClick={() => this.removeStudentHandler(stud.studentId)}
-                                                            className={s.studentFlag}
-                                                        >
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                            }
-                                        </div>
-                                    )
-                                    :
-                                    (<div className={s.emptyStudentList}>Список пуст</div>)
-                                }
-                            </div>
-                        </div>
+                        <StudentsList
+                            studentsList={studentsList}
+                            removeStudentCB={this.removeStudentHandler}
+                            removable={true}
+                        />
                     </div>
                 </div>}
             </div>

@@ -16,6 +16,12 @@
     align-items: center;
 }
 
+
+.logoWrap {
+    display: flex;
+    justify-content: center;
+}
+
 .logo {
     margin-top: 4px;
     text-transform: uppercase;

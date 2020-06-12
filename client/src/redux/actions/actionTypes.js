@@ -10,6 +10,8 @@ export const SESSION_REQUEST = 'SESSION/REQUEST'
 
 export const LOG_OUT = 'SESSION/LOG_OUT'
 
+export const TOGGLE_THEME = 'SESSION/TOGGLE_THEME'
+
 //============= student
 
 export const STUDENT_REQUEST = 'STUDENT/REQUEST'

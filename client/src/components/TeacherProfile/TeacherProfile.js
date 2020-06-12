@@ -4,7 +4,7 @@ import {TeacherRoutes} from "./TeacherRoutes";
 import {NavLink} from 'react-router-dom'
 import s from './Teacher.module.css'
 import b from './TeacherGroupLink/GroupLink.module.css'
-
+import cn from 'classnames'
 
 class teacherProfile extends React.Component {
     constructor(props) {
@@ -17,9 +17,11 @@ class teacherProfile extends React.Component {
     }
 
     render() {
-        const {groups} = this.props
+        const {groups,isDayTheme} = this.props
         return (
-            <div className={s.mainContainer}>
+            <div className={s.groupContainer}
+                 //className={s.mainContainer}
+            >
                 <div className={s.groupsContainer}>
                     <h4 className={s.title}>Мои группы</h4>
                     {groups.map(group => {
@@ -40,7 +42,7 @@ class teacherProfile extends React.Component {
                         </div>
                     </NavLink>
                 </div>
-                <div className={s.content}>
+                <div className={cn(s.content, {[s.content__light]: isDayTheme})} >
                     <TeacherRoutes />
                 </div>
 

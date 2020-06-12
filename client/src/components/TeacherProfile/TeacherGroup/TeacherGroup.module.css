@@ -23,11 +23,10 @@
 }
 
 .row {
-    width: 70%;
+    width: 80%;
     margin: 25px 0 35px 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .leftRow {
@@ -62,6 +61,11 @@
 .addStudentBtn:active {
     background-color: green;
 }
+
+.addStudentBtnWrap {
+    margin-top: 20px;
+}
+
 
 .groupDesc {
     font-style: italic;

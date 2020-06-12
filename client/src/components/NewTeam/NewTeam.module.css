@@ -56,10 +56,10 @@
 }
 
 .searchInputError {
-    /*    margin-top: 7px;*/
+/*    !*    margin-top: 7px;*!
     padding: 9px 14px;
-    /*border: 1px solid red;*/
-    font-size: 14px;
+    !*border: 1px solid red;*!
+    font-size: 14px;*/
 }
 
 .searchInputError:focus {
@@ -237,7 +237,7 @@
     width: 90%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .leftBox {
@@ -260,6 +260,10 @@
     font-size: 14px;
     text-transform: uppercase;
 }
+.findErrorWrap {
+    height: 30px;
+}
+
 
 .findInputWrap {
     margin: 0 auto;

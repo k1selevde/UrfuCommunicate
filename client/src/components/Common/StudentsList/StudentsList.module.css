@@ -1,0 +1,73 @@
+.listWrap {
+
+}
+
+.listItemsWrap {
+    min-height: 136px;
+    background-color: #514D60;
+    width: 400px;
+    border-radius: 8px;
+}
+
+.listItem {
+    padding: 10px 35px 12px 35px;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color .15s ease;
+}
+
+.listItem:hover {
+    background-color: rgba(107, 194, 200, 1);
+}
+
+.studentName {
+    color: white;
+    font-size: 18px;
+}
+
+.studentFlag {
+    background-image: url("../../../assets/icons/cross.svg");
+    background-size: 18px;
+    margin-top: 2px;
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    cursor: pointer;
+    opacity: .2;
+    transition: opacity .15s ease;
+    font-weight: 700;
+}
+
+.studentFlag:hover {
+    opacity: 1;
+}
+
+
+.studentIndex {
+    margin-right: 4px;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.emptyStudentList {
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+.studentItemLeft {
+    display: flex;
+    align-items: center;
+}
+
+.studentListTitle {
+    margin: 0;
+    padding: 10px 0 10px 20px;
+    text-align: left;
+    color: #34B45E;
+    font-size: 20px;
+    font-weight: 600;
+}

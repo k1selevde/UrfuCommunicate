@@ -4,7 +4,7 @@ import {
     HIDE_ALERT,
     LOG_OUT,
     SESSION_REQUEST,
-    SET_ERROR
+    SET_ERROR, TOGGLE_THEME
 } from "../actions/actionTypes";
 
 
@@ -16,7 +16,8 @@ let initialState = {
         token: null
     },
     errorMsg: "",
-    isLoading: false
+    isLoading: false,
+    isDayTheme: true
 }
 
 export default (state = initialState, action) => {
@@ -42,6 +43,8 @@ export default (state = initialState, action) => {
             return {...state, errorMsg: action.payload}
         case HIDE_ALERT:
             return {...state, errorMsg: ""}
+        case TOGGLE_THEME:
+            return {...state, isDayTheme: !state.isDayTheme}
         default:  return state;
     }
 }
