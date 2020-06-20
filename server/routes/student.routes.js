@@ -12,7 +12,7 @@ const auth = require('../middleware/auth.middleware')
 
 
 
-router.post('/studentProfile',
+router.post('/studentProfile', 
     async (req, res) => {
 
         try {
@@ -40,7 +40,7 @@ router.post('/studentProfile',
 
     })
 
-router.post('/studentGroup',
+router.post('/studentGroup', 
     async (req, res) => {
 
         try {
@@ -51,7 +51,7 @@ router.post('/studentGroup',
                 if(team.messages[i]){
                     console.log(team.messages)
                     const message = await Message.findById(team.messages[i])
-                    messages.push({text: message.text, time: message.time})
+                    messages.push({text: message.text, time: message.time.toLocaleString()})
                 }
             }
             const students = []

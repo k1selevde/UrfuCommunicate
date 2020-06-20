@@ -52,7 +52,7 @@ router.post('/teacherGroup',
                 if(team.messages[i]){
                     const message = await Message.findById(team.messages[i])
                     if(message.text){
-                        messages.push({text: message.text, time: message.time})
+                        messages.push({text: message.text, time: message.time.toLocaleString()})
                     }
                     
                 }

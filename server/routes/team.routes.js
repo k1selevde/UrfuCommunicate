@@ -100,7 +100,7 @@ router.post('/editTeam',
 router.post('/sendMessage',
     async (req, res) => {
         try {
-            var time = new Date().toLocaleDateString()
+            var time = new Date().toString()
             const message = new Message({ text: req.body.msg, time: time })
             message.save()
             const team = await Team.findById(req.body.groupId)
@@ -111,7 +111,7 @@ router.post('/sendMessage',
                     data: {
                         newMessage: {
                             text: message.text,
-                            time: message.time
+                            time: message.time.toLocaleString()
                         },
                     },
                     status: 'ok'
