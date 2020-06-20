@@ -22,6 +22,10 @@
     background: #1E2942;
 }
 
+.Wrapper__light {
+    background: #C8D0E5;
+}
+
 .subjectTitleWrap {
     align-items: center;
     display: flex;

@@ -6,7 +6,6 @@ import {getFile, getGroup, sendFile, sendMessage} from "../redux/actions/teacher
 class TeacherGroupContainer extends React.Component {
     componentDidMount() {
         const {groupId , id, token, ...rest} = this.props;
-        //const groupId = group.groupId;
         this.props.getGroup({groupId, id , token})
     }
 
@@ -34,7 +33,8 @@ const mapStateToProps = state => ({
     token: state.session.user.token,
     group: state.teacher.activeGroup,
     error: state.teacher.errors,
-    studentsList: state.teacher.activeGroup.studentsList
+    studentsList: state.teacher.activeGroup.studentsList,
+    isDayTheme: state.session.isDayTheme
 })
 
 

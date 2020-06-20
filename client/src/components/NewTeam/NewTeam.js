@@ -1,10 +1,11 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
+import cn from 'classnames'
 import StudTable from "./StudentTable/StudTable";
 import SuccessAlert from "../Alert/SuccessAlert";
 import {validSearchInput} from "../../helpers/validForm"
-import s from './NewTeam.module.css'
 import StudentsList from "../Common/StudentsList/StudentsList";
+import s from './NewTeam.module.css'
 
 class NewTeam  extends React.Component {
     constructor(props) {
@@ -97,11 +98,13 @@ class NewTeam  extends React.Component {
 
 
     render() {
-        const {newStudentArr, group} = this.props;
+        const {newStudentArr, group, isDayTheme} = this.props;
         const {teamName, studentsList, subjectName, description, findError} = this.state;
         return (
             <div className={s.container}>
-                <NavLink className={s.backToProfile} to="/teacherProfile">Вернуться на главную</NavLink>
+                <div className={s.backToProfileWrap}>
+                    <NavLink className={s.backToProfile} to="/teacherProfile">Вернуться на главную</NavLink>
+                </div>
 
 
                 { group.isGroupCreate
@@ -118,10 +121,17 @@ class NewTeam  extends React.Component {
 
                 {!group.isGroupCreate &&<div>
                     <div className={s.titleWrap}>
-                        <h4 className={s.title}>Создание новой группы</h4>
+                        <h4 className={cn(s.title,
+                            {[s.title__light]: isDayTheme}
+                            )}
+                        >
+                            Создание новой группы
+                        </h4>
                         <div className={s.makeTeamWrap}>
                             <button
-                                className={s.makeTeamBtn}
+                                className={cn(s.makeTeamBtn,
+                                    {[s.makeTeamBtn__light]: isDayTheme}
+                                )}
                                 onClick={this.submitTeamDataHandler}
                                 disabled={!(teamName && studentsList[0] && subjectName && description)}
                             >
@@ -134,7 +144,9 @@ class NewTeam  extends React.Component {
                         <div className={s.inputWrap}>
                             <label
                                 htmlFor="teamName"
-                                className={s.inputLabel}
+                                className={cn(s.inputLabel,
+                                    {[s.inputLabel__light]: isDayTheme}
+                                )}
                             >
                                 Название команды
                             </label>
@@ -152,7 +164,9 @@ class NewTeam  extends React.Component {
                         <div className={s.inputWrap}>
                             <label
                                 htmlFor="description"
-                                className={s.inputLabel}
+                                className={cn(s.inputLabel,
+                                    {[s.inputLabel__light]: isDayTheme}
+                                )}
                             >
                                 Описание команды
                             </label>
@@ -170,7 +184,9 @@ class NewTeam  extends React.Component {
                         <div className={s.inputWrap}>
                             <label
                                 htmlFor="subjectName"
-                                className={s.inputLabel}
+                                className={cn(s.inputLabel,
+                                    {[s.inputLabel__light]: isDayTheme}
+                                )}
                             >
                                 Название предмета
                             </label>
@@ -188,7 +204,10 @@ class NewTeam  extends React.Component {
 
 
                     <div className={s.box}>
-                        <div className={s.leftBox}>
+                        <div className={cn(s.leftBox,
+                            {[s.leftBox__light]: isDayTheme}
+                            )}
+                        >
                             <form onSubmit={this.findStudent} className={s.searchForm}>
                                 <div className={s.findErrorWrap}>
                                     {findError &&
@@ -219,6 +238,7 @@ class NewTeam  extends React.Component {
                             studentsList={studentsList}
                             removeStudentCB={this.removeStudentHandler}
                             removable={true}
+                            isDayTheme={isDayTheme}
                         />
                     </div>
                 </div>}

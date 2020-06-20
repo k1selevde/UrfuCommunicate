@@ -1,11 +1,12 @@
 import React from 'react'
+import cn from 'classnames'
 import s from './StudentsList.module.css'
 
-const StudentsList  = ({studentsList, removeStudentCB,removable}) => {
+const StudentsList  = ({studentsList, removeStudentCB,removable,isDayTheme}) => {
     return (
         <div className={s.listWrap}>
-            <div className={s.listItemsWrap}>
-                <h4 className={s.studentListTitle}>
+            <div className={cn(s.listItemsWrap, {[s.listItemsWrap__light]: isDayTheme})}>
+                <h4 className={cn(s.studentListTitle, {[s.studentListTitle__light]: isDayTheme})}>
                     Список добавленных студентов
                 </h4>
                 {studentsList.length > 0

@@ -1,10 +1,11 @@
 import React from 'react'
-import Chat from '../../Chat/Chat'
 import {NavLink} from "react-router-dom";
+import cn from 'classnames';
+import Chat from '../../Chat/Chat'
 import {withSpinner} from "../../../containers/SpinnerHOC";
 import Files from "../../FIles/Files";
-import s from './TeacherGroup.module.css'
 import StudentsList from "../../Common/StudentsList/StudentsList";
+import s from './TeacherGroup.module.css'
 
 class TeacherGroup extends React.Component {
     constructor(props) {
@@ -59,27 +60,82 @@ class TeacherGroup extends React.Component {
     }
 
     render() {
-        const {group, error, getFile, studentsList} = this.props;
+        const {group, getFile, studentsList, isDayTheme} = this.props;
         const {newMessage} = this.state;
         if (group.title) {
             return (
                 <div className={s.container}>
-                    <NavLink className={s.backToProfile} to="/teacherProfile">
+                    <div className={s.backToProfileWrap}>
+                        <NavLink className={s.backToProfile} to="/teacherProfile">
                         Вернуться на главную
-                    </NavLink>
+                        </NavLink>
+                    </div>
+                    <div>
+                            <h3
+                                className={cn(s.groupTitle,{[s.groupTitle__light]: isDayTheme})}>
+                                {group.title}
+                            </h3>
+                            <p
+                                className={cn(s.groupDesc,{[s.groupDesc__light]: isDayTheme})}>
+                                {group.description}
+                            </p>
+
+                    </div>
+
+
                     <div className={s.row}>
-                        <div className={s.leftRow}>
-                            <h3 className={s.groupTitle}>{group.title}</h3>
-                            <div className={s.groupDesc}>{group.description}</div>
+                        <div>
+                            <div className={s.docsBlock}>
+                                <h3
+                                    className={cn(s.docsTitle, {[s.docsTitle__light]: isDayTheme})}>
+                                    Документы
+                                </h3>
+                                <Files
+                                    files={group.files}
+                                    teamId={group.groupId}
+                                    getFile={getFile}
+                                    isDayTheme={isDayTheme}
+                                />
+                            </div>
+
+                            <div className={cn(s.sendFileBlock,
+                                {[s.sendFileBlock__light]: isDayTheme}
+                            )}
+                            >
+                                <form
+                                    ref={this.fileRef}
+                                    onSubmit={this.sendFileHandler}
+                                    className={s.sendFileForm}
+                                >
+                                    <input
+                                        className={s.sendFileInput}
+                                        type="file"
+                                        accept="application/pdf"
+                                        name="filedata"
+                                    />
+                                    <input
+                                        type="submit"
+                                        value="ОТПРАВИТЬ"
+                                        className={cn(s.sendFileBtn,
+                                            {[s.sendFileBtn__light]: isDayTheme}
+                                        )}
+                                    />
+                                </form>
+                            </div>
                         </div>
                         <div className={s.addStudentWrap}>
                             <StudentsList
                                 studentsList={studentsList}
                                 removable={false}
+                                isDayTheme={isDayTheme}
                             />
 
                             <div className={s.addStudentBtnWrap}>
-                                <NavLink to="/teacherProfile/edit" className={s.addStudentBtn}>
+                                <NavLink to="/teacherProfile/edit"
+                                         className={cn(s.addStudentBtn,
+                                                {[s.addStudentBtn__light]: isDayTheme}
+                                             )}
+                                >
                                     <span>
                                         Добавить участника
                                     </span>
@@ -88,39 +144,19 @@ class TeacherGroup extends React.Component {
                         </div>
                     </div>
 
-
-                    <div className={s.docsBlock}>
-                        <h3 className={s.docsTitle}>Документы</h3>
-                        <Files
-                            files={group.files}
-                            teamId={group.groupId}
-                            getFile={getFile}
-                        />
-                    </div>
-
-                    <div className={s.sendFileBlock}>
-                        <form
-                            ref={this.fileRef}
-                            onSubmit={this.sendFileHandler}
-                            className={s.sendFileForm}
-                        >
-                            <input
-                                className={s.sendFileInput}
-                                type="file"
-                                accept="application/pdf"
-                                name="filedata"
-                            />
-                            <input
-                                type="submit"
-                                value="ОТПРАВИТЬ"
-                                className={s.sendFileBtn}
-                            />
-                        </form>
-                    </div>
-
                     <div className={s.messagesBlock}>
-                        <h3 className={s.messagesTitle}>Объявления</h3>
-                        <Chat messages={group.messages} teacher={group.teacher}/>
+                        <h3
+                            className={cn(s.messagesTitle,
+                                {[s.messagesTitle__light]: isDayTheme}
+                                )}
+                        >
+                            Объявления
+                        </h3>
+                        <Chat
+                            messages={group.messages}
+                            teacher={group.teacher}
+                            isDayTheme={isDayTheme}
+                        />
                     </div>
 
                     <div className={s.sendMsgBlock}>

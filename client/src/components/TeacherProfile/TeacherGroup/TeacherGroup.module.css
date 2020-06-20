@@ -22,9 +22,14 @@
     transition: color .2s ease;
 }
 
+.backToProfileWrap {
+    margin-top: 25px;
+}
+
+
 .row {
-    width: 80%;
-    margin: 25px 0 35px 0;
+    width: 90%;
+    margin: 30px 0 35px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -37,6 +42,9 @@
 .groupTitle {
     color: white;
     margin-bottom: 2px;
+}
+.groupTitle__light {
+    color: black;
 }
 
 .addStudentWrap {
@@ -58,9 +66,16 @@
 .addStudentBtn:hover {
     opacity: .65;
 }
-.addStudentBtn:active {
-    background-color: green;
+
+.addStudentBtn__light {
+    background: #2FB1A2;
 }
+
+    /*
+    .addStudentBtn:active {
+        background-color: green;
+    }
+    */
 
 .addStudentBtnWrap {
     margin-top: 20px;
@@ -72,11 +87,17 @@
     font-size: 15px;
     color: white;
     font-weight: 400;
+    max-width: 650px;
+    margin-top: 5px;
+}
+
+.groupDesc__light {
+    color: black;
 }
 
 /*DOCS*/
 .docsBlock {
-    margin: 36px 0 30px 0;
+    /*margin: 36px 0 30px 0;*/
 }
 
 .docsTitle {
@@ -84,6 +105,10 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
+    margin-top: 0px;
+}
+.docsTitle__light {
+    color: black;
 }
 
 /*messages*/
@@ -97,6 +122,10 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 5px;
+}
+
+.messagesTitle__light {
+    color: black;
 }
 
 
@@ -177,6 +206,10 @@
     background: #514D60;
 }
 
+.sendFileBlock__light {
+    background: #7B7692;
+}
+
 .sendFileForm {
     margin: 0 auto;
 }
@@ -200,9 +233,12 @@
     border: none;
 }
 
+.sendFileBtn__light {
+    background-color: #4D74BE;
+}
+
+
+
 .sendFileBtn:hover {
     opacity: .75;
-}
-.sendFileBtn:active {
-    background-color: darkred;
 }

@@ -1,18 +1,17 @@
 .container {
     max-width: 700px;
     margin-bottom: 50px;
+    text-align: left;
 }
 
-.text {
-    font-size: 15px;
+.welcome {
+    font-size: 18px;
+    color: white
+}
+.welcome__light {
     color: black
 }
 
-.gimn {
-    color: white;
-    font-size: 19px;
-    margin-bottom: 50px;
-}
 
 .title {
     color: white

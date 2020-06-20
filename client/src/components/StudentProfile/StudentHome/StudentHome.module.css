@@ -3,12 +3,11 @@
     margin-bottom: 50px;
 }
 
-.text {
-    font-size: 15px;
-    color: black
-}
-
 .title {
     margin-top: 0px;
+    color: white
+}
+
+.title__light {
     color: black
 }

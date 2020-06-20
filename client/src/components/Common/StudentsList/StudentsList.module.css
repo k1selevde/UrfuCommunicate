@@ -7,6 +7,11 @@
     background-color: #514D60;
     width: 400px;
     border-radius: 8px;
+    overflow: hidden;
+}
+
+.listItemsWrap__light {
+    background-color: #7B7692;
 }
 
 .listItem {
@@ -70,4 +75,7 @@
     color: #34B45E;
     font-size: 20px;
     font-weight: 600;
+}
+.studentListTitle__light {
+    color: black;
 }

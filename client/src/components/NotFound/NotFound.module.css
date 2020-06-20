@@ -1,4 +1,5 @@
 .wrap {
+    max-width: 400px;
 }
 .text {
     text-align: left;

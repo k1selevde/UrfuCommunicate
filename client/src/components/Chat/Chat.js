@@ -1,12 +1,16 @@
 import React from 'react'
+import cn from 'classnames'
 import s from './Chat.module.css'
 
 
-const Chat  = ({messages = [],teacher}) => {
+const Chat  = ({messages = [],teacher, isDayTheme}) => {
     return (
         <>
             {teacher &&
-        <div className={s.messagesWrap}>
+        <div className={cn(s.messagesWrap,
+            {[s.messagesWrap__light]: isDayTheme}
+            )}
+        >
             {
                 messages.map(mess => {
                     return (

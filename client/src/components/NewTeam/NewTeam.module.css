@@ -5,7 +5,6 @@
 
 .titleWrap {
     width: 80%;
-    margin-top: 25px;
     margin-bottom: 20px;
     justify-content: space-between;
     display: flex;
@@ -17,6 +16,17 @@
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 600;
+}
+
+.title__light {
+    color: black;
+}
+
+.teamNameWrap__title {
+    color: white;
+}
+.teamNameWrap__title__light {
+    color: black;
 }
 
 
@@ -85,13 +95,15 @@
     cursor: pointer;
     margin-bottom: 40px;
 }
+
+.makeTeamBtn__light {
+    background: #2FB1A2;
+}
+
 .makeTeamBtn:hover {
     opacity: .65;
 }
 
-/*.makeTeamBtn:active {
-    background-color: darkblue;
-}*/
 
 .makeTeamBtn:disabled {
     opacity: .55;
@@ -183,6 +195,10 @@
     transition: color .2s ease;
 }
 
+.backToProfileWrap {
+    margin-top: 25px;
+}
+
 .backToProfile:hover {
     color: cornflowerblue;
 }
@@ -201,6 +217,11 @@
     font-size: 16px;
     margin-bottom: 5px;
 }
+
+.inputLabel__light {
+    color: blue;
+}
+
 
 .inputName {
     max-width: max-content;
@@ -245,6 +266,10 @@
     background: #514D60;
     border-radius: 8px;
     padding-bottom: 25px;
+}
+
+.leftBox__light {
+    background: #7B7692;
 }
 
 .emptyStudentList {

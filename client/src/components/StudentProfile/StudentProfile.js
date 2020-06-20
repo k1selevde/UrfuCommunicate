@@ -1,14 +1,15 @@
 import React from 'react'
 import {Switch,Route} from "react-router-dom";
+import cn from 'classnames'
 import SubjectItem from "./SubjectItem";
 import NotFound from "../NotFound/NotFound";
-import StudentHome from "./StudentHome/StudentHome"
-import s from './StudentProfile.module.css'
 import SubjectGroupContainer from "../../containers/SubjectGroupContainer";
+import StudentHomeContainer from "../../containers/StudentHomeContainer";
+import s from './StudentProfile.module.css'
 
 class StudentProfile extends React.Component {
     render() {
-        const {subjects} = this.props
+        const {subjects, isDayTheme} = this.props
         return (
             <div className={s.container}>
                 <div className={s.subjectsWrapper}>
@@ -19,9 +20,12 @@ class StudentProfile extends React.Component {
                     })
                     }
                 </div>
-                <div className={s.Wrapper}>
+                <div className={cn(s.Wrapper,
+                        {[s.Wrapper__light]: isDayTheme}
+                    )}
+                >
                     <Switch>
-                        <Route path="/studentProfile" exact component={StudentHome} />
+                        <Route path="/studentProfile" exact component={StudentHomeContainer} />
                         <Route path="/studentProfile/sub-:id" render={({match}) =>
                         {
                             const {id} = match.params;

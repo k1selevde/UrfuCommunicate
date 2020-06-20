@@ -10,6 +10,10 @@
     border-top-right-radius: 6px;
 }
 
+.messagesWrap__light {
+    background-color: #7B7692;
+}
+
 .messWrap {
     margin-bottom: 25px;
     background: #BFBABA;

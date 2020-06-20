@@ -20,29 +20,6 @@ function App({isAuth}) {
   );
 }
 
-/*
-class App extends React.Component {
-
-    componentWillMount()
-     {
-        document.title = 'URFUCOMMUNICATE'
-    }
-
-    render() {
-        const {isAuth} = this.props;
-        return (
-            <div className="App">
-                {isAuth && <HeaderContainer />}
-                <div className="content">
-                    <Routes isAuth={isAuth}/>
-                </div>
-            </div>
-        );
-    }
-
-}
-*/
-
 
 const mapStateToProps = (state) => ({
     isAuth: state.session.user.isAuth

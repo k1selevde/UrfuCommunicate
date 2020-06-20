@@ -14,7 +14,7 @@ class StudentProfileContainer extends React.Component {
 
     render()
     {
-        const {isStudent, subjects, group, error, getSubjectGroup, id, token} = this.props;
+        const {isStudent, subjects, group, error, getSubjectGroup, id, token, isDayTheme} = this.props;
         return (
             (isStudent)
             ? <StudentProfile
@@ -23,6 +23,7 @@ class StudentProfileContainer extends React.Component {
                     getSubjectGroup={getSubjectGroup}
                     subjects={subjects}
                     group={group}
+                    isDayTheme={isDayTheme}
                />
             : <Redirect to="/" />
         )
@@ -36,14 +37,14 @@ const mapStateToProps = state => ({
     isStudent: !state.session.user.isTeacher,
     subjects: state.student.subjects,
     group: state.student.activeGroup,
-    error: state.student.errors
+    error: state.student.errors,
+    isDayTheme: state.session.isDayTheme
 })
 
 
 const mapDispatchToProps = dispatch => {
     return ({
         getSubjects: (data) => dispatch(getSubjects(data)),
-        //getSubjectGroup: (data) => dispatch(getSubjectGroup(data))
     })
 }
 

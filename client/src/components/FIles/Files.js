@@ -1,7 +1,8 @@
 import React from 'react'
+import cn from 'classnames';
 import s from './Files.module.css'
 
-const Files  = ({files,teamId,getFile}) => {
+const Files  = ({files,teamId,getFile,isDayTheme}) => {
 
     const getFileHandler = (fileName,e) => {
         e.preventDefault()
@@ -12,7 +13,7 @@ const Files  = ({files,teamId,getFile}) => {
 
     return (
         <div className={s.filesContainer}>
-            {files.map(({fileName,filePath,getFileStatus}) => (
+            {files && files.map(({fileName,filePath,getFileStatus}) => (
                 <div
                     key={fileName}
                     className={s.fileWrap}
@@ -21,12 +22,22 @@ const Files  = ({files,teamId,getFile}) => {
                     <a
                         target="_blank"
                         href={filePath ? filePath : '#'}
-                        className={ getFileStatus ? s.fileNameGet : s.fileName}
+                        className={cn(
+                            {[s.fileNameGet]: getFileStatus},
+                            {[s.fileName]: !getFileStatus},
+                            {[s.fileName__light]: isDayTheme}
+
+                        )}
                     >
                         {fileName}
                     </a>
                     <button
-                        className={getFileStatus ? s.fileGetBtnDoes : s.fileGetBtn}
+                        className={cn(
+                            {[s.fileGetBtnDoes]: getFileStatus },
+                            {[s.fileGetBtn]: !getFileStatus },
+                            {[s.fileGetBtn__light]: isDayTheme && !getFileStatus},
+                            )
+                        }
                         onClick={(e) => getFileHandler(fileName,e)}
                     >
                         {getFileStatus ? 'Файл получен' : 'Получить файл'}

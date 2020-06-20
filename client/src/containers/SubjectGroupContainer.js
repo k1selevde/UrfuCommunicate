@@ -32,7 +32,8 @@ const mapStateToProps = state => ({
     id: state.session.user.id,
     token: state.session.user.token,
     group: state.student.activeGroup,
-    error: state.student.errors
+    error: state.student.errors,
+    isDayTheme: state.session.isDayTheme
 })
 
 

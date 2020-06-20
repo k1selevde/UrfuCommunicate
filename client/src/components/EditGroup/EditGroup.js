@@ -1,11 +1,12 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
+import cn from 'classnames'
 import StudTable from "../NewTeam/StudentTable/StudTable";
 import Alert from '../Alert/Alert'
 import SuccessAlert from "../Alert/SuccessAlert";
-import s from '../NewTeam/NewTeam.module.css'
 import {validSearchInput} from "../../helpers/validForm";
 import StudentsList from "../Common/StudentsList/StudentsList";
+import s from '../NewTeam/NewTeam.module.css'
 
 class EditGroup  extends React.Component {
     constructor(props) {
@@ -104,11 +105,10 @@ class EditGroup  extends React.Component {
     }
 
     render() {
-        const {newStudentArr, group, error, isSaveChanges} = this.props;
+        const {newStudentArr, group, isSaveChanges, isDayTheme} = this.props;
         const {findError, studentsList} = this.state
         return (
             <div className={s.container}>
-                {/*{error && <Alert error={error}/>}*/}
                 { isSaveChanges
                 &&
                 <SuccessAlert text={'изменения сохранены'}>
@@ -124,11 +124,17 @@ class EditGroup  extends React.Component {
 
                 {!isSaveChanges && <div className={s.contentEditGroup}>
                     <div className={s.titleWrap}>
-                        <h4 className={s.title}>Редактирование команды</h4>
+                        <h4 className={cn(s.title,
+                            {[s.title__light]: isDayTheme}
+                        )}>
+                            Редактирование команды
+                        </h4>
 
                         <div className={s.makeTeamWrap}>
                             <button
-                                className={s.makeTeamBtn}
+                                className={cn(s.makeTeamBtn,
+                                    {[s.makeTeamBtn__light]: isDayTheme}
+                                )}
                                 onClick={this.submitTeamDataHandler}
                             >
                                 Сохранить
@@ -137,11 +143,20 @@ class EditGroup  extends React.Component {
                     </div>
 
                     <div className={s.teamNameWrap}>
-                        <h3 style={{color: 'white'}}>Команда: {group.title}</h3>
+                        <h3 className={cn(s.teamNameWrap__title,
+                            {[s.teamNameWrap__title__light]: isDayTheme}
+                        )}
+                        >
+                            Команда: {group.title}
+                        </h3>
                     </div>
 
                     <div className={s.box}>
-                        <div className={s.leftBox}>
+                        <div
+                            className={cn(s.leftBox,
+                                {[s.leftBox__light]: isDayTheme}
+                            )}
+                        >
                             <form onSubmit={this.findStudent} className={s.searchForm}>
                                 <div className={s.findErrorWrap}>
                                     {findError &&
@@ -174,6 +189,7 @@ class EditGroup  extends React.Component {
                             studentsList={studentsList}
                             removeStudentCB={this.removeStudentHandler}
                             removable={true}
+                            isDayTheme={isDayTheme}
                         />
                     </div>
                 </div>}

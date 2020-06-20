@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
     group: state.teacher.activeGroup,
     newStudentArr: state.teacher.newStudent,
     error: state.teacher.errors,
-    isSaveChanges: state.teacher.activeGroup.saveChanges
+    isSaveChanges: state.teacher.activeGroup.saveChanges,
+    isDayTheme: state.session.isDayTheme
 })
 
 

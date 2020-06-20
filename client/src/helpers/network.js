@@ -25,42 +25,6 @@ export const httpPostFiles = async (url, data) => {
     }).then(response => response.json())
 }
 
-
-/*
-export const httpPostGetFile = async (url, data) => {
-    return  await axios.post(url, {
-        body: JSON.stringify(data),
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'content-type': 'application/json',
-        },
-        mode: 'cors',
-        redirect: 'follow',
-        referrer: 'no-referrer',
-    })
-}
-*/
-
-/*export const httpPostGetFile = async (url, data) => {
-    return  fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'content-type': 'application/json',
-        },
-        mode: 'cors',
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        responseType: 'blob'
-    })
-}*/
-
-/* responseType: 'blob'
-* */
-
 /*JSON.stringify(data)*/
 export const httpPostGetFile = async (url, data) => {
     return  axios.post(url, {data}, {responseType: 'blob'})
@@ -72,23 +36,6 @@ export const httpGet = async (url) => {
     // from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     return fetch(url).then(response => response.json())// parses response to JSON
 }
-/*
-export async function httpPost(url, data) {
-    const response = await fetch(url, {
-        method: 'POST',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors',
-        body: JSON.stringify(data)
-    })
-    const serverData = await response.json()
-    console.log(serverData);
-    return serverData;
-}
-*/
 
 export function checkResponse(res) {
     return res.status === 'ok';

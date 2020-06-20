@@ -5,6 +5,8 @@
     border: 1px solid darkred;
     color: darkred;
     font-weight: 700;
+    max-width: 280px;
+    text-align: center;
 }
 
 .groupRow {
@@ -12,6 +14,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    align-items: baseline;
 }
 
 
@@ -24,6 +27,10 @@
     margin-top: 0;
 }
 
+.groupTitle__light {
+    color: black;
+}
+
 .groupDesc {
     margin-bottom: 30px;
     color: white;
@@ -32,11 +39,20 @@
     font-size: 17px;
 }
 
+.groupDesc__light {
+    color: black;
+}
+
+
 .groupTeacher {
     display: flex;
     align-items: center;
     color: white;
     font-size: 18px;
+}
+
+.groupTeacher__light {
+    color: black;
 }
 
 .docsWrap {
@@ -49,11 +65,15 @@
     font-weight: 600;
 }
 
+.docsTitle__light {
+    color: black
+}
+
 /*chat*/
 
 .chatWrap {
     margin-top: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .chatTitle {
@@ -61,6 +81,10 @@
     color: white;
     font-weight: 600;
     margin-bottom: 3px;
+}
+
+.chatTitle__light {
+    color: black;
 }
 
 .backToProfile {
