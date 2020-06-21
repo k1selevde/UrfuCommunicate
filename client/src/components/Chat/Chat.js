@@ -14,7 +14,10 @@ const Chat  = ({messages = [],teacher, isDayTheme}) => {
             {
                 messages.map(mess => {
                     return (
-                        <div className={s.messWrap}>
+                        <div className={cn(s.messWrap,
+                            {[s.messWrap__light]: isDayTheme}
+                        )}
+                        >
                             <div className={s.messRow}>
                                 <div className={s.messSender}>{teacher}</div>
                                 <div className={s.messTime}>{mess.time}</div>

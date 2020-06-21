@@ -21,6 +21,10 @@
     padding: 15px 30px;
 }
 
+.messWrap__light {
+    background: #E8ECEF;
+}
+
 .messRow {
     display: flex;
     justify-content: space-between;
