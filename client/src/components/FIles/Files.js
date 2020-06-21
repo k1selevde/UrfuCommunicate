@@ -11,7 +11,7 @@ const Files  = ({files,teamId,getFile,deleteFile,isDayTheme,isTeacher}) => {
 
     const deleteFileHandler = (fileName,e) => {
         e.preventDefault()
-        deleteFile({fileName})
+        deleteFile({fileName,teamId})
     }
 
     return (
