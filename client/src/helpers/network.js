@@ -30,7 +30,9 @@ export const httpPostGetFile = async (url, data) => {
     return  axios.post(url, {data}, {responseType: 'blob'})
 }
 
-
+// export const httpDelete = async (url,data) => {
+//     return   axios.delete(url, {data})
+// }
 
 export const httpGet = async (url) => {
     // from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch

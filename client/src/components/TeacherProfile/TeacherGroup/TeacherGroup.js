@@ -60,7 +60,7 @@ class TeacherGroup extends React.Component {
     }
 
     render() {
-        const {group, getFile, studentsList, isDayTheme} = this.props;
+        const {group, getFile, studentsList, isDayTheme, deleteFile} = this.props;
         const {newMessage} = this.state;
         if (group.title) {
             return (
@@ -94,7 +94,9 @@ class TeacherGroup extends React.Component {
                                     files={group.files}
                                     teamId={group.groupId}
                                     getFile={getFile}
+                                    deleteFile={deleteFile}
                                     isDayTheme={isDayTheme}
+                                    isTeacher={true}
                                 />
                             </div>
 

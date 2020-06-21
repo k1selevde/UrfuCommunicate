@@ -11,7 +11,7 @@ import {
     TEACHER_CLEAR_SAVECHANGE,
     TEACHER_CREATE_GROUP_FAILURE,
     TEACHER_CREATE_GROUP_REQUEST,
-    TEACHER_CREATE_GROUP_SUCCESS,
+    TEACHER_CREATE_GROUP_SUCCESS, TEACHER_DELETE_FILE,
     TEACHER_EDIT_GROUP_FAILURE,
     TEACHER_EDIT_GROUP_REQUEST,
     TEACHER_EDIT_GROUP_SUCCESS, TEACHER_GET_FILE_FAILURE, TEACHER_GET_FILE_REQUEST, TEACHER_GET_FILE_SUCCESS,
@@ -247,17 +247,22 @@ export default (state = initialState, action) => {
                 activeGroup: {
                     ...state.activeGroup,
                     files: [...newFiles]
-                    /*files: updateObjectInArray(state.activeGroup.files, 'fileName',state.activeGroup.currentFileGetting, {
-                        getFileStatus: true,
-                        filePath: URL.createObjectURL(blob)
-                    })*/
                 }
             }
         }
         case TEACHER_GET_FILE_FAILURE: {
             return {
                 ...state,
-
+            }
+        }
+        case TEACHER_DELETE_FILE: {
+            const newFiles = state.activeGroup.files.filter(file => file.fileName !== action.payload.fileName)
+            return {
+                ...state,
+                activeGroup: {
+                    ...state.activeGroup,
+                    files: [...newFiles]
+                }
             }
         }
         default:

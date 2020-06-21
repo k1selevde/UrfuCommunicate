@@ -92,13 +92,13 @@
     height: 18px;
     border: none;
     opacity: .6;
-/*    padding: 4px 10px;
-    background-color: blue;
-    color: white;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background-color .1s ease;*/
+    /*    padding: 4px 10px;
+        background-color: blue;
+        color: white;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color .1s ease;*/
 }
 
 .addStudent:hover {
@@ -114,7 +114,6 @@
     height: 18px;
     border: none;
 }
-
 .nothing {
     margin-top: 10px;
     margin-bottom: 10px;

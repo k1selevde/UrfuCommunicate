@@ -10,13 +10,24 @@ import {
     GET_NEW_STUDENT_SUCCESS,
     GET_PROFILE_FAILURE,
     GET_PROFILE_SUCCESS,
-    TEACHER_CLEAR_GROUP, TEACHER_CLEAR_GROUPCREATE,
-    TEACHER_CLEAR_SAVECHANGE, TEACHER_CREATE_GROUP_FAILURE, TEACHER_CREATE_GROUP_REQUEST, TEACHER_CREATE_GROUP_SUCCESS,
+    TEACHER_CLEAR_GROUP,
+    TEACHER_CLEAR_GROUPCREATE,
+    TEACHER_CLEAR_SAVECHANGE,
+    TEACHER_CREATE_GROUP_FAILURE,
+    TEACHER_CREATE_GROUP_REQUEST,
+    TEACHER_CREATE_GROUP_SUCCESS,
+    TEACHER_DELETE_FILE, TEACHER_DELETE_FILE_REQUEST,
     TEACHER_EDIT_GROUP_FAILURE,
     TEACHER_EDIT_GROUP_REQUEST,
-    TEACHER_EDIT_GROUP_SUCCESS, TEACHER_GET_FILE_FAILURE, TEACHER_GET_FILE_REQUEST, TEACHER_GET_FILE_SUCCESS,
+    TEACHER_EDIT_GROUP_SUCCESS,
+    TEACHER_GET_FILE_FAILURE,
+    TEACHER_GET_FILE_REQUEST,
+    TEACHER_GET_FILE_SUCCESS,
     TEACHER_OUT,
-    TEACHER_REQUEST, TEACHER_SEND_FILE_FAILURE, TEACHER_SEND_FILE_REQUEST, TEACHER_SEND_FILE_SUCCESS,
+    TEACHER_REQUEST,
+    TEACHER_SEND_FILE_FAILURE,
+    TEACHER_SEND_FILE_REQUEST,
+    TEACHER_SEND_FILE_SUCCESS,
     TEACHER_SEND_MESSAGE_FAILURE,
     TEACHER_SEND_MESSAGE_REQUEST,
     TEACHER_SEND_MESSAGE_SUCCESS,
@@ -355,7 +366,6 @@ export function sendFileFailure(data) {
 
 export function getFile(data) {
     return (dispatch) => {
-        console.log('request data (GET File please): ', data)
         dispatch(getFileRequest(data))
         httpPostGetFile(`/api/team/getFile`, data)
             .then(res => {
@@ -389,6 +399,34 @@ export function getFileSuccess(data) {
 export function getFileFailure(data) {
     return {
         type: TEACHER_GET_FILE_FAILURE,
+        payload: data
+    }
+}
+
+export function deleteFile(data) {
+    return (dispatch) => {
+        console.log('request data (delete file): ', data)
+        dispatch(deleteFileRequest(data))
+        httpPost(`/api/team/deleteFile`, data)
+            .then(res => {
+                console.log('res', res)
+                dispatch(deleteFileSuccess(data));
+            })
+            .catch(error =>
+                    console.log(error)
+            )
+    }
+}
+
+export function deleteFileRequest() {
+    return {
+        type: TEACHER_DELETE_FILE_REQUEST
+    }
+}
+
+export function deleteFileSuccess(data) {
+    return {
+        type: TEACHER_DELETE_FILE,
         payload: data
     }
 }

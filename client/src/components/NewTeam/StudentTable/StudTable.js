@@ -51,8 +51,8 @@ class StudentsTable extends React.Component {
                                         <td className={s.statusBody}>
                                             <button
                                                 onClick={() => this.clickHandler(student)}
-                                                className={includeStudent(this.props.studentsList, student) ? s.isAdd : s.addStudent}>
-                                                {/*{includeStudent(this.props.studentsList, student) ? 'IsADD' : 'add'}*/}
+                                                className={includeStudent(this.props.studentsList, student) ? s.isAdd : s.addStudent}
+                                            >
                                             </button>
                                         </td>
                                     </tr>

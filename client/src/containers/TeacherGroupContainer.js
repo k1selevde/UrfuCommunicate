@@ -1,7 +1,7 @@
 import React from 'react'
 import TeacherGroup from '../components/TeacherProfile/TeacherGroup/TeacherGroup'
 import {connect} from "react-redux";
-import {getFile, getGroup, sendFile, sendMessage} from "../redux/actions/teacherActions";
+import {deleteFile, getFile, getGroup, sendFile, sendMessage} from "../redux/actions/teacherActions";
 
 class TeacherGroupContainer extends React.Component {
     componentDidMount() {
@@ -43,7 +43,8 @@ const mapDispatchToProps = dispatch => {
         getGroup: (data) => dispatch(getGroup(data)),
         sendMessage: (data) => dispatch(sendMessage(data)),
         sendFile: (data) => dispatch(sendFile(data)),
-        getFile: (data) => dispatch(getFile(data))
+        getFile: (data) => dispatch(getFile(data)),
+        deleteFile: (data) => dispatch(deleteFile(data))
     })
 }
 

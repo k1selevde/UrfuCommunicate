@@ -50,6 +50,7 @@ class SubjectGroup  extends React.Component {
                             teamId={group.groupId}
                             getFile={getFile}
                             isDayTheme={isDayTheme}
+                            isTeacher={false}
                         />
                     </div>
                     <div className={s.chatWrap}>
