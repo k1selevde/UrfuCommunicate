@@ -181,6 +181,25 @@ router.post(
 
     })
 
+    router.post(
+        '/deleteFile',
+        async (req, res) => {
+            console.log(req.body)
+            var pathF = path.join(path.resolve(__dirname, '../../files'), req.body.fileName)
+            const team = await Team.findById(req.body.teamId)
+            for(var i = 0; i < team.fileNames.length; i++) {
+                if(team.fileNames[i] === req.body.fileName) {
+                   team.fileNames.splice(i, 1);
+                }
+            }
+            team.save()
+            fs.unlink(pathF, (err) => {
+                if (err) throw err;
+                console.log('successfully deleted');
+              });
+            res.status(200)
+        })
+
 router.post('/findStudent',
     async (req, res) => {
         try {
