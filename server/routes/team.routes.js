@@ -197,7 +197,7 @@ router.post(
                 if (err) throw err;
                 console.log('successfully deleted');
               });
-            res.status(200)
+            res.status(200).json({status:'ok'})
         })
 
 router.post('/findStudent',
