@@ -12,7 +12,7 @@ const auth = require('../middleware/auth.middleware')
 
 
 
-router.post('/studentProfile', 
+router.post('/studentProfile', auth,
     async (req, res) => {
 
         try {
@@ -40,7 +40,7 @@ router.post('/studentProfile',
 
     })
 
-router.post('/studentGroup', 
+router.post('/studentGroup', auth,
     async (req, res) => {
 
         try {

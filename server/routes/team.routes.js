@@ -12,7 +12,7 @@ const getFileType = require('file-type')
 const fs = require('fs')
 const path = require('path')
 
-router.post('/createTeam',
+router.post('/createTeam', auth,
     async (req, res) => {
         try {
             const students = []
@@ -57,7 +57,7 @@ router.post('/createTeam',
         }
     });
 
-router.post('/editTeam',
+router.post('/editTeam', auth,
     async (req, res) => {
         try {
             const team = await Team.findById(req.body.groupId)
@@ -97,7 +97,7 @@ router.post('/editTeam',
         }
     });
 
-router.post('/sendMessage',
+router.post('/sendMessage', auth,
     async (req, res) => {
         try {
             var time = new Date().toString()
@@ -141,7 +141,7 @@ const upload = multer({ storage: storage })
 
 
 router.post(
-    '/sendfile',
+    '/sendfile', 
     upload.single('filedata'),
     async (req, res) => {
         const fileName = req.file.filename

@@ -12,7 +12,7 @@ const auth = require('../middleware/auth.middleware')
 
 
 
-router.post('/teacherProfile',
+router.post('/teacherProfile', auth,
     async (req, res) => {
 
         try {
@@ -41,7 +41,7 @@ router.post('/teacherProfile',
     })
 
 // Get GROUP for teacher: (compare teacherId, token and groupId)
-router.post('/teacherGroup',
+router.post('/teacherGroup', auth,
     async (req, res) => {
 
         try {
